@@ -1,1 +1,1 @@
-include ':ChangeThemeDemo', ':ToolBarDemo'
+include ':ChangeThemeDemo', ':ToolBarDemo', ':ShadowDemo'
