@@ -9,6 +9,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/ButtonAnimation" />
             <option value="$PROJECT_DIR$/ChangeThemeDemo" />
             <option value="$PROJECT_DIR$/NewSelector" />
             <option value="$PROJECT_DIR$/PaletteDemo" />
@@ -19,6 +20,7 @@
         <option name="myModules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/ButtonAnimation" />
             <option value="$PROJECT_DIR$/ChangeThemeDemo" />
             <option value="$PROJECT_DIR$/NewSelector" />
             <option value="$PROJECT_DIR$/PaletteDemo" />
