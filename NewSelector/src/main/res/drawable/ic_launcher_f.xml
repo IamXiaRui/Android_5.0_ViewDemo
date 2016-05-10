@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bitmap xmlns:android="http://schemas.android.com/apk/res/android"
+    android:src="@mipmap/ic_launcher"
+    android:tint="#7e62e6"
+    android:tintMode="multiply">
+
+    <!--android:tint="#7e62e6"   设置交集颜色-->
+    <!--android:tintMode="multiply"  设置模式为取交集-->
+
+</bitmap>
