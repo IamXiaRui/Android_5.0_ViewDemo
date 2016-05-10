@@ -1,5 +1,7 @@
 #Android5.0新特性的小案例
 
-##ChangeThemeDemo
+##分类介绍
 
-###切换主题样式案例
+###ChangeTheme - 切换主题样式案例
+
+通过按钮动态切换主题样式
