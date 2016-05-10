@@ -1,0 +1,38 @@
+<resources>
+
+    <style name="AppTheme" parent="android:Theme.Material.Light.DarkActionBar">
+        <!--应用的主要暗色调-->
+        <item name="android:colorPrimaryDark">#ff3367d6</item>
+        <!--actionBar默认使用该颜色-->
+        <item name="android:colorPrimary">#ff4285f4</item>
+        <!--窗口背景颜色-->
+        <item name="android:windowBackground">@color/windowbg</item>
+        <!--底部栏颜色-->
+        <item name="android:navigationBarColor">#288edc</item>
+    </style>
+
+    <!--红色主题-->
+    <style name="AppTheme_Red" parent="android:Theme.Material.Light.DarkActionBar">
+        <!--应用的主要暗色调-->
+        <item name="android:colorPrimaryDark">@color/red_colorPrimaryDark</item>
+        <!--actionBar默认使用该颜色-->
+        <item name="android:colorPrimary">@color/red_colorPrimary</item>
+        <!--窗口背景颜色-->
+        <item name="android:windowBackground">@color/red_windowBackground</item>
+        <!--底部栏颜色-->
+        <item name="android:navigationBarColor">@color/red_navigationBarColor</item>
+    </style>
+    <!--粉色主题-->
+
+    <style name="AppTheme_Green" parent="android:Theme.Material.Light.DarkActionBar">
+        <!--应用的主要暗色调-->
+        <item name="android:colorPrimaryDark">@color/green_colorPrimaryDark</item>
+        <!--actionBar默认使用该颜色-->
+        <item name="android:colorPrimary">@color/green_colorPrimary</item>
+        <!--窗口背景颜色-->
+        <item name="android:windowBackground">@color/green_windowBackground</item>
+        <!--底部栏颜色-->
+        <item name="android:navigationBarColor">@color/green_navigationBarColor</item>
+    </style>
+
+</resources>

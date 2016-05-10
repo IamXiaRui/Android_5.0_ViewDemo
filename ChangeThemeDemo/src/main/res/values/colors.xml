@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="windowbg">#57a2ed</color>
+    <!--红色-->
+    <color name="red_colorPrimaryDark">#ffb0120a</color>
+    <color name="red_colorPrimary">#ffe51c23</color>
+    <color name="red_windowBackground">#fff36c60</color>
+    <color name="red_navigationBarColor">#ffd01716</color>
+    <!--绿色-->
+    <color name="green_colorPrimaryDark">#ff05760c</color>
+    <color name="green_colorPrimary">#ff09c137</color>
+    <color name="green_windowBackground">#ff69f062</color>
+    <color name="green_navigationBarColor">#ff07a140</color>
+</resources>
