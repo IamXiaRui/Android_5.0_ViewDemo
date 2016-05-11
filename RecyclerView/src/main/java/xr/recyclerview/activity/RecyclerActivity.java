@@ -1,6 +1,8 @@
 package xr.recyclerview.activity;
 
 import android.os.Bundle;
+import android.os.SystemClock;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -22,6 +24,7 @@ import xr.recyclerview.bean.ListBean;
 public class RecyclerActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
     private List<ListBean> mListData = new ArrayList<ListBean>();
     private List<ListBean> mStaggerData = new ArrayList<ListBean>();
     private int[] mitemIcons = new int[]{R.mipmap.g1, R.mipmap.g2, R.mipmap.g3, R.mipmap.g4,
@@ -55,6 +58,8 @@ public class RecyclerActivity extends AppCompatActivity {
         //设置适配器
         initListAdapterV();
 
+        initRefresh();
+
 
     }
 
@@ -63,6 +68,33 @@ public class RecyclerActivity extends AppCompatActivity {
      */
     private void initView() {
         mRecyclerView = (RecyclerView) findViewById(R.id.rv_my);
+        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.spl_main);
+    }
+
+    /**
+     * 模拟刷新过程
+     */
+    private void initRefresh() {
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        SystemClock.sleep(2000);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                //停止刷新操作
+                                mSwipeRefreshLayout.setRefreshing(false);
+                                //得到adapter.然后刷新
+                                mRecyclerView.getAdapter().notifyDataSetChanged();
+                            }
+                        });
+                    }
+                }).start();
+            }
+        });
     }
 
 
