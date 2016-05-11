@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/ChangeThemeDemo/ChangeThemeDemo.iml" filepath="$PROJECT_DIR$/ChangeThemeDemo/ChangeThemeDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/NewSelector/NewSelector.iml" filepath="$PROJECT_DIR$/NewSelector/NewSelector.iml" />
       <module fileurl="file://$PROJECT_DIR$/PaletteDemo/PaletteDemo.iml" filepath="$PROJECT_DIR$/PaletteDemo/PaletteDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RecyclerView/RecyclerView.iml" filepath="$PROJECT_DIR$/RecyclerView/RecyclerView.iml" />
       <module fileurl="file://$PROJECT_DIR$/ShadowDemo/ShadowDemo.iml" filepath="$PROJECT_DIR$/ShadowDemo/ShadowDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/ToolBarDemo/ToolBarDemo.iml" filepath="$PROJECT_DIR$/ToolBarDemo/ToolBarDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/VectorAnimation/VectorAnimation.iml" filepath="$PROJECT_DIR$/VectorAnimation/VectorAnimation.iml" />
