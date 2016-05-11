@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/PaletteDemo" />
             <option value="$PROJECT_DIR$/ShadowDemo" />
             <option value="$PROJECT_DIR$/ToolBarDemo" />
+            <option value="$PROJECT_DIR$/VectorAnimation" />
           </set>
         </option>
         <option name="myModules">
@@ -26,6 +27,7 @@
             <option value="$PROJECT_DIR$/PaletteDemo" />
             <option value="$PROJECT_DIR$/ShadowDemo" />
             <option value="$PROJECT_DIR$/ToolBarDemo" />
+            <option value="$PROJECT_DIR$/VectorAnimation" />
           </set>
         </option>
       </GradleProjectSettings>
