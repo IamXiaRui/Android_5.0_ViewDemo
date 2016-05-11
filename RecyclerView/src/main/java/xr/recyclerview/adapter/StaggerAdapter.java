@@ -15,12 +15,12 @@ import xr.recyclerview.bean.ListBean;
 /**
  * @Description:ReclyclerView的列表适配器
  */
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.RecyclerHolder> {
+public class StaggerAdapter extends RecyclerView.Adapter<StaggerAdapter.RecyclerHolder> {
 
     private Context context;
     private List<ListBean> listData;
 
-    public RecyclerAdapter(Context context, List<ListBean> listData) {
+    public StaggerAdapter(Context context, List<ListBean> listData) {
         this.context = context;
         this.listData = listData;
     }
@@ -35,7 +35,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
     @Override
     public RecyclerHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //创建一个根布局
-        View itemView = View.inflate(context, R.layout.item_recycler, null);
+        View itemView = View.inflate(context, R.layout.item_stagger, null);
         return new RecyclerHolder(itemView);
     }
 
@@ -78,8 +78,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
          */
         public RecyclerHolder(View itemView) {
             super(itemView);
-            itemImage = (ImageView) itemView.findViewById(R.id.iv_icon);
-            itemText = (TextView) itemView.findViewById(R.id.tv_name);
+            itemImage = (ImageView) itemView.findViewById(R.id.item_staggered_iv);
+            itemText = (TextView) itemView.findViewById(R.id.item_staggered_tv);
         }
 
         /**
