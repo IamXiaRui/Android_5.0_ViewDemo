@@ -36,3 +36,10 @@ Android5.0新增的矢量图动画，动画更加平滑。
 -  用RecyclerView实现瀑布流效果
 -  实现卡片样式效果
 -  实现下拉刷新效果
+
+###TransitionAnimation - Android5.0转场动画
+
+- Explode : 分解裂开动画
+- Fade : 淡入淡出动画
+- Slide : 滑入滑出动画
+- 共享元素动画
