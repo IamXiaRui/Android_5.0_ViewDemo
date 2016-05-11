@@ -29,3 +29,10 @@ Android5.0中新增的ToolBar能够取代ActionBar
 ###VectorAnimation - 矢量图动画
 
 Android5.0新增的矢量图动画，动画更加平滑。
+
+###RecyclerView - ListView替代者
+
+-  用RecyclerView实现列表与网格效果
+-  用RecyclerView实现瀑布流效果
+-  实现卡片样式效果
+-  实现下拉刷新效果
