@@ -1,1 +1,1 @@
-include ':ChangeThemeDemo', ':ToolBarDemo', ':ShadowDemo', ':NewSelector', ':PaletteDemo', ':ButtonAnimation', ':VectorAnimation', ':RecyclerView'
+include ':ChangeThemeDemo', ':ToolBarDemo', ':ShadowDemo', ':NewSelector', ':PaletteDemo', ':ButtonAnimation', ':VectorAnimation', ':RecyclerView', ':TransitionsAnimation'
