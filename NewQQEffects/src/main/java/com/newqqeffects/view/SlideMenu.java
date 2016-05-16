@@ -168,7 +168,7 @@ public class SlideMenu extends FrameLayout {
      * 打开主界面
      */
     private void openMainView() {
-        viewDragHelper.smoothSlideViewTo(mainView,(int) dragRange,mainView.getTop());
+        viewDragHelper.smoothSlideViewTo(mainView, (int) dragRange, mainView.getTop());
         ViewCompat.postInvalidateOnAnimation(SlideMenu.this);
     }
 
@@ -176,7 +176,7 @@ public class SlideMenu extends FrameLayout {
      * 关闭主界面
      */
     private void closeMainView() {
-        viewDragHelper.smoothSlideViewTo(mainView,0,mainView.getTop());
+        viewDragHelper.smoothSlideViewTo(mainView, 0, mainView.getTop());
         ViewCompat.postInvalidateOnAnimation(SlideMenu.this);
     }
 
@@ -184,8 +184,10 @@ public class SlideMenu extends FrameLayout {
      * 处理平滑动画
      */
     public void computeScroll() {
-        if(viewDragHelper.continueSettling(true)){
+        if (viewDragHelper.continueSettling(true)) {
             ViewCompat.postInvalidateOnAnimation(SlideMenu.this);
         }
-    };
+    }
+
+    ;
 }
