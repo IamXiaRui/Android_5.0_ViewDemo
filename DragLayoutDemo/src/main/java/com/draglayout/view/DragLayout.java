@@ -1,12 +1,16 @@
 package com.draglayout.view;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.ViewDragHelper;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
+
+import com.draglayout.Utils.ColorUtil;
+import com.nineoldandroids.view.ViewHelper;
 
 /**
  * @Description:自定义滑动布局
@@ -180,9 +184,12 @@ public class DragLayout extends FrameLayout {
          */
         @Override
         public int clampViewPositionVertical(View child, int top, int dy) {
+            //限制上边界
             if (top < 0) {
                 top = 0;
-            } else if (top > getMeasuredHeight() - child.getMeasuredHeight()) {
+            }
+            //限制下边界
+            else if (top > getMeasuredHeight() - child.getMeasuredHeight()) {
                 top = getMeasuredHeight() - child.getMeasuredHeight();
             }
             return top;
@@ -204,6 +211,11 @@ public class DragLayout extends FrameLayout {
             } else if (changedView == blueView) {
                 redView.layout(redView.getLeft() + dx, redView.getTop() + dy, redView.getRight() + dx, redView.getBottom() + dy);
             }
+
+            //计算view移动的百分比
+            float percent = changedView.getLeft() * 1f / (getMeasuredWidth() - changedView.getMeasuredWidth());
+            //执行伴随动画
+            executeAnim(percent);
         }
 
         /**
@@ -223,6 +235,7 @@ public class DragLayout extends FrameLayout {
                 viewDragHelper.smoothSlideViewTo(releasedChild, 0, releasedChild.getTop());
                 //刷新整个ViewGroup
                 ViewCompat.postInvalidateOnAnimation(DragLayout.this);
+
             }
             //大于中间为值平滑移向右
             else {
@@ -232,6 +245,7 @@ public class DragLayout extends FrameLayout {
             }
         }
     };
+
 
     /**
      * 平滑移动动画
@@ -243,4 +257,18 @@ public class DragLayout extends FrameLayout {
             ViewCompat.postInvalidateOnAnimation(DragLayout.this);
         }
     }
+
+    /**
+     * 执行动画
+     *
+     * @param percent 百分比
+     */
+    private void executeAnim(float percent) {
+        //旋转动画
+        ViewHelper.setRotationX(redView, 360 * percent);
+
+        //设置过渡颜色的渐变
+        redView.setBackgroundColor((Integer) ColorUtil.evaluateColor(percent, Color.RED, Color.GREEN));
+    }
+
 }
