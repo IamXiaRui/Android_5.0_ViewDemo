@@ -1,4 +1,4 @@
-package com.copynewqq;
+package com.draglayout;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

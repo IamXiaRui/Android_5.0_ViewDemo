@@ -1,6 +1,7 @@
-package com.copynewqq.view;
+package com.draglayout.view;
 
 import android.content.Context;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.ViewDragHelper;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -73,10 +74,10 @@ public class DragLayout extends FrameLayout {
      */
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        int left = getPaddingLeft()+getMeasuredWidth()/2 - redView.getMeasuredWidth()/2;
+        int left = getPaddingLeft() + getMeasuredWidth() / 2 - redView.getMeasuredWidth() / 2;
         int top = getPaddingTop();
         redView.layout(left, top, left + redView.getMeasuredWidth(), top + redView.getMeasuredHeight());
-        blueView.layout(left, redView.getBottom(), left + blueView.getMeasuredWidth(), redView.getBottom() + blueView.getMeasuredHeight());
+        blueView.layout(left, redView.getBottom() + 20, left + blueView.getMeasuredWidth(), redView.getBottom() + 20 + blueView.getMeasuredHeight());
     }
 
     /**
@@ -118,7 +119,7 @@ public class DragLayout extends FrameLayout {
          */
         @Override
         public boolean tryCaptureView(View child, int pointerId) {
-            return child == blueView;
+            return child == blueView || child == redView;
         }
 
         /**
@@ -187,17 +188,59 @@ public class DragLayout extends FrameLayout {
             return top;
         }
 
+        /**
+         * 当child的位置改变的时候执行此方法，一般用来处理其他子View的伴随动画
+         * @param changedView 当前位置改变的子View
+         * @param left 当前子View最新的left
+         * @param top 当前子View最新的top
+         * @param dx 本次水平移动的距离
+         * @param dy 本次水平垂直的距离
+         */
         @Override
         public void onViewPositionChanged(View changedView, int left, int top, int dx, int dy) {
             super.onViewPositionChanged(changedView, left, top, dx, dy);
-            // TODO 待实现
+            if (changedView == redView) {
+                blueView.layout(blueView.getLeft() + dx, blueView.getTop() + dy, blueView.getRight() + dx, blueView.getBottom() + dy);
+            } else if (changedView == blueView) {
+                redView.layout(redView.getLeft() + dx, redView.getTop() + dy, redView.getRight() + dx, redView.getBottom() + dy);
+            }
         }
 
+        /**
+         * 手指抬起后的移动动画
+         * @param releasedChild 当前抬起的子View
+         * @param xvel x方向的移动的速度 正：向右移动,负：向左移动
+         * @param yvel y方向的移动的速度 正：向下移动,负：向上移动
+         */
         @Override
         public void onViewReleased(View releasedChild, float xvel, float yvel) {
             super.onViewReleased(releasedChild, xvel, yvel);
-            // TODO 待实现
+            //ViewGroup中间位置
+            int centerPosition = getMeasuredWidth() / 2 - releasedChild.getMeasuredWidth() / 2;
+            //小于中间位平滑移向左
+            if (releasedChild.getLeft() < centerPosition) {
+                //平滑移动
+                viewDragHelper.smoothSlideViewTo(releasedChild, 0, releasedChild.getTop());
+                //刷新整个ViewGroup
+                ViewCompat.postInvalidateOnAnimation(DragLayout.this);
+            }
+            //大于中间为值平滑移向右
+            else {
+                viewDragHelper.smoothSlideViewTo(releasedChild, getMeasuredWidth() - releasedChild.getMeasuredWidth(), releasedChild.getTop());
+                ViewCompat.postInvalidateOnAnimation(DragLayout.this);
+
+            }
         }
     };
 
+    /**
+     * 平滑移动动画
+     */
+    @Override
+    public void computeScroll() {
+        //当动画没有结束时，刷新整个ViewGroup
+        if (viewDragHelper.continueSettling(true)) {
+            ViewCompat.postInvalidateOnAnimation(DragLayout.this);
+        }
+    }
 }
