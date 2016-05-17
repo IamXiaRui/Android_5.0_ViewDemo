@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg"
+    android:id="@+id/sm_main"
     tools:context=".activivy.NewEffectsActivity">
 
     <!-- 菜单的布局 -->

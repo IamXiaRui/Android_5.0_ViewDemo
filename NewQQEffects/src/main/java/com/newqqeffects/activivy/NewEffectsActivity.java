@@ -5,11 +5,16 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.CycleInterpolator;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.newqqeffects.R;
+import com.newqqeffects.view.MyLinearLayout;
+import com.newqqeffects.view.SlideMenu;
 import com.nineoldandroids.view.ViewHelper;
 import com.nineoldandroids.view.ViewPropertyAnimator;
 
@@ -28,6 +33,9 @@ public class NewEffectsActivity extends Activity {
     };
 
     private ListView mainListView, menuListView;
+    private ImageView headImage;
+    private SlideMenu mainSlideMenu;
+    private MyLinearLayout myLinearLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +47,29 @@ public class NewEffectsActivity extends Activity {
 
         //绑定适配器
         initAdapter();
+
+        //事件监听
+        mainSlideMenu.setOnDragStateChangeListener(new SlideMenu.OnDragStateChangeListener() {
+            @Override
+            public void onOpen() {
+                Toast.makeText(NewEffectsActivity.this, "打开菜单", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onClose() {
+                ViewPropertyAnimator.animate(headImage).translationXBy(15)
+                        .setInterpolator(new CycleInterpolator(4))
+                        .setDuration(500)
+                        .start();
+            }
+
+            @Override
+            public void onDraging(float precent) {
+                ViewHelper.setAlpha(headImage, 1 - precent);
+            }
+        });
+
+        myLinearLayout.setSlideMenu(mainSlideMenu);
     }
 
     /**
@@ -47,6 +78,9 @@ public class NewEffectsActivity extends Activity {
     private void initView() {
         mainListView = (ListView) findViewById(R.id.lv_main);
         menuListView = (ListView) findViewById(R.id.lv_menu);
+        headImage = (ImageView) findViewById(R.id.iv_head);
+        mainSlideMenu = (SlideMenu) findViewById(R.id.sm_main);
+        myLinearLayout = (MyLinearLayout) findViewById(R.id.my_layout);
     }
 
     /**
@@ -63,10 +97,10 @@ public class NewEffectsActivity extends Activity {
             }
         });
 
-        mainListView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, nameStrings){
+        mainListView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, nameStrings) {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
-                View view = convertView==null?super.getView(position, convertView, parent):convertView;
+                View view = convertView == null ? super.getView(position, convertView, parent) : convertView;
                 //先缩小view
                 ViewHelper.setScaleX(view, 0.5f);
                 ViewHelper.setScaleY(view, 0.5f);
@@ -76,6 +110,5 @@ public class NewEffectsActivity extends Activity {
                 return view;
             }
         });
-
     }
 }

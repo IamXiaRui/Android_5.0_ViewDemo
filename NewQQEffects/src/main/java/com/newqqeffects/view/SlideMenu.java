@@ -17,6 +17,10 @@ public class SlideMenu extends FrameLayout {
     private View mainView;//主界面的view
     private int width;
     private float dragRange;//拖拽范围
+    private OnDragStateChangeListener listener;
+    public static final int CLOSE_STATE = 0;
+    public static final int OPEN_STATE = 1;
+    public int currentState = CLOSE_STATE;//当前SlideMenu的状态默认是关闭的
 
     public SlideMenu(Context context) {
         super(context);
@@ -30,11 +34,6 @@ public class SlideMenu extends FrameLayout {
 
     public SlideMenu(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        initView();
-    }
-
-    public SlideMenu(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
         initView();
     }
 
@@ -89,6 +88,13 @@ public class SlideMenu extends FrameLayout {
         return viewDragHelper.shouldInterceptTouchEvent(ev);
     }
 
+    /**
+     * 获取当前的状态
+     */
+    public int getCurrentState() {
+        return currentState;
+    }
+
     //回调参数
     private ViewDragHelper.Callback callback = new ViewDragHelper.Callback() {
 
@@ -140,10 +146,33 @@ public class SlideMenu extends FrameLayout {
                 int newLeft = mainView.getLeft() + dx;
                 if (newLeft < 0) {
                     newLeft = 0;
-                } else if (newLeft > dragRange) {
+                }
+                if (newLeft > dragRange) {
                     newLeft = (int) dragRange;
                 }
                 mainView.layout(newLeft, mainView.getTop() + dy, newLeft + mainView.getMeasuredWidth(), mainView.getMeasuredHeight() + dy);
+            }
+
+            //计算滑动的百分比
+            float precent = mainView.getLeft() / dragRange;
+
+            //更改状态，回调listener的方法
+            if (precent == 0 && currentState != CLOSE_STATE) {
+                //更改状态为关闭，并回调关闭的方法
+                currentState = CLOSE_STATE;
+                if (listener != null) {
+                    listener.onClose();
+                }
+            } else if (precent == 1 && currentState != OPEN_STATE) {
+                //更改状态为打开，并回调打开的方法
+                currentState = OPEN_STATE;
+                if (listener != null) {
+                    listener.onOpen();
+                }
+            }
+            //将drag的precent传递给外界
+            if (listener != null) {
+                listener.onDraging(precent);
             }
         }
 
@@ -159,15 +188,20 @@ public class SlideMenu extends FrameLayout {
                 //在右半边
                 openMainView();
             }
+
+            //处理用户的稍微滑动
+            if (xvel > 200 && currentState != OPEN_STATE) {
+                openMainView();
+            } else if (xvel < -200 && currentState != CLOSE_STATE) {
+                closeMainView();
+            }
         }
-
-
     };
 
     /**
      * 打开主界面
      */
-    private void openMainView() {
+    public void openMainView() {
         viewDragHelper.smoothSlideViewTo(mainView, (int) dragRange, mainView.getTop());
         ViewCompat.postInvalidateOnAnimation(SlideMenu.this);
     }
@@ -175,7 +209,7 @@ public class SlideMenu extends FrameLayout {
     /**
      * 关闭主界面
      */
-    private void closeMainView() {
+    public void closeMainView() {
         viewDragHelper.smoothSlideViewTo(mainView, 0, mainView.getTop());
         ViewCompat.postInvalidateOnAnimation(SlideMenu.this);
     }
@@ -189,5 +223,19 @@ public class SlideMenu extends FrameLayout {
         }
     }
 
-    ;
+    /**
+     * 监听接口
+     */
+    public interface OnDragStateChangeListener {
+
+        void onOpen();
+
+        void onClose();
+
+        void onDraging(float precent);
+    }
+
+    public void setOnDragStateChangeListener(OnDragStateChangeListener listener) {
+        this.listener = listener;
+    }
 }
