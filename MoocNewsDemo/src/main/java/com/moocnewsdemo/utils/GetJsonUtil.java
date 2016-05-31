@@ -28,7 +28,7 @@ public class GetJsonUtil {
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject dataJson = jsonArray.getJSONObject(i);
                     newsBean = new NewsBean();
-                    newsBean.newsIcon = dataJson.getString("picSmall");
+                    newsBean.newsIconUrl = dataJson.getString("picSmall");
                     newsBean.newsTitle = dataJson.getString("name");
                     newsBean.newsContent = dataJson.getString("description");
 

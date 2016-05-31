@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.moocnewsdemo.R;
 import com.moocnewsdemo.bean.NewsBean;
+import com.moocnewsdemo.utils.ImageLoaderUtil;
 
 import java.util.List;
 
@@ -49,7 +50,20 @@ public class NewsAdapter extends BaseAdapter {
         }
         // 得到一个ViewHolder
         viewHolder = ViewHolder.getViewHolder(convertView);
+        //先加载默认图片 防止有的没有图
         viewHolder.iconImage.setImageResource(R.mipmap.ic_launcher);
+
+        String iconUrl = list.get(position).newsIconUrl;
+        //当前位置的ImageView与URL中的图片绑定
+        viewHolder.iconImage.setTag(iconUrl);
+        //再加载联网图
+
+        //第一种方式 通过子线程设置
+        //new ImageLoaderUtil().showImageByThread(viewHolder.iconImage, iconUrl);
+
+        //第二种方式 通过异步任务方式设置
+        new ImageLoaderUtil().showImageByAsyncTask(viewHolder.iconImage, iconUrl);
+
         viewHolder.titleText.setText(list.get(position).newsTitle);
         viewHolder.contentText.setText(list.get(position).newsContent);
 

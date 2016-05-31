@@ -5,7 +5,7 @@ package com.moocnewsdemo.bean;
  */
 public class NewsBean {
 
-    public String newsIcon;
+    public String newsIconUrl;
     public String newsTitle;
     public String newsContent;
 
