@@ -7,12 +7,18 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.LruCache;
 import android.widget.ImageView;
+import android.widget.ListView;
+
+import com.moocnewsdemo.R;
+import com.moocnewsdemo.adapter.NewsAdapter;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * 异步加载图片的工具类
@@ -25,7 +31,12 @@ public class ImageLoaderUtil {
     //LRU缓存
     private LruCache<String, Bitmap> mCache;
 
-    public ImageLoaderUtil() {
+    private ListView mListView;
+    private Set<NewsAsyncTask> mTaskSet;
+
+    public ImageLoaderUtil(ListView listView) {
+        this.mListView = listView;
+        mTaskSet = new HashSet<>();
         //获取应用最大可用内存
         int maxMemory = (int) Runtime.getRuntime().maxMemory();
         //指定缓存大小
@@ -115,7 +126,7 @@ public class ImageLoaderUtil {
         Bitmap bitmap = getBitmapFromCache(url);
         //如果缓存中没有，则需要从网络中下载
         if (bitmap == null) {
-            new NewsAsyncTask(iv, url).execute(url);
+            iv.setImageResource(R.mipmap.ic_launcher);
         } else {
             //如果缓存中有 直接设置
             iv.setImageBitmap(bitmap);
@@ -123,33 +134,36 @@ public class ImageLoaderUtil {
     }
 
     /**
-     * 异步任务类
+     * 加载从start到end的所有的Image
+     *
+     * @param start
+     * @param end
      */
-    private class NewsAsyncTask extends AsyncTask<String, Void, Bitmap> {
-        private ImageView iv;
-        private String url;
-
-        public NewsAsyncTask(ImageView iv, String url) {
-            this.iv = iv;
-            this.url = url;
-        }
-
-        @Override
-        protected Bitmap doInBackground(String... params) {
-            Bitmap bitmap = getBitmapFromURL(params[0]);
-            //保存到缓存中
-            if (bitmap != null) {
-                addBitmapToCache(params[0], bitmap);
+    public void loadImages(int start, int end) {
+        for (int i = start; i < end; i++) {
+            String url = NewsAdapter.urls[i];
+            //从缓存中取出图片
+            Bitmap bitmap = getBitmapFromCache(url);
+            //如果缓存中没有，则需要从网络中下载
+            if (bitmap == null) {
+                NewsAsyncTask task = new NewsAsyncTask(url);
+                task.execute(url);
+                mTaskSet.add(task);
+            } else {
+                //如果缓存中有 直接设置
+                ImageView imageView = (ImageView) mListView.findViewWithTag(url);
+                imageView.setImageBitmap(bitmap);
             }
-            return bitmap;
         }
+    }
 
-        @Override
-        protected void onPostExecute(Bitmap bitmap) {
-            super.onPostExecute(bitmap);
-            //只有当前的ImageView所对应的UR的图片是一致的,才会设置图片
-            if (iv.getTag().equals(url)) {
-                iv.setImageBitmap(bitmap);
+    /**
+     * 停止所有当前正在运行的任务
+     */
+    public void cancelAllTask() {
+        if(mTaskSet != null){
+            for(NewsAsyncTask task :mTaskSet){
+                task.cancel(false);
             }
         }
     }
@@ -177,4 +191,43 @@ public class ImageLoaderUtil {
     public Bitmap getBitmapFromCache(String url) {
         return mCache.get(url);
     }
+
+
+    /**
+     * 异步任务类
+     */
+    private class NewsAsyncTask extends AsyncTask<String, Void, Bitmap> {
+        //private ImageView iv;
+        private String url;
+
+        public NewsAsyncTask(String url) {
+            // this.iv = iv;
+            this.url = url;
+        }
+
+        @Override
+        protected Bitmap doInBackground(String... params) {
+            Bitmap bitmap = getBitmapFromURL(params[0]);
+            //保存到缓存中
+            if (bitmap != null) {
+                addBitmapToCache(params[0], bitmap);
+            }
+            return bitmap;
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap bitmap) {
+            super.onPostExecute(bitmap);
+            //只有当前的ImageView所对应的UR的图片是一致的,才会设置图片
+//            if (iv.getTag().equals(url)) {
+//                iv.setImageBitmap(bitmap);
+//            }
+            ImageView imageView = (ImageView) mListView.findViewWithTag(url);
+            if (imageView != null && bitmap != null) {
+                imageView.setImageBitmap(bitmap);
+            }
+            mTaskSet.remove(this);
+        }
+    }
+
 }

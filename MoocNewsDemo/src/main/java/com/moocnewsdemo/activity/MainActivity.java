@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(List<NewsBean> newsBeen) {
             super.onPostExecute(newsBeen);
-            NewsAdapter newsAdapter = new NewsAdapter(mainContext, newsBeen);
+            NewsAdapter newsAdapter = new NewsAdapter(mainContext, newsBeen,mainListView);
             mainListView.setAdapter(newsAdapter);
         }
     }
