@@ -20,10 +20,12 @@ public class NewsAdapter extends BaseAdapter {
 
     private Context context;
     private List<NewsBean> list;
+    private ImageLoaderUtil imageLoader;
 
     public NewsAdapter(Context context, List<NewsBean> list) {
         this.context = context;
         this.list = list;
+        imageLoader = new ImageLoaderUtil();
     }
 
 
@@ -62,7 +64,7 @@ public class NewsAdapter extends BaseAdapter {
         //new ImageLoaderUtil().showImageByThread(viewHolder.iconImage, iconUrl);
 
         //第二种方式 通过异步任务方式设置
-        new ImageLoaderUtil().showImageByAsyncTask(viewHolder.iconImage, iconUrl);
+        imageLoader.showImageByAsyncTask(viewHolder.iconImage, iconUrl);
 
         viewHolder.titleText.setText(list.get(position).newsTitle);
         viewHolder.contentText.setText(list.get(position).newsContent);

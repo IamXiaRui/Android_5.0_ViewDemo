@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Message;
+import android.util.LruCache;
 import android.widget.ImageView;
 
 import java.io.BufferedInputStream;
@@ -20,6 +21,26 @@ public class ImageLoaderUtil {
 
     private ImageView mImageView;
     private String mIconUrl;
+
+    //LRU缓存
+    private LruCache<String, Bitmap> mCache;
+
+    public ImageLoaderUtil() {
+        //获取应用最大可用内存
+        int maxMemory = (int) Runtime.getRuntime().maxMemory();
+        //指定缓存大小
+        int cacheSize = maxMemory / 4;
+        mCache = new LruCache<String, Bitmap>(cacheSize) {
+            @Override
+            protected int sizeOf(String key, Bitmap value) {
+                //Bitmap的实际大小 注意单位与maxMemory一致
+                return value.getByteCount();
+
+                //也可以这样返回
+                //return value.getRowBytes()*value.getHeight();
+            }
+        };
+    }
 
     private Handler mHandler = new Handler() {
         @Override
@@ -90,7 +111,15 @@ public class ImageLoaderUtil {
      * @param url 图片的URL
      */
     public void showImageByAsyncTask(ImageView iv, final String url) {
-        new NewsAsyncTask(iv, url).execute(url);
+        //从缓存中取出图片
+        Bitmap bitmap = getBitmapFromCache(url);
+        //如果缓存中没有，则需要从网络中下载
+        if (bitmap == null) {
+            new NewsAsyncTask(iv, url).execute(url);
+        } else {
+            //如果缓存中有 直接设置
+            iv.setImageBitmap(bitmap);
+        }
     }
 
     /**
@@ -107,7 +136,12 @@ public class ImageLoaderUtil {
 
         @Override
         protected Bitmap doInBackground(String... params) {
-            return getBitmapFromURL(params[0]);
+            Bitmap bitmap = getBitmapFromURL(params[0]);
+            //保存到缓存中
+            if (bitmap != null) {
+                addBitmapToCache(params[0], bitmap);
+            }
+            return bitmap;
         }
 
         @Override
@@ -118,5 +152,29 @@ public class ImageLoaderUtil {
                 iv.setImageBitmap(bitmap);
             }
         }
+    }
+
+    /**
+     * 将Bitmap存入缓存
+     *
+     * @param url    Bitmap对象的key
+     * @param bitmap 对象的key
+     */
+    public void addBitmapToCache(String url, Bitmap bitmap) {
+        //如果缓存中没有
+        if (getBitmapFromCache(url) == null) {
+            //保存到缓存中
+            mCache.put(url, bitmap);
+        }
+    }
+
+    /**
+     * 从缓存中获取Bitmap对象
+     *
+     * @param url Bitmap对象的key
+     * @return 缓存中Bitmap对象
+     */
+    public Bitmap getBitmapFromCache(String url) {
+        return mCache.get(url);
     }
 }
