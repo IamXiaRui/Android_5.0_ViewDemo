@@ -16,7 +16,7 @@ public class CommonAdapterWithComonHolder extends CommonAdapter<NewsBean> {
 
 
     public CommonAdapterWithComonHolder(Context context, List<NewsBean> list) {
-        super(context, list);
+        super(context, list,R.layout.item_list);
     }
 
     @Override

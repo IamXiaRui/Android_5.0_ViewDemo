@@ -6,8 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.commonadapter.R;
-
 import java.util.List;
 
 /**
@@ -18,11 +16,12 @@ public abstract class CommonAdapter<T> extends BaseAdapter {
     protected Context context;
     protected List<T> list;
     protected LayoutInflater mInflater;
+    private int layoutId;
 
-    public CommonAdapter(Context context, List<T> list) {
+    public CommonAdapter(Context context, List<T> list, int layoutId) {
         this.context = context;
         this.list = list;
-
+        this.layoutId = layoutId;
         mInflater = LayoutInflater.from(context);
     }
 
@@ -43,7 +42,7 @@ public abstract class CommonAdapter<T> extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder = ViewHolder.get(context, convertView, parent, R.layout.item_list, position);
+        ViewHolder viewHolder = ViewHolder.get(context, convertView, parent, layoutId, position);
 
         convert(viewHolder, (T) getItem(position));
 
