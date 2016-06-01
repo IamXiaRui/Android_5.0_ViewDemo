@@ -23,7 +23,7 @@ import java.util.Set;
 /**
  * 异步加载图片的工具类
  */
-public class ImageLoaderUtil {
+public class LruCacheUtil {
 
     private ImageView mImageView;
     private String mIconUrl;
@@ -35,7 +35,7 @@ public class ImageLoaderUtil {
     private Set<NewsAsyncTask> mTaskSet;
 
 
-    public ImageLoaderUtil(ListView listView) {
+    public LruCacheUtil(ListView listView) {
         this.mListView = listView;
         mTaskSet = new HashSet<>();
         //获取应用最大可用内存

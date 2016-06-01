@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.moocnewsdemo.R;
 import com.moocnewsdemo.bean.NewsBean;
 import com.moocnewsdemo.utils.DiskCacheUtil;
-import com.moocnewsdemo.utils.ImageLoaderUtil;
+import com.moocnewsdemo.utils.LruCacheUtil;
 
 import java.io.IOException;
 import java.util.List;
@@ -24,7 +24,7 @@ public class NewsAdapter extends BaseAdapter implements AbsListView.OnScrollList
 
     private Context context;
     private List<NewsBean> list;
-    private ImageLoaderUtil imageLoader;
+    private LruCacheUtil lruCacheUtil;
     private DiskCacheUtil mDiskCacheUtil;
     private int mStart, mEnd;//滑动的歧视位置
     public static String[] urls; //用来保存当前获取到的所有图片的Url地址
@@ -34,7 +34,7 @@ public class NewsAdapter extends BaseAdapter implements AbsListView.OnScrollList
     public NewsAdapter(Context context, List<NewsBean> list, ListView lv) {
         this.context = context;
         this.list = list;
-        imageLoader = new ImageLoaderUtil(lv);
+        lruCacheUtil = new LruCacheUtil(lv);
 
         mDiskCacheUtil = new DiskCacheUtil(context, lv);
         //存入url地址
@@ -80,10 +80,10 @@ public class NewsAdapter extends BaseAdapter implements AbsListView.OnScrollList
         //再加载联网图
 
         //第一种方式 通过子线程设置
-        //new ImageLoaderUtil().showImageByThread(viewHolder.iconImage, iconUrl);
+        //new LruCacheUtil().showImageByThread(viewHolder.iconImage, iconUrl);
 
         //第二种方式 通过异步任务方式设置 且利用LruCache存储到内存缓存中
-        //imageLoader.showImageByAsyncTask(viewHolder.iconImage, iconUrl);
+        //lruCacheUtil.showImageByAsyncTask(viewHolder.iconImage, iconUrl);
 
         //第三种方式 通过异步任务方式设置 且利用DiskLruCache存储到磁盘缓存中
         try {

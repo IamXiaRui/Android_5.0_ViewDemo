@@ -53,10 +53,7 @@ public class DiskCacheUtil {
     //缓存文件是否创建
     private boolean mIsDiskLruCacheCreated = false;
 
-    private ImageResizer mImageResizer = new ImageResizer();
-
-
-    public DiskCacheUtil(Context context,ListView listView) {
+    public DiskCacheUtil(Context context, ListView listView) {
         this.mListView = listView;
         mTaskSet = new HashSet<>();
         mContext = context.getApplicationContext();
