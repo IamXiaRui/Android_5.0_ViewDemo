@@ -34,6 +34,7 @@ public class ImageLoaderUtil {
     private ListView mListView;
     private Set<NewsAsyncTask> mTaskSet;
 
+
     public ImageLoaderUtil(ListView listView) {
         this.mListView = listView;
         mTaskSet = new HashSet<>();
@@ -47,11 +48,13 @@ public class ImageLoaderUtil {
                 //Bitmap的实际大小 注意单位与maxMemory一致
                 return value.getByteCount();
 
-                //也可以这样返回
+                //也可以这样返回 结果是一样的
                 //return value.getRowBytes()*value.getHeight();
             }
         };
+
     }
+
 
     private Handler mHandler = new Handler() {
         @Override
@@ -161,12 +164,16 @@ public class ImageLoaderUtil {
      * 停止所有当前正在运行的任务
      */
     public void cancelAllTask() {
-        if(mTaskSet != null){
-            for(NewsAsyncTask task :mTaskSet){
+        if (mTaskSet != null) {
+            for (NewsAsyncTask task : mTaskSet) {
                 task.cancel(false);
             }
         }
     }
+
+
+
+    /*--------------------------------LruCaChe的实现-----------------------------------------*/
 
     /**
      * 将Bitmap存入缓存
@@ -191,6 +198,8 @@ public class ImageLoaderUtil {
     public Bitmap getBitmapFromCache(String url) {
         return mCache.get(url);
     }
+
+    /*--------------------------------LruCaChe的实现-----------------------------------------*/
 
 
     /**

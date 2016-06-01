@@ -11,8 +11,10 @@ import android.widget.TextView;
 
 import com.moocnewsdemo.R;
 import com.moocnewsdemo.bean.NewsBean;
+import com.moocnewsdemo.utils.DiskCacheUtil;
 import com.moocnewsdemo.utils.ImageLoaderUtil;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -23,6 +25,7 @@ public class NewsAdapter extends BaseAdapter implements AbsListView.OnScrollList
     private Context context;
     private List<NewsBean> list;
     private ImageLoaderUtil imageLoader;
+    private DiskCacheUtil mDiskCacheUtil;
     private int mStart, mEnd;//滑动的歧视位置
     public static String[] urls; //用来保存当前获取到的所有图片的Url地址
 
@@ -32,6 +35,8 @@ public class NewsAdapter extends BaseAdapter implements AbsListView.OnScrollList
         this.context = context;
         this.list = list;
         imageLoader = new ImageLoaderUtil(lv);
+
+        mDiskCacheUtil = new DiskCacheUtil(context, lv);
         //存入url地址
         urls = new String[list.size()];
         for (int i = 0; i < list.size(); i++) {
@@ -77,8 +82,15 @@ public class NewsAdapter extends BaseAdapter implements AbsListView.OnScrollList
         //第一种方式 通过子线程设置
         //new ImageLoaderUtil().showImageByThread(viewHolder.iconImage, iconUrl);
 
-        //第二种方式 通过异步任务方式设置
-        imageLoader.showImageByAsyncTask(viewHolder.iconImage, iconUrl);
+        //第二种方式 通过异步任务方式设置 且利用LruCache存储到内存缓存中
+        //imageLoader.showImageByAsyncTask(viewHolder.iconImage, iconUrl);
+
+        //第三种方式 通过异步任务方式设置 且利用DiskLruCache存储到磁盘缓存中
+        try {
+            mDiskCacheUtil.showImageByAsyncTask(viewHolder.iconImage, iconUrl);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         viewHolder.titleText.setText(list.get(position).newsTitle);
         viewHolder.contentText.setText(list.get(position).newsContent);
@@ -96,10 +108,14 @@ public class NewsAdapter extends BaseAdapter implements AbsListView.OnScrollList
     public void onScrollStateChanged(AbsListView view, int scrollState) {
         if (scrollState == SCROLL_STATE_IDLE) {
             //加载可见项
-            imageLoader.loadImages(mStart, mEnd);
+            try {
+                mDiskCacheUtil.loadImages(mStart, mEnd);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } else {
             //停止加载任务
-            imageLoader.cancelAllTask();
+            mDiskCacheUtil.cancelAllTask();
         }
     }
 
@@ -117,7 +133,11 @@ public class NewsAdapter extends BaseAdapter implements AbsListView.OnScrollList
         mEnd = firstVisibleItem + visibleItemCount;
         //如果是第一次进入 且可见item大于0 预加载
         if (mFirstIn && visibleItemCount > 0) {
-            imageLoader.loadImages(mStart, mEnd);
+            try {
+                mDiskCacheUtil.loadImages(mStart, mEnd);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             mFirstIn = false;
         }
     }
