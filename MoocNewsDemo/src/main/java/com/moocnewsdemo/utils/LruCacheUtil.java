@@ -7,7 +7,6 @@ import android.util.LruCache;
 import android.widget.ImageView;
 import android.widget.ListView;
 
-import com.moocnewsdemo.R;
 import com.moocnewsdemo.adapter.NewsAdapter;
 
 import java.io.BufferedInputStream;
@@ -23,9 +22,6 @@ import java.util.Set;
  */
 public class LruCacheUtil {
 
-    private ImageView mImageView;
-    private String mIconUrl;
-
     //LRU缓存
     private LruCache<String, Bitmap> mCache;
 
@@ -36,7 +32,7 @@ public class LruCacheUtil {
     public LruCacheUtil(ListView listView) {
         this.mListView = listView;
         mTaskSet = new HashSet<>();
-        //获取应用最大可用内存
+        //返回Java虚拟机将尝试使用的最大内存
         int maxMemory = (int) Runtime.getRuntime().maxMemory();
         //指定缓存大小
         int cacheSize = maxMemory / 4;
@@ -50,6 +46,27 @@ public class LruCacheUtil {
                 //return value.getRowBytes()*value.getHeight();
             }
         };
+    }
+
+
+
+    /**
+     * 通过异步任务的方式加载数据
+     *
+     * @param iv  图片的控件
+     * @param url 图片的URL
+     */
+    public void showImageByAsyncTask(ImageView iv, final String url) {
+        //从缓存中取出图片
+        Bitmap bitmap = getBitmapFromCache(url);
+        //如果缓存中没有，则需要从网络中下载
+        if (bitmap == null) {
+            bitmap = getBitmapFromURL(url);
+            iv.setImageBitmap(bitmap);
+        } else {
+            //如果缓存中有 直接设置
+            iv.setImageBitmap(bitmap);
+        }
     }
 
     /**
@@ -82,24 +99,6 @@ public class LruCacheUtil {
     }
 
     /**
-     * 通过异步任务的方式加载数据
-     *
-     * @param iv  图片的控件
-     * @param url 图片的URL
-     */
-    public void showImageByAsyncTask(ImageView iv, final String url) {
-        //从缓存中取出图片
-        Bitmap bitmap = getBitmapFromCache(url);
-        //如果缓存中没有，则需要从网络中下载
-        if (bitmap == null) {
-            iv.setImageResource(R.mipmap.ic_launcher);
-        } else {
-            //如果缓存中有 直接设置
-            iv.setImageBitmap(bitmap);
-        }
-    }
-
-    /**
      * 加载从start到end的所有的Image
      *
      * @param start
@@ -123,6 +122,7 @@ public class LruCacheUtil {
         }
     }
 
+
     /**
      * 停止所有当前正在运行的任务
      */
@@ -133,8 +133,6 @@ public class LruCacheUtil {
             }
         }
     }
-
-
 
     /*--------------------------------LruCaChe的实现-----------------------------------------*/
 
@@ -169,11 +167,9 @@ public class LruCacheUtil {
      * 异步任务类
      */
     private class NewsAsyncTask extends AsyncTask<String, Void, Bitmap> {
-        //private ImageView iv;
         private String url;
 
         public NewsAsyncTask(String url) {
-            // this.iv = iv;
             this.url = url;
         }
 
@@ -191,13 +187,11 @@ public class LruCacheUtil {
         protected void onPostExecute(Bitmap bitmap) {
             super.onPostExecute(bitmap);
             //只有当前的ImageView所对应的UR的图片是一致的,才会设置图片
-//            if (iv.getTag().equals(url)) {
-//                iv.setImageBitmap(bitmap);
-//            }
             ImageView imageView = (ImageView) mListView.findViewWithTag(url);
             if (imageView != null && bitmap != null) {
                 imageView.setImageBitmap(bitmap);
             }
+            //移除所有Task
             mTaskSet.remove(this);
         }
     }

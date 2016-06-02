@@ -13,7 +13,6 @@ import com.moocnewsdemo.R;
 import com.moocnewsdemo.bean.NewsBean;
 import com.moocnewsdemo.utils.DiskCacheUtil;
 import com.moocnewsdemo.utils.LruCacheUtil;
-import com.moocnewsdemo.utils.ThreadUtil;
 
 import java.io.IOException;
 import java.util.List;
@@ -27,9 +26,10 @@ public class NewsAdapter extends BaseAdapter implements AbsListView.OnScrollList
     private List<NewsBean> list;
     private LruCacheUtil lruCacheUtil;
     private DiskCacheUtil mDiskCacheUtil;
-    private int mStart, mEnd;//滑动的歧视位置
+    private int mStart, mEnd;//滑动的起始位置
     public static String[] urls; //用来保存当前获取到的所有图片的Url地址
 
+    //是否是第一次进入
     private boolean mFirstIn;
 
     public NewsAdapter(Context context, List<NewsBean> list, ListView lv) {
@@ -81,10 +81,10 @@ public class NewsAdapter extends BaseAdapter implements AbsListView.OnScrollList
         //再加载联网图
 
         //第一种方式 通过子线程设置
-        new ThreadUtil().showImageByThread(viewHolder.iconImage, iconUrl);
+        //new ThreadUtil().showImageByThread(viewHolder.iconImage, iconUrl);
 
         //第二种方式 通过异步任务方式设置 且利用LruCache存储到内存缓存中
-        //lruCacheUtil.showImageByAsyncTask(viewHolder.iconImage, iconUrl);
+        lruCacheUtil.showImageByAsyncTask(viewHolder.iconImage, iconUrl);
 
         //第三种方式 通过异步任务方式设置 且利用DiskLruCache存储到磁盘缓存中
 //        try {
@@ -109,14 +109,10 @@ public class NewsAdapter extends BaseAdapter implements AbsListView.OnScrollList
     public void onScrollStateChanged(AbsListView view, int scrollState) {
         if (scrollState == SCROLL_STATE_IDLE) {
             //加载可见项
-            try {
-                mDiskCacheUtil.loadImages(mStart, mEnd);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            lruCacheUtil.loadImages(mStart, mEnd);
         } else {
             //停止加载任务
-            mDiskCacheUtil.cancelAllTask();
+            lruCacheUtil.cancelAllTask();
         }
     }
 

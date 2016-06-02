@@ -13,7 +13,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * @Description:
+ * 普通线程加载URL图片类
  */
 public class ThreadUtil {
 
@@ -24,7 +24,7 @@ public class ThreadUtil {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            //只有当前的ImageView所对应的UR的图片是一致的,才会设置图片
+            //只有当前的ImageView所对应的URL的图片是一致的,才会设置图片
             if (mImageView.getTag().equals(mIconUrl)) {
                 mImageView.setImageBitmap((Bitmap) msg.obj);
             }

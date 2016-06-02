@@ -14,7 +14,7 @@ import com.moocnewsdemo.utils.GetJsonUtil;
 import java.util.List;
 
 /**
- * 慕课网新闻：异步任务与异步加载图片的使用
+ * 新闻案例：异步任务与异步加载图片的使用
  */
 public class MainActivity extends AppCompatActivity {
 
@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         initView();
 
+        //开启异步任务
         GetJsonTask getJsonTask = new GetJsonTask();
         getJsonTask.execute(url);
     }
