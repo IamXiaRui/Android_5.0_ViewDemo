@@ -16,6 +16,7 @@
       <module fileurl="file://$PROJECT_DIR$/ShadowDemo/ShadowDemo.iml" filepath="$PROJECT_DIR$/ShadowDemo/ShadowDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/ToolBarDemo/ToolBarDemo.iml" filepath="$PROJECT_DIR$/ToolBarDemo/ToolBarDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/TransitionsAnimation/TransitionsAnimation.iml" filepath="$PROJECT_DIR$/TransitionsAnimation/TransitionsAnimation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/UpdateColorDemo/UpdateColorDemo.iml" filepath="$PROJECT_DIR$/UpdateColorDemo/UpdateColorDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/VectorAnimation/VectorAnimation.iml" filepath="$PROJECT_DIR$/VectorAnimation/VectorAnimation.iml" />
     </modules>
   </component>
