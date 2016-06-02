@@ -13,6 +13,7 @@ import com.moocnewsdemo.R;
 import com.moocnewsdemo.bean.NewsBean;
 import com.moocnewsdemo.utils.DiskCacheUtil;
 import com.moocnewsdemo.utils.LruCacheUtil;
+import com.moocnewsdemo.utils.ThreadUtil;
 
 import java.io.IOException;
 import java.util.List;
@@ -80,17 +81,17 @@ public class NewsAdapter extends BaseAdapter implements AbsListView.OnScrollList
         //再加载联网图
 
         //第一种方式 通过子线程设置
-        //new LruCacheUtil().showImageByThread(viewHolder.iconImage, iconUrl);
+        new ThreadUtil().showImageByThread(viewHolder.iconImage, iconUrl);
 
         //第二种方式 通过异步任务方式设置 且利用LruCache存储到内存缓存中
         //lruCacheUtil.showImageByAsyncTask(viewHolder.iconImage, iconUrl);
 
         //第三种方式 通过异步任务方式设置 且利用DiskLruCache存储到磁盘缓存中
-        try {
-            mDiskCacheUtil.showImageByAsyncTask(viewHolder.iconImage, iconUrl);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            mDiskCacheUtil.showImageByAsyncTask(viewHolder.iconImage, iconUrl);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
         viewHolder.titleText.setText(list.get(position).newsTitle);
         viewHolder.contentText.setText(list.get(position).newsContent);

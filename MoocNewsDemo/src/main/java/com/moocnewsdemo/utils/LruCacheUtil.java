@@ -3,8 +3,6 @@ package com.moocnewsdemo.utils;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
-import android.os.Handler;
-import android.os.Message;
 import android.util.LruCache;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -52,41 +50,6 @@ public class LruCacheUtil {
                 //return value.getRowBytes()*value.getHeight();
             }
         };
-
-    }
-
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            //只有当前的ImageView所对应的UR的图片是一致的,才会设置图片
-            if (mImageView.getTag().equals(mIconUrl)) {
-                mImageView.setImageBitmap((Bitmap) msg.obj);
-            }
-        }
-    };
-
-    /**
-     * 通过子线程的方式展示图片
-     *
-     * @param iv  图片的控件
-     * @param url 图片的URL
-     */
-    public void showImageByThread(ImageView iv, final String url) {
-        mImageView = iv;
-        mIconUrl = url;
-        //异步解析图片
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                Bitmap bitmap = getBitmapFromURL(url);
-                //发送到主线程
-                Message msg = Message.obtain();
-                msg.obj = bitmap;
-                mHandler.sendMessage(msg);
-            }
-        }).start();
     }
 
     /**
