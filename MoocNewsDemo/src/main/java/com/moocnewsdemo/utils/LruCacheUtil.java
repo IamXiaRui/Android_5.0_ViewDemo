@@ -7,6 +7,7 @@ import android.util.LruCache;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import com.moocnewsdemo.R;
 import com.moocnewsdemo.adapter.NewsAdapter;
 
 import java.io.BufferedInputStream;
@@ -49,7 +50,6 @@ public class LruCacheUtil {
     }
 
 
-
     /**
      * 通过异步任务的方式加载数据
      *
@@ -59,10 +59,9 @@ public class LruCacheUtil {
     public void showImageByAsyncTask(ImageView iv, final String url) {
         //从缓存中取出图片
         Bitmap bitmap = getBitmapFromCache(url);
-        //如果缓存中没有，则需要从网络中下载
+        //如果缓存中没有，先设为默认图片
         if (bitmap == null) {
-            bitmap = getBitmapFromURL(url);
-            iv.setImageBitmap(bitmap);
+            iv.setImageResource(R.mipmap.ic_launcher);
         } else {
             //如果缓存中有 直接设置
             iv.setImageBitmap(bitmap);
@@ -90,7 +89,9 @@ public class LruCacheUtil {
             e.printStackTrace();
         } finally {
             try {
-                is.close();
+                if (is != null) {
+                    is.close();
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }

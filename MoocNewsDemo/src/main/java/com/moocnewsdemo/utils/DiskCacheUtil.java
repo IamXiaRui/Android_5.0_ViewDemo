@@ -40,9 +40,7 @@ public class DiskCacheUtil {
     private ListView mListView;
     private Set<NewsAsyncTask> mTaskSet;
 
-    private static final String TAG = "ImageLoader";
-
-    //DiskLru缓存k
+    //DiskLruCache
     private DiskLruCache mDiskCache;
     //指定磁盘缓存大小
     private static final long DISK_CACHE_SIZE = 1024 * 1024 * 50;//50MB
@@ -122,7 +120,7 @@ public class DiskCacheUtil {
     }
 
     /**
-     * 将图片的URL地址保存到输出流中
+     * 将URL中的图片保存到输出流中
      *
      * @param urlString    图片的URL地址
      * @param outputStream 输出流
@@ -200,7 +198,7 @@ public class DiskCacheUtil {
     /*--------------------------------DiskLruCaChe的实现-----------------------------------------*/
 
     /**
-     * 创建缓存文件路径
+     * 创建缓存文件
      *
      * @param context  上下文对象
      * @param filePath 文件路径
@@ -234,7 +232,7 @@ public class DiskCacheUtil {
     }
 
     /**
-     * 将URL转换成MD5值
+     * 将URL转换成key
      *
      * @param url 图片的URL
      * @return
@@ -252,7 +250,7 @@ public class DiskCacheUtil {
     }
 
     /**
-     * 将字节数组转换成Hex字符串
+     * 将Url的字节数组转换成哈希字符串
      *
      * @param bytes URL的字节数组
      * @return
@@ -287,12 +285,15 @@ public class DiskCacheUtil {
 
         //设置key，并根据URL保存输出流的返回值决定是否提交至缓存
         String key = hashKeyFormUrl(url);
+        //得到Editor对象
         DiskLruCache.Editor editor = mDiskCache.edit(key);
         if (editor != null) {
             OutputStream outputStream = editor.newOutputStream(DISK_CACHE_INDEX);
             if (downloadUrlToStream(url, outputStream)) {
+                //提交写入操作
                 editor.commit();
             } else {
+                //撤销写入操作
                 editor.abort();
             }
             mDiskCache.flush();
@@ -311,7 +312,7 @@ public class DiskCacheUtil {
     private Bitmap getBitmapFromDiskCache(String url) throws IOException {
         //如果当前线程是主线程 则异常
         if (Looper.myLooper() == Looper.getMainLooper()) {
-            Log.w(TAG, "load bitmap from UI Thread, it's not recommended!");
+            Log.w("DiskLruCache", "load bitmap from UI Thread, it's not recommended!");
         }
         //如果缓存中为空  直接返回为空
         if (mDiskCache == null) {
@@ -321,9 +322,12 @@ public class DiskCacheUtil {
         //通过key值在缓存中找到对应的Bitmap
         Bitmap bitmap = null;
         String key = hashKeyFormUrl(url);
+        //通过key得到Snapshot对象
         DiskLruCache.Snapshot snapShot = mDiskCache.get(key);
         if (snapShot != null) {
+            //得到文件输入流
             FileInputStream fileInputStream = (FileInputStream) snapShot.getInputStream(DISK_CACHE_INDEX);
+            //得到文件描述符
             FileDescriptor fileDescriptor = fileInputStream.getFD();
             bitmap = BitmapFactory.decodeFileDescriptor(fileDescriptor);
         }
@@ -340,11 +344,9 @@ public class DiskCacheUtil {
      * 异步任务类
      */
     private class NewsAsyncTask extends AsyncTask<String, Void, Bitmap> {
-        //private ImageView iv;
         private String url;
 
         public NewsAsyncTask(String url) {
-            // this.iv = iv;
             this.url = url;
         }
 
@@ -355,6 +357,7 @@ public class DiskCacheUtil {
             //保存到缓存中
             if (bitmap != null) {
                 try {
+                    //写入缓存
                     addBitmapToDiskCache(params[0]);
                 } catch (IOException e) {
                     e.printStackTrace();

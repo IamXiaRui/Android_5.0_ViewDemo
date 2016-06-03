@@ -84,14 +84,14 @@ public class NewsAdapter extends BaseAdapter implements AbsListView.OnScrollList
         //new ThreadUtil().showImageByThread(viewHolder.iconImage, iconUrl);
 
         //第二种方式 通过异步任务方式设置 且利用LruCache存储到内存缓存中
-        lruCacheUtil.showImageByAsyncTask(viewHolder.iconImage, iconUrl);
+        //lruCacheUtil.showImageByAsyncTask(viewHolder.iconImage, iconUrl);
 
         //第三种方式 通过异步任务方式设置 且利用DiskLruCache存储到磁盘缓存中
-//        try {
-//            mDiskCacheUtil.showImageByAsyncTask(viewHolder.iconImage, iconUrl);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            mDiskCacheUtil.showImageByAsyncTask(viewHolder.iconImage, iconUrl);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         viewHolder.titleText.setText(list.get(position).newsTitle);
         viewHolder.contentText.setText(list.get(position).newsContent);
@@ -109,10 +109,14 @@ public class NewsAdapter extends BaseAdapter implements AbsListView.OnScrollList
     public void onScrollStateChanged(AbsListView view, int scrollState) {
         if (scrollState == SCROLL_STATE_IDLE) {
             //加载可见项
-            lruCacheUtil.loadImages(mStart, mEnd);
+            try {
+                mDiskCacheUtil.loadImages(mStart, mEnd);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } else {
             //停止加载任务
-            lruCacheUtil.cancelAllTask();
+            mDiskCacheUtil.cancelAllTask();
         }
     }
 
