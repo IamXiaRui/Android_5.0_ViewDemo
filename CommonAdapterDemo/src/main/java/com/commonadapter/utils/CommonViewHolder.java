@@ -11,11 +11,13 @@ import android.widget.TextView;
 /**
  * 通用ViewHolder
  */
-public class ViewHolder {
+public class CommonViewHolder {
 
     //所有控件的集合
     private SparseArray<View> mViews;
+    //记录位置 可能会用到
     private int mPosition;
+    //复用的View
     private View mConvertView;
 
 
@@ -27,7 +29,7 @@ public class ViewHolder {
      * @param layoutId 布局的ID
      * @param position item的位置
      */
-    public ViewHolder(Context context, ViewGroup parent, int layoutId, int position) {
+    public CommonViewHolder(Context context, ViewGroup parent, int layoutId, int position) {
         this.mPosition = position;
         this.mViews = new SparseArray<>();
         mConvertView = LayoutInflater.from(context).inflate(layoutId, parent, false);
@@ -42,20 +44,28 @@ public class ViewHolder {
      * @param parent      父类容器
      * @param layoutId    布局的ID
      * @param position    item的位置
-     * @return
+     * @return 返回ViewHolder
      */
-    public static ViewHolder get(Context context, View convertView, ViewGroup parent, int layoutId, int position) {
+    public static CommonViewHolder get(Context context, View convertView, ViewGroup parent, int layoutId, int position) {
         //如果为空  直接新建一个ViewHolder
         if (convertView == null) {
-            return new ViewHolder(context, parent, layoutId, position);
+            return new CommonViewHolder(context, parent, layoutId, position);
         } else {
             //否则返回一个已经存在的ViewHolder
-            ViewHolder viewHolder = (ViewHolder) convertView.getTag();
+            CommonViewHolder viewHolder = (CommonViewHolder) convertView.getTag();
             //记得更新条目位置
             viewHolder.mPosition = position;
             return viewHolder;
         }
     }
+
+    /**
+     * @return 返回复用的View
+     */
+    public View getConvertView() {
+        return mConvertView;
+    }
+
 
     /**
      * 通过ViewId获取控件
@@ -74,20 +84,13 @@ public class ViewHolder {
     }
 
     /**
-     * @return 返回复用的View
-     */
-    public View getConvertView() {
-        return mConvertView;
-    }
-
-    /**
      * 为文本设置text
      *
      * @param viewId view的Id
      * @param text   文本
      * @return 返回ViewHolder
      */
-    public ViewHolder setText(int viewId, String text) {
+    public CommonViewHolder setText(int viewId, String text) {
         TextView tv = getView(viewId);
         tv.setText(text);
         return this;
@@ -98,9 +101,9 @@ public class ViewHolder {
      *
      * @param viewId view的Id
      * @param resId  资源Id
-     * @return
+     * @return 返回ViewHolder
      */
-    public ViewHolder setImageResource(int viewId, int resId) {
+    public CommonViewHolder setImageResource(int viewId, int resId) {
         ImageView iv = getView(viewId);
         iv.setImageResource(resId);
         return this;

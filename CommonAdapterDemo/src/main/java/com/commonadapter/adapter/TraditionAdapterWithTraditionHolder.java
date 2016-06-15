@@ -12,13 +12,13 @@ import com.commonadapter.bean.NewsBean;
 import java.util.List;
 
 /**
- * 传统的适配器
+ * 基于传统Holder的传统Adapter
  */
-public class TraditionAdapter extends BaseAdapter {
+public class TraditionAdapterWithTraditionHolder extends BaseAdapter {
     private Context context;
     private List<NewsBean> list;
 
-    public TraditionAdapter(Context context, List<NewsBean> list) {
+    public TraditionAdapterWithTraditionHolder(Context context, List<NewsBean> list) {
         this.context = context;
         this.list = list;
     }
@@ -40,7 +40,7 @@ public class TraditionAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder = null;
+        ViewHolder viewHolder ;
         if (convertView == null) {
             convertView = View.inflate(context, R.layout.item_list, null);
             viewHolder = new ViewHolder();
@@ -51,11 +51,13 @@ public class TraditionAdapter extends BaseAdapter {
             viewHolder.phoneText = (TextView) convertView.findViewById(R.id.tv_phone);
 
             convertView.setTag(viewHolder);
+
         }else{
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
         NewsBean bean = list.get(position);
+
         viewHolder.titleText.setText(bean.getTitle());
         viewHolder.descText.setText(bean.getDesc());
         viewHolder.timeText.setText(bean.getTime());

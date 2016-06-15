@@ -1,7 +1,6 @@
 package com.commonadapter.utils;
 
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -15,14 +14,12 @@ public abstract class CommonAdapter<T> extends BaseAdapter {
 
     protected Context context;
     protected List<T> list;
-    protected LayoutInflater mInflater;
     private int layoutId;
 
     public CommonAdapter(Context context, List<T> list, int layoutId) {
         this.context = context;
         this.list = list;
         this.layoutId = layoutId;
-        mInflater = LayoutInflater.from(context);
     }
 
     @Override
@@ -40,20 +37,26 @@ public abstract class CommonAdapter<T> extends BaseAdapter {
         return position;
     }
 
+    /**
+     * 封装getView方法
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder = ViewHolder.get(context, convertView, parent, layoutId, position);
+        //得到一个ViewHolder
+        CommonViewHolder viewHolder = CommonViewHolder.get(context, convertView, parent, layoutId, position);
 
-        convert(viewHolder, (T) getItem(position));
+        //设置控件内容
+        setViewContent(viewHolder, (T) getItem(position));
 
+        //返回复用的View
         return viewHolder.getConvertView();
     }
 
     /**
-     * 抽象方法
+     * 提供抽象方法，来设置控件内容
      *
      * @param viewHolder 一个ViewHolder
      * @param t          一个数据集
      */
-    public abstract void convert(ViewHolder viewHolder, T t);
+    public abstract void setViewContent(CommonViewHolder viewHolder, T t);
 }

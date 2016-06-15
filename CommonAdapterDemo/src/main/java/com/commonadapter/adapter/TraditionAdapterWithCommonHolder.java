@@ -4,22 +4,21 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.TextView;
 
 import com.commonadapter.R;
 import com.commonadapter.bean.NewsBean;
-import com.commonadapter.utils.ViewHolder;
+import com.commonadapter.utils.CommonViewHolder;
 
 import java.util.List;
 
 /**
  * 通用Holder的适配器
  */
-public class ComonHolderAdapter extends BaseAdapter {
+public class TraditionAdapterWithCommonHolder extends BaseAdapter {
     private Context context;
     private List<NewsBean> list;
 
-    public ComonHolderAdapter(Context context, List<NewsBean> list) {
+    public TraditionAdapterWithCommonHolder(Context context, List<NewsBean> list) {
         this.context = context;
         this.list = list;
     }
@@ -39,23 +38,22 @@ public class ComonHolderAdapter extends BaseAdapter {
         return position;
     }
 
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        ViewHolder viewHolder = ViewHolder.get(context, convertView, parent, R.layout.item_list, position);
+        //得到一个ViewHolder
+        CommonViewHolder viewHolder = CommonViewHolder.get(context, convertView, parent, R.layout.item_list, position);
 
         NewsBean bean = list.get(position);
 
-        TextView titleText = viewHolder.getView(R.id.tv_title);
-        TextView descText = viewHolder.getView(R.id.tv_desc);
-        TextView timeText = viewHolder.getView(R.id.tv_time);
-        TextView phoneText = viewHolder.getView(R.id.tv_phone);
+        //直接设置控件内容，链式调用
+        viewHolder.setText(R.id.tv_title, bean.getTitle())
+                .setText(R.id.tv_desc, bean.getDesc())
+                .setText(R.id.tv_time, bean.getTime())
+                .setText(R.id.tv_phone, bean.getPhone());
 
-        titleText.setText(bean.getTitle());
-        descText.setText(bean.getDesc());
-        timeText.setText(bean.getTime());
-        phoneText.setText(bean.getPhone());
-
+        //返回复用的View
         return viewHolder.getConvertView();
     }
 }

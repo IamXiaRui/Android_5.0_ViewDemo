@@ -5,9 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
 import com.commonadapter.R;
-import com.commonadapter.adapter.CommonAdapterWithComonHolder;
-import com.commonadapter.adapter.ComonHolderAdapter;
-import com.commonadapter.adapter.TraditionAdapter;
+import com.commonadapter.adapter.CommonAdapterWithCommonHolder;
+import com.commonadapter.adapter.TraditionAdapterWithCommonHolder;
+import com.commonadapter.adapter.TraditionAdapterWithTraditionHolder;
 import com.commonadapter.bean.NewsBean;
 
 import java.util.ArrayList;
@@ -17,9 +17,9 @@ public class MainActivity extends AppCompatActivity {
 
     private ListView mainListView;
     private List<NewsBean> listDatas;
-    private TraditionAdapter tAdapter;
-    private ComonHolderAdapter chAdapter;
-    private CommonAdapterWithComonHolder cawchAdapter;
+    private TraditionAdapterWithTraditionHolder tAdapter;
+    private TraditionAdapterWithCommonHolder chAdapter;
+    private CommonAdapterWithCommonHolder cawchAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,15 +61,15 @@ public class MainActivity extends AppCompatActivity {
         mainListView = (ListView) findViewById(R.id.lv_main);
 
         //传统方式的Adapter
-        //tAdapter = new TraditionAdapter(this, listDatas);
+        //tAdapter = new TraditionAdapterWithTraditionHolder(this, listDatas);
         //mainListView.setAdapter(tAdapter);
 
         //通用ViewHolder方式的Adapter
-        //chAdapter = new ComonHolderAdapter(this, listDatas);
+        //chAdapter = new TraditionAdapterWithCommonHolder(this, listDatas);
         //mainListView.setAdapter(chAdapter);
 
         //通用Adapter
-        cawchAdapter = new CommonAdapterWithComonHolder(this, listDatas);
+        cawchAdapter = new CommonAdapterWithCommonHolder(this, listDatas);
         mainListView.setAdapter(cawchAdapter);
     }
 
