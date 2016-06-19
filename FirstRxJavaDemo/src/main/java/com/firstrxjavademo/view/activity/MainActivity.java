@@ -18,6 +18,8 @@ import rx.Observable;
 import rx.Observer;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
+import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /**
@@ -47,7 +49,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mainProgressBar.setVisibility(View.VISIBLE);
-                setBitmap();
+                //setBitmap1();
+                setBitmap2();
             }
         });
     }
@@ -55,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * 异步设置图片
      */
-    private void setBitmap() {
+    private void setBitmap1() {
 
         //创建被观察者
         Observable.create(new Observable.OnSubscribe<Bitmap>() {
@@ -90,6 +93,29 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onError(Throwable e) {
                         Logger.e("onError --->", e.toString());
+                    }
+                });
+    }
+
+    /**
+     * 事件参数类型的变换
+     * 将String类型的URL转换成Bitmap
+     */
+    private void setBitmap2() {
+        Observable.just(url)
+                .map(new Func1<String, Bitmap>() {
+                    @Override
+                    public Bitmap call(String s) {
+                        return GetBitmapForURL.getBitmap(s);
+                    }
+                })
+                .subscribeOn(Schedulers.io()) // 指定subscribe()发生在IO线程
+                .observeOn(AndroidSchedulers.mainThread()) // 指定Subscriber的回调发生在UI线程
+                .subscribe(new Action1<Bitmap>() {
+                    @Override
+                    public void call(Bitmap bitmap) {
+                        mainImageView.setImageBitmap(bitmap);
+                        mainProgressBar.setVisibility(View.GONE);
                     }
                 });
     }
