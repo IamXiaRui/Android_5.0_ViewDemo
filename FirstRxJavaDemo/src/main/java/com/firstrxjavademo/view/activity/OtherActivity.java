@@ -25,7 +25,7 @@ import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /**
- * FlatMap操作符的使用
+ * From与FlatMap操作符的使用
  */
 public class OtherActivity extends AppCompatActivity {
 
@@ -40,6 +40,8 @@ public class OtherActivity extends AppCompatActivity {
     private final String url2 = "http://www.iamxiarui.com/wp-content/uploads/2016/06/为什么我的流量又没了.png";
     private final String url3 = "http://www.iamxiarui.com/wp-content/uploads/2016/05/cropped-iamxiarui.com_2016-05-05_14-42-31.jpg";
     private final String url4 = "http://www.iamxiarui.com/wp-content/uploads/2016/05/微信.png";
+
+    private final String[] url = new String[]{url1, url2, url3, url4};
 
     private List<Bitmap> list = new ArrayList<>();
 
@@ -57,10 +59,10 @@ public class OtherActivity extends AppCompatActivity {
     }
 
     /**
-     * flatMap的使用
+     * from 与 flatMap的使用
      */
     private void setBitmap() {
-        Observable.just(url1, url2, url3, url4)
+        Observable.from(url)
                 .flatMap(new Func1<String, Observable<String>>() {
                     @Override
                     public Observable<String> call(String s) {
@@ -78,7 +80,9 @@ public class OtherActivity extends AppCompatActivity {
                 .subscribe(new Action1<Bitmap>() {
                     @Override
                     public void call(Bitmap bitmap) {
+                        //将获取到的Bitmap对象添加到集合中
                         list.add(bitmap);
+                        //设置图片
                         gvOther.setAdapter(new GridViewAdapter(OtherActivity.this, list));
                         pbOther.setVisibility(View.GONE);
                     }
