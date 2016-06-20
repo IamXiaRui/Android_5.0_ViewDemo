@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -139,26 +140,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     private void setBitmap3() {
         Observable.just(url)    //IO线程
-                .subscribeOn(Schedulers.io()) // 指定subscribe()发生在IO线程
                 .map(new Func1<String, Bitmap>() {
                     @Override
                     public Bitmap call(String s) {
+                        Log.i(" map ---> ", Thread.currentThread().getName());
                         return GetBitmapForURL.getBitmap(s);
                     }
                 })
-                .doOnSubscribe(new Action0() { //需要在主线程中执行
+                .subscribeOn(Schedulers.newThread()) // 指定subscribe()发生在IO线程
+                .doOnSubscribe(new Action0() { //需要在主线程中执行 测试来看 默认运行在main线程 ？
                     @Override
                     public void call() {
                         mainProgressBar.setVisibility(View.VISIBLE);
+                        Log.i(" doOnSubscribe ---> ", Thread.currentThread().getName());
                     }
                 })
-                .subscribeOn(AndroidSchedulers.mainThread()) // 指定subscribe()发生在IO线程
+                .subscribeOn(AndroidSchedulers.mainThread()) // 指定subscribe()发生在主线程
                 .observeOn(AndroidSchedulers.mainThread()) // 指定Subscriber的回调发生在主线程
                 .subscribe(new Action1<Bitmap>() {
                     @Override
                     public void call(Bitmap bitmap) {
                         mainImageView.setImageBitmap(bitmap);
                         mainProgressBar.setVisibility(View.GONE);
+                        Log.i(" subscribe ---> ", Thread.currentThread().getName());
                     }
                 });
     }

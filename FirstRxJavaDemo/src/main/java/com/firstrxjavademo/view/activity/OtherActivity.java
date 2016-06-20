@@ -80,7 +80,7 @@ public class OtherActivity extends AppCompatActivity {
                 })
                 .take(3) //指定最大的加载数量
                 .observeOn(AndroidSchedulers.mainThread()) // 指定后面所发生的回调发生在主线程
-                .doOnNext(new Action1<Bitmap>() {
+                .doOnNext(new Action1<Bitmap>() {    //每运行一次所要执行的操作
                     @Override
                     public void call(Bitmap bitmap) {
                         Toast.makeText(OtherActivity.this, "图片增加", Toast.LENGTH_SHORT).show();
