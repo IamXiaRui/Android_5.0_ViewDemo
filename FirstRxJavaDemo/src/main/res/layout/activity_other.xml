@@ -7,38 +7,31 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".view.activity.MainActivity">
+    tools:context="com.firstrxjavademo.view.activity.OtherActivity">
 
-    <ImageView
-        android:id="@+id/iv_main"
+    <GridView
+        android:id="@+id/gv_other"
         android:layout_width="400dp"
-        android:layout_height="400dp" />
+        android:layout_height="400dp"
+        android:numColumns="2"
+        android:verticalSpacing="5dp"
+        />
 
     <ProgressBar
-        android:id="@+id/pb_main"
+        android:id="@+id/pb_other"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:visibility="gone" />
 
     <Button
-        android:id="@+id/bt_one"
+        android:id="@+id/bt_other"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="44dp"
-        android:layout_marginStart="50dp"
-        android:text="加载一张图片" />
-
-    <Button
-        android:id="@+id/bt_two"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/iv_main"
-        android:layout_alignTop="@+id/bt_one"
-        android:layout_marginEnd="50dp"
-        android:text="加载多张图片" />
+        android:layout_below="@+id/gv_other"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="加载图片" />
 
 
 </RelativeLayout>

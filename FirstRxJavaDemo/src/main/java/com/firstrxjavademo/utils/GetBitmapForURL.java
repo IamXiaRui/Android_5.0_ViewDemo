@@ -13,7 +13,7 @@ import java.net.URLConnection;
  */
 public class GetBitmapForURL {
 
-    public static Bitmap getBitmap(String url){
+    public static Bitmap getBitmap(String url) {
         //获取传进来的参数
         Bitmap bitmap = null;
         URLConnection connection;
@@ -22,8 +22,8 @@ public class GetBitmapForURL {
         try {
             connection = new URL(url).openConnection();
             is = connection.getInputStream();
-            //为了更清楚的看到加载图片的等待操作,将线程休眠3秒钟
-            Thread.sleep(3000);
+            //为了更清楚的看到加载图片的等待操作,将线程休眠2秒钟
+            Thread.sleep(2000);
             bis = new BufferedInputStream(is);
             //通过decodeStream方法解析输入流
             bitmap = BitmapFactory.decodeStream(bis);
