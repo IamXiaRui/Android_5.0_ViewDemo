@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.firstrxjavademo.R;
 import com.firstrxjavademo.utils.GetBitmapForURL;
@@ -25,7 +26,7 @@ import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /**
- * From与FlatMap操作符的使用
+ * 操作符的使用
  */
 public class OtherActivity extends AppCompatActivity {
 
@@ -60,9 +61,11 @@ public class OtherActivity extends AppCompatActivity {
 
     /**
      * from 与 flatMap的使用
+     * take 与 doOnNext的使用
      */
     private void setBitmap() {
         Observable.from(url)
+                .subscribeOn(Schedulers.io()) // 指定subscribe()发生在IO线程
                 .flatMap(new Func1<String, Observable<String>>() {
                     @Override
                     public Observable<String> call(String s) {
@@ -75,8 +78,14 @@ public class OtherActivity extends AppCompatActivity {
                         return GetBitmapForURL.getBitmap(s);
                     }
                 })
-                .subscribeOn(Schedulers.io()) // 指定subscribe()发生在IO线程
-                .observeOn(AndroidSchedulers.mainThread()) // 指定Subscriber的回调发生在UI线程
+                .take(3) //指定最大的加载数量
+                .observeOn(AndroidSchedulers.mainThread()) // 指定后面所发生的回调发生在主线程
+                .doOnNext(new Action1<Bitmap>() {
+                    @Override
+                    public void call(Bitmap bitmap) {
+                        Toast.makeText(OtherActivity.this, "图片增加", Toast.LENGTH_SHORT).show();
+                    }
+                })
                 .subscribe(new Action1<Bitmap>() {
                     @Override
                     public void call(Bitmap bitmap) {
