@@ -54,9 +54,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.bt_one:
-                testRxJava();
-                //mainProgressBar.setVisibility(View.VISIBLE);
-                //setBitmap1();
+                //testRxJava();
+                mainProgressBar.setVisibility(View.VISIBLE);
+                setBitmap1();
                 //setBitmap2();
                 //setBitmap3();
                 //Log.i(" onClick ---> ", "开始执行");
