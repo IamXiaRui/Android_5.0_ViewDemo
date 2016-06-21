@@ -19,10 +19,6 @@ android {
     }
 }
 
-repositories {
-    maven { url "https://jitpack.io" }
-}
-
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
@@ -30,5 +26,4 @@ dependencies {
     compile 'com.jakewharton:butterknife:5.1.1'
     compile 'io.reactivex:rxjava:1.1.6'
     compile 'io.reactivex:rxandroid:1.2.1'
-    compile 'com.github.orhanobut:logger:1.12'
 }

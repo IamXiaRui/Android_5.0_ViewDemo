@@ -12,7 +12,6 @@ import android.widget.ProgressBar;
 
 import com.firstrxjavademo.R;
 import com.firstrxjavademo.utils.GetBitmapForURL;
-import com.orhanobut.logger.Logger;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -55,16 +54,54 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.bt_one:
+                testRxJava();
                 //mainProgressBar.setVisibility(View.VISIBLE);
                 //setBitmap1();
                 //setBitmap2();
-                setBitmap3();
+                //setBitmap3();
+                //Log.i(" onClick ---> ", "开始执行");
                 break;
             case R.id.bt_two:
                 Intent intent = new Intent(MainActivity.this, OtherActivity.class);
                 startActivity(intent);
                 break;
         }
+    }
+
+    /**
+     * 如何实现RxJava
+     */
+    private void testRxJava() {
+        //创建Observer
+        Observer<String> observer = new Observer<String>() {
+            @Override
+            public void onNext(String s) {
+                Log.i("onNext ---> ", "Item: " + s);
+            }
+
+            @Override
+            public void onCompleted() {
+                Log.i("onCompleted ---> ", "完成");
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Log.i("onError ---> ", e.toString());
+            }
+        };
+
+        //创建Observable
+        Observable observable = Observable.create(new Observable.OnSubscribe<String>() {
+            @Override
+            public void call(Subscriber<? super String> subscriber) {
+                subscriber.onNext("Hello");
+                subscriber.onNext("World");
+                subscriber.onCompleted();
+            }
+        });
+
+        //订阅
+        observable.subscribe(observer);
     }
 
 
@@ -75,17 +112,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //创建被观察者
         Observable.create(new Observable.OnSubscribe<Bitmap>() {
             /**
-             * 复写回调方法
+             * 复写call方法
              *
-             * @param subscriber 观察者
+             * @param subscriber 观察者对象
              */
             @Override
             public void call(Subscriber<? super Bitmap> subscriber) {
                 //通过URL得到图片的Bitmap对象
                 Bitmap bitmap = GetBitmapForURL.getBitmap(url);
-                //调用观察者方法
+                //回调观察者方法
                 subscriber.onNext(bitmap);
                 subscriber.onCompleted();
+                Log.i(" call ---> ", "运行在 " + Thread.currentThread().getName() + " 线程");
             }
         })
                 .subscribeOn(Schedulers.io()) // 指定subscribe()发生在IO线程
@@ -95,16 +133,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onNext(Bitmap bitmap) {
                         mainImageView.setImageBitmap(bitmap);
+                        Log.i(" onNext ---> ", "运行在 " + Thread.currentThread().getName() + " 线程");
                     }
 
                     @Override
                     public void onCompleted() {
                         mainProgressBar.setVisibility(View.GONE);
+                        Log.i(" onCompleted ---> ", "完成");
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        Logger.e("onError --->", e.toString());
+                        Log.e(" onError --->", e.toString());
                     }
                 });
     }
