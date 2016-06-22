@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.bt_one:
-                //testRxJava();
                 mainProgressBar.setVisibility(View.VISIBLE);
                 setBitmap1();
                 //setBitmap2();
@@ -67,43 +66,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
-
-    /**
-     * 如何实现RxJava
-     */
-    private void testRxJava() {
-        //创建Observer
-        Observer<String> observer = new Observer<String>() {
-            @Override
-            public void onNext(String s) {
-                Log.i("onNext ---> ", "Item: " + s);
-            }
-
-            @Override
-            public void onCompleted() {
-                Log.i("onCompleted ---> ", "完成");
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                Log.i("onError ---> ", e.toString());
-            }
-        };
-
-        //创建Observable
-        Observable observable = Observable.create(new Observable.OnSubscribe<String>() {
-            @Override
-            public void call(Subscriber<? super String> subscriber) {
-                subscriber.onNext("Hello");
-                subscriber.onNext("World");
-                subscriber.onCompleted();
-            }
-        });
-
-        //订阅
-        observable.subscribe(observer);
-    }
-
 
     /**
      * 异步设置图片
