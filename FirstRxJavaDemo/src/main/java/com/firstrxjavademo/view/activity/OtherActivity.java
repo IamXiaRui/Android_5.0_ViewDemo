@@ -42,7 +42,8 @@ public class OtherActivity extends AppCompatActivity {
     private final String url3 = "http://www.iamxiarui.com/wp-content/uploads/2016/05/cropped-iamxiarui.com_2016-05-05_14-42-31.jpg";
     private final String url4 = "http://www.iamxiarui.com/wp-content/uploads/2016/05/微信.png";
 
-    private final String[] url = new String[]{url1, url2, url3, url4};
+    //一组Url数据
+    private final String[] urls = new String[]{url1, url2, url3, url4};
 
     private List<Bitmap> list = new ArrayList<>();
 
@@ -64,8 +65,7 @@ public class OtherActivity extends AppCompatActivity {
      * take 与 doOnNext的使用
      */
     private void setBitmap() {
-        Observable.from(url)
-                .subscribeOn(Schedulers.io()) // 指定subscribe()发生在IO线程
+        Observable.from(urls)
                 .flatMap(new Func1<String, Observable<String>>() {
                     @Override
                     public Observable<String> call(String s) {
@@ -78,7 +78,7 @@ public class OtherActivity extends AppCompatActivity {
                         return GetBitmapForURL.getBitmap(s);
                     }
                 })
-                .take(3) //指定最大的加载数量
+                .subscribeOn(Schedulers.io()) // 指定subscribe()发生在IO线程
                 .observeOn(AndroidSchedulers.mainThread()) // 指定后面所发生的回调发生在主线程
                 .doOnNext(new Action1<Bitmap>() {    //每运行一次所要执行的操作
                     @Override
