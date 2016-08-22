@@ -5,7 +5,7 @@
       <GradleProjectSettings>
         <option name="distributionType" value="LOCAL" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleHome" value="C:\Android\android-studio\gradle\gradle-2.10" />
+        <option name="gradleHome" value="C:\Android\android-studio\gradle\gradle-2.14.1" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/ButtonAnimation" />
             <option value="$PROJECT_DIR$/ChangeThemeDemo" />
             <option value="$PROJECT_DIR$/CommonAdapterDemo" />
+            <option value="$PROJECT_DIR$/DataBindingDemo" />
             <option value="$PROJECT_DIR$/DragLayoutDemo" />
             <option value="$PROJECT_DIR$/FirstRxJavaDemo" />
             <option value="$PROJECT_DIR$/MoocNewsDemo" />
@@ -34,6 +35,7 @@
             <option value="$PROJECT_DIR$/ButtonAnimation" />
             <option value="$PROJECT_DIR$/ChangeThemeDemo" />
             <option value="$PROJECT_DIR$/CommonAdapterDemo" />
+            <option value="$PROJECT_DIR$/DataBindingDemo" />
             <option value="$PROJECT_DIR$/DragLayoutDemo" />
             <option value="$PROJECT_DIR$/FirstRxJavaDemo" />
             <option value="$PROJECT_DIR$/MoocNewsDemo" />

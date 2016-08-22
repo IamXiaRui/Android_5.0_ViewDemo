@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/ButtonAnimation/ButtonAnimation.iml" filepath="$PROJECT_DIR$/ButtonAnimation/ButtonAnimation.iml" />
       <module fileurl="file://$PROJECT_DIR$/ChangeThemeDemo/ChangeThemeDemo.iml" filepath="$PROJECT_DIR$/ChangeThemeDemo/ChangeThemeDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/CommonAdapterDemo/CommonAdapterDemo.iml" filepath="$PROJECT_DIR$/CommonAdapterDemo/CommonAdapterDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DataBindingDemo/DataBindingDemo.iml" filepath="$PROJECT_DIR$/DataBindingDemo/DataBindingDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/DragLayoutDemo/DragLayoutDemo.iml" filepath="$PROJECT_DIR$/DragLayoutDemo/DragLayoutDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/FirstRxJavaDemo/FirstRxJavaDemo.iml" filepath="$PROJECT_DIR$/FirstRxJavaDemo/FirstRxJavaDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/MoocNewsDemo/MoocNewsDemo.iml" filepath="$PROJECT_DIR$/MoocNewsDemo/MoocNewsDemo.iml" />
