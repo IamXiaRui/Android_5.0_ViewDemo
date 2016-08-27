@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.databinding.ui.IncludeActivity">
+
+    <data>
+
+        <variable
+            name="user"
+            type="com.databinding.bean.User" />
+
+        <variable
+            name="btClick"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/layout_text"
+            bind:user="@{user}" />
+
+        <include
+            layout="@layout/layout_button"
+            bind:btClick="@{btClick}" />
+
+        <!-- 非根节点 ViewGroup 仍然有效-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include
+                layout="@layout/layout_text"
+                bind:user="@{user}" />
+
+            <include
+                layout="@layout/layout_button"
+                bind:btClick="@{btClick}" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</layout>

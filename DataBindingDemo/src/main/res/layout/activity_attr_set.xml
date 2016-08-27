@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.AttrSetActivity">
+
+    <!--数据层-->
+    <data>
+        <!--import写法-->
+        <import type="com.databinding.bean.User" />
+
+        <variable
+            name="user"
+            type="User" />
+
+    </data>
+
+    <!--UI层-->
+    <com.databinding.view.CustomTextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:orientation="vertical"
+        app:age="@{user.age}"
+        app:name="@{user.name}">
+
+    </com.databinding.view.CustomTextView>
+
+</layout>

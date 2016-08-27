@@ -22,7 +22,12 @@
         <activity android:name=".ui.CustomNameActivity" />
         <activity android:name=".ui.ObservableActivity" />
         <activity android:name=".ui.ViewIdActivity" />
-        <activity android:name=".ui.ViewStubActivity"></activity>
+        <activity android:name=".ui.ViewStubActivity" />
+        <activity android:name=".ui.ConverterActivity" />
+        <activity android:name=".ui.IncludeActivity" />
+        <activity android:name=".ui.AttrSetActivity" />
+        <activity android:name=".ui.DynamicActivity" />
+        <activity android:name=".ui.RealDemoActivity"></activity>
     </application>
 
 </manifest>

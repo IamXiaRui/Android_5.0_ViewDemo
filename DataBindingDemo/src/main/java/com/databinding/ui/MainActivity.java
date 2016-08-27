@@ -90,19 +90,19 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(this, ViewStubActivity.class));
                 break;
             case R.id.bt_converters:
-                //startActivity(new Intent(this,BasicActivity.class));
+                startActivity(new Intent(this,ConverterActivity.class));
                 break;
             case R.id.bt_include:
-                //startActivity(new Intent(this,BasicActivity.class));
+                startActivity(new Intent(this,IncludeActivity.class));
                 break;
             case R.id.bt_attr_set:
-                //startActivity(new Intent(this,BasicActivity.class));
+                startActivity(new Intent(this,AttrSetActivity.class));
                 break;
             case R.id.bt_dynamic_variables:
-                //startActivity(new Intent(this,BasicActivity.class));
+                startActivity(new Intent(this,DynamicActivity.class));
                 break;
             case R.id.bt_demo:
-                //startActivity(new Intent(this,BasicActivity.class));
+                startActivity(new Intent(this,RealDemoActivity.class));
                 break;
         }
     }
