@@ -9,7 +9,6 @@ import com.databinding.databinding.ActivityAliasBinding;
 
 /**
  * Created by xiarui on 2016/8/22.
- * DataBinding 案例演示
  * 功能：别名的使用
  */
 public class AliasActivity extends AppCompatActivity {

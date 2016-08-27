@@ -12,7 +12,6 @@ import com.databinding.databinding.ActivityStaticMethodBinding;
 
 /**
  * Created by xiarui on 2016/8/22.
- * DataBinding 案例演示
  * 功能：静态方法与按钮的点击事件
  */
 public class StaticMethodActivity extends AppCompatActivity {

@@ -8,17 +8,18 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <!-- <activity android:name=".ui.BasicActivity"> -->
-        <!-- <activity android:name=".ui.AliasActivity"> -->
-        <!--<activity android:name=".ui.StaticMethodActivity">-->
-        <activity android:name=".ui.AttrAndResActivity">
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.BasicActivity" />
+        <activity android:name=".ui.AliasActivity" />
+        <activity android:name=".ui.StaticMethodActivity" />
+        <activity android:name=".ui.ResourceActivity" />
+        <activity android:name=".ui.CustomNameActivity"></activity>
     </application>
 
 </manifest>

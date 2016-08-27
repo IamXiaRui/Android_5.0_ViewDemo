@@ -6,14 +6,14 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.databinding.R;
 import com.databinding.bean.Person;
-import com.databinding.databinding.ActivityAttrResBinding;
+import com.databinding.databinding.ActivityResourceBinding;
 
 /**
  * Created by xiarui on 2016/8/22.
  * DataBinding 案例演示
  * 功能：资源文件与属性的使用 表达式的使用
  */
-public class AttrAndResActivity extends AppCompatActivity {
+public class ResourceActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,13 +28,13 @@ public class AttrAndResActivity extends AppCompatActivity {
      */
     private void initData() {
         //绑定类 类名与XML文件名一致 自动生成
-        ActivityAttrResBinding aarBinding = DataBindingUtil.setContentView(AttrAndResActivity.this, R.layout.activity_attr_res);
+        ActivityResourceBinding arBinding = DataBindingUtil.setContentView(ResourceActivity.this, R.layout.activity_resource);
 
         //注意第一个参数为 true
         Person person = new Person(true, "小明", "20");
-        aarBinding.setPerson(person);
+        arBinding.setPerson(person);
 
         //为true
-        aarBinding.setLarge(true);
+        arBinding.setLarge(true);
     }
 }
