@@ -79,14 +79,6 @@
             android:textAllCaps="false" />
 
         <Button
-            android:id="@+id/bt_dynamic_variables"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
-            android:text="动态变量的使用" />
-
-        <Button
             android:id="@+id/bt_converters"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
@@ -110,6 +102,14 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="30dp"
             android:text="属性的使用" />
+
+        <Button
+            android:id="@+id/bt_dynamic_variables"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:text="动态变量的使用" />
 
         <Button
             android:id="@+id/bt_demo"

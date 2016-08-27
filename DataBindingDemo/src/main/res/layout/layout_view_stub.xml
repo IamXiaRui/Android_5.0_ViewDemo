@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.databinding.ui.CustomNameActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!--数据层-->
+    <data>
 
-    <!--数据层 自定义类名-->
-    <data class="com.databinding.CustomBinding">
         <!--import写法-->
         <import type="com.databinding.bean.User" />
 
@@ -66,6 +64,5 @@
         </LinearLayout>
 
     </LinearLayout>
-
 
 </layout>

@@ -1,28 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.AliasActivity">
+    tools:context=".ui.BasicActivity">
 
     <!--数据层-->
     <data>
 
-        <!--同一个文件名，别名的使用方法-->
-        <import
-            alias="BeanUser"
-            type="com.databinding.bean.User" />
+        <!--import写法-->
+        <import type="com.databinding.bean.ObservableUser" />
 
-        <import
-            alias="PojoUser"
-            type="com.databinding.pojo.User" />
+        <import type="android.view.View.OnClickListener" />
 
+        <import type="com.databinding.pojo.PlainUser" />
 
-        <variable
-            name="user1"
-            type="BeanUser" />
+        <import type="android.databinding.ObservableMap" />
 
         <variable
-            name="user2"
-            type="PojoUser" />
+            name="user"
+            type="ObservableUser" />
+
+        <variable
+            name="changeInfo"
+            type="OnClickListener" />
+
+        <variable
+            name="puser"
+            type="PlainUser" />
+
+        <variable
+            name="muser"
+            type="ObservableMap&lt;String, Object>" />
 
     </data>
 
@@ -48,7 +55,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{user1.name}"
+                android:text="@{user.name}"
                 android:textColor="#000000"
                 android:textSize="20sp" />
 
@@ -70,7 +77,29 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{user1.age}"
+                android:text="@{user.age}"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="姓名："
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{puser.name}"
                 android:textColor="#000000"
                 android:textSize="20sp" />
 
@@ -85,14 +114,36 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="性别："
+                android:text="年龄："
                 android:textColor="#000000"
                 android:textSize="20sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{user2.sex}"
+                android:text="@{String.valueOf(puser.age)}"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="姓名："
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{muser[`name`]}"
                 android:textColor="#000000"
                 android:textSize="20sp" />
 
@@ -107,19 +158,26 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="手机："
+                android:text="年龄："
                 android:textColor="#000000"
                 android:textSize="20sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{user2.phone}"
+                android:text="@{String.valueOf(muser[`age`])}"
                 android:textColor="#000000"
                 android:textSize="20sp" />
 
         </LinearLayout>
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:onClick="@{changeInfo}"
+            android:text="点击更改信息" />
 
     </LinearLayout>
 

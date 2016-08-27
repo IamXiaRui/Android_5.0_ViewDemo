@@ -19,7 +19,10 @@
         <activity android:name=".ui.AliasActivity" />
         <activity android:name=".ui.StaticMethodActivity" />
         <activity android:name=".ui.ResourceActivity" />
-        <activity android:name=".ui.CustomNameActivity"></activity>
+        <activity android:name=".ui.CustomNameActivity" />
+        <activity android:name=".ui.ObservableActivity" />
+        <activity android:name=".ui.ViewIdActivity" />
+        <activity android:name=".ui.ViewStubActivity"></activity>
     </application>
 
 </manifest>

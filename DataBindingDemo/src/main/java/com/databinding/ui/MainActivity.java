@@ -78,19 +78,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(this, ResourceActivity.class));
                 break;
             case R.id.bt_custom:
-                startActivity(new Intent(this,CustomNameActivity.class));
+                startActivity(new Intent(this, CustomNameActivity.class));
                 break;
             case R.id.bt_observer:
-                //startActivity(new Intent(this,BasicActivity.class));
+                startActivity(new Intent(this, ObservableActivity.class));
                 break;
             case R.id.bt_view_id:
-                //startActivity(new Intent(this,BasicActivity.class));
+                startActivity(new Intent(this, ViewIdActivity.class));
                 break;
             case R.id.bt_view_stubs:
-                //startActivity(new Intent(this,BasicActivity.class));
-                break;
-            case R.id.bt_dynamic_variables:
-                //startActivity(new Intent(this,BasicActivity.class));
+                startActivity(new Intent(this, ViewStubActivity.class));
                 break;
             case R.id.bt_converters:
                 //startActivity(new Intent(this,BasicActivity.class));
@@ -99,6 +96,9 @@ public class MainActivity extends AppCompatActivity {
                 //startActivity(new Intent(this,BasicActivity.class));
                 break;
             case R.id.bt_attr_set:
+                //startActivity(new Intent(this,BasicActivity.class));
+                break;
+            case R.id.bt_dynamic_variables:
                 //startActivity(new Intent(this,BasicActivity.class));
                 break;
             case R.id.bt_demo:
