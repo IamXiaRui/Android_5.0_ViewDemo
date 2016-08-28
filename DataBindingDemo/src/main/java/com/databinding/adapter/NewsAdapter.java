@@ -23,6 +23,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 
     private List<NewsBean> list;
     private Context context;
+
     public NewsAdapter(Context context, List<NewsBean> list) {
         this.list = list;
         this.context = context;
@@ -37,9 +38,10 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 
     @Override
     public void onBindViewHolder(NewsViewHolder holder, int position) {
+        //给ViewHolder绑定
         holder.bind(list.get(position));
+        //加载图片
         Picasso.with(context).load(list.get(position).getPicUrl()).into(holder.itemPicImage);
-        holder.itemPicImage.setTag(list.get(position).getUrl());
     }
 
     @Override
@@ -49,15 +51,22 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 
     public class NewsViewHolder extends RecyclerView.ViewHolder {
 
+        //绑定类
         private ItemNewsBinding inBinding;
         private ImageView itemPicImage;
 
         public NewsViewHolder(View itemView) {
             super(itemView);
+            //为每一个item设置
             inBinding = DataBindingUtil.bind(itemView);
             itemPicImage = (ImageView) itemView.findViewById(R.id.iv_item_pic);
         }
 
+        /**
+         * 绑定方法
+         *
+         * @param news Bean对象
+         */
         public void bind(@NonNull NewsBean news) {
             inBinding.setNews(news);
         }
