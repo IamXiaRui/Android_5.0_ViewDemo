@@ -8,6 +8,10 @@
         <!--import写法-->
         <import type="com.databinding.bean.Person" />
 
+        <import type="android.view.View" />
+
+        <import type="android.graphics.Color"/>
+
         <variable
             name="person"
             type="Person" />
@@ -68,6 +72,53 @@
                 android:layout_height="wrap_content"
                 android:text="@{person.phone}"
                 android:textColor="#000000"
+                android:textSize="@{large ? @dimen/largeSP : @dimen/smallSP}" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="手机："
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <!--显示-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{person.phone}"
+                android:textSize="@{large ? @dimen/largeSP : @dimen/smallSP}"
+                android:textColor="#000000"
+                android:visibility="@{large ? View.INVISIBLE : View.VISIBLE}" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="手机："
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <!--颜色-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{person.phone}"
+                android:textColor="@{large ? Color.RED : Color.YELLOW}"
                 android:textSize="@{large ? @dimen/largeSP : @dimen/smallSP}" />
 
         </LinearLayout>

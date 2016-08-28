@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(this,DynamicActivity.class));
                 break;
             case R.id.bt_demo:
-                startActivity(new Intent(this,RealDemoActivity.class));
+                startActivity(new Intent(this,NewsActivity.class));
                 break;
         }
     }

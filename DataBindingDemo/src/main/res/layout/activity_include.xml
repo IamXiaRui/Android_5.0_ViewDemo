@@ -16,6 +16,7 @@
 
     </data>
 
+    <!--根结点-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -44,7 +45,6 @@
                 bind:btClick="@{btClick}" />
 
         </LinearLayout>
-
 
     </LinearLayout>
 
