@@ -71,7 +71,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="5dp"
                         android:layout_toEndOf="@+id/iv_icon_book"
-                        android:text="@{news.desc}"
+                        android:text="@{news.description}"
                         android:textColor="#AFB3B6" />
 
                     <TextView
@@ -81,7 +81,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="5dp"
-                        android:text="@{news.time}"
+                        android:text="@{news.ctime}"
                         android:textColor="#AFB3B6" />
 
                 </RelativeLayout>

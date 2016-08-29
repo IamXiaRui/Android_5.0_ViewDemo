@@ -17,9 +17,9 @@ public class ResultBean {
 
         private String title;
 
-        private String desc;
+        private String description;
 
-        private String time;
+        private String ctime;
 
         private String url;
 
@@ -33,20 +33,20 @@ public class ResultBean {
             this.title = title;
         }
 
-        public String getDesc() {
-            return desc;
+        public String getDescription() {
+            return description;
         }
 
-        public void setDesc(String desc) {
-            this.desc = desc;
+        public void setDescription(String description) {
+            this.description = description;
         }
 
-        public String getTime() {
-            return time;
+        public String getCtime() {
+            return ctime;
         }
 
-        public void setTime(String time) {
-            this.time = time;
+        public void setCtime(String ctime) {
+            this.ctime = ctime;
         }
 
         public String getUrl() {
@@ -64,7 +64,6 @@ public class ResultBean {
         public void setPicUrl(String picUrl) {
             this.picUrl = picUrl;
         }
-
     }
 
     public int getCode() {
