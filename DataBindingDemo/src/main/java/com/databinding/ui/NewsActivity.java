@@ -28,7 +28,7 @@ public class NewsActivity extends AppCompatActivity {
 
     private final static String NEWS_URL = "http://api.tianapi.com/keji/?key=3cd7cc6ab7736c7b29b2280b0f282c39&num=30&rand";
 
-    private List<ResultBean> newsLists;
+    private List<ResultBean.NewsBean> newsLists;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +49,19 @@ public class NewsActivity extends AppCompatActivity {
                 .execute(new NewsCallback());
     }
 
+    /**
+     * 回调类
+     */
     class NewsCallback extends Callback<List<ResultBean.NewsBean>> {
 
+        /**
+         * 非UI线程 可执行耗时操作
+         *
+         * @param response 响应体
+         * @param id       ID
+         * @return 集合
+         * @throws Exception
+         */
         @Override
         public List<ResultBean.NewsBean> parseNetworkResponse(Response response, int id) throws Exception {
             ResultBean resultBean = new Gson().fromJson(response.body().string(), ResultBean.class);
@@ -63,6 +74,12 @@ public class NewsActivity extends AppCompatActivity {
             Log.e("===== onError =====", e.toString());
         }
 
+        /**
+         * UI线程
+         *
+         * @param response 响应体
+         * @param id       ID
+         */
         @Override
         public void onResponse(List<ResultBean.NewsBean> response, int id) {
             ActivityNewsBinding anBinding = DataBindingUtil.setContentView(NewsActivity.this, R.layout.activity_news);
