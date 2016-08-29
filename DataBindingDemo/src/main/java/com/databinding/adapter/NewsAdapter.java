@@ -9,10 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.databinding.R;
-import com.databinding.bean.NewsBean;
+import com.databinding.bean.ResultBean;
 import com.databinding.databinding.ItemNewsBinding;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -21,10 +21,10 @@ import java.util.List;
  */
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder> {
 
-    private List<NewsBean> list;
+    private List<ResultBean.NewsBean> list;
     private Context context;
 
-    public NewsAdapter(Context context, List<NewsBean> list) {
+    public NewsAdapter(Context context, List<ResultBean.NewsBean> list) {
         this.list = list;
         this.context = context;
     }
@@ -41,12 +41,12 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         //给ViewHolder绑定
         holder.bind(list.get(position));
         //加载图片
-        Picasso.with(context).load(list.get(position).getPicUrl()).into(holder.itemPicImage);
+        Glide.with(context).load(list.get(position).getPicUrl()).into(holder.itemPicImage);
     }
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return list==null ? 0 : list.size();
     }
 
     public class NewsViewHolder extends RecyclerView.ViewHolder {
@@ -67,7 +67,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
          *
          * @param news Bean对象
          */
-        public void bind(@NonNull NewsBean news) {
+        public void bind(@NonNull ResultBean.NewsBean news) {
             inBinding.setNews(news);
         }
     }

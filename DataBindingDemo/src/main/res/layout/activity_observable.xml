@@ -16,6 +16,10 @@
         <import type="android.databinding.ObservableMap" />
 
         <variable
+            name="muser"
+            type="ObservableMap&lt;String, Object>" />
+
+        <variable
             name="user"
             type="ObservableUser" />
 
@@ -26,10 +30,6 @@
         <variable
             name="puser"
             type="PlainUser" />
-
-        <variable
-            name="muser"
-            type="ObservableMap&lt;String, Object>" />
 
     </data>
 

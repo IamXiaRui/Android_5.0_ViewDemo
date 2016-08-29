@@ -28,28 +28,7 @@
             <option value="$PROJECT_DIR$/VectorAnimation" />
           </set>
         </option>
-        <option name="myModules">
-          <set>
-            <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/AsyncTaskDemo" />
-            <option value="$PROJECT_DIR$/ButtonAnimation" />
-            <option value="$PROJECT_DIR$/ChangeThemeDemo" />
-            <option value="$PROJECT_DIR$/CommonAdapterDemo" />
-            <option value="$PROJECT_DIR$/DataBindingDemo" />
-            <option value="$PROJECT_DIR$/DragLayoutDemo" />
-            <option value="$PROJECT_DIR$/FirstRxJavaDemo" />
-            <option value="$PROJECT_DIR$/MoocNewsDemo" />
-            <option value="$PROJECT_DIR$/NewQQEffects" />
-            <option value="$PROJECT_DIR$/NewSelector" />
-            <option value="$PROJECT_DIR$/PaletteDemo" />
-            <option value="$PROJECT_DIR$/RecyclerView" />
-            <option value="$PROJECT_DIR$/ShadowDemo" />
-            <option value="$PROJECT_DIR$/ToolBarDemo" />
-            <option value="$PROJECT_DIR$/TransitionsAnimation" />
-            <option value="$PROJECT_DIR$/UpdateColorDemo" />
-            <option value="$PROJECT_DIR$/VectorAnimation" />
-          </set>
-        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>
   </component>

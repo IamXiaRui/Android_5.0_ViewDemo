@@ -7,7 +7,7 @@
 
         <variable
             name="news"
-            type="com.databinding.bean.NewsBean" />
+            type="com.databinding.bean.ResultBean.NewsBean" />
 
     </data>
 
@@ -32,8 +32,7 @@
                     android:id="@+id/iv_item_pic"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:src="@mipmap/pic_back" />
+                    android:scaleType="centerCrop" />
 
             </LinearLayout>
 

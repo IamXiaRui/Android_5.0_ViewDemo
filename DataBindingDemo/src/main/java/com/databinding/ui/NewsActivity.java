@@ -4,14 +4,21 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.databinding.R;
 import com.databinding.adapter.NewsAdapter;
-import com.databinding.bean.NewsBean;
+import com.databinding.bean.ResultBean;
 import com.databinding.databinding.ActivityNewsBinding;
-import com.databinding.utils.GetNewsUtil;
+import com.google.gson.Gson;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.Callback;
 
 import java.util.List;
+
+import okhttp3.Call;
+import okhttp3.Response;
 
 /**
  * Created by xiarui on 2016/8/27.
@@ -21,42 +28,50 @@ public class NewsActivity extends AppCompatActivity {
 
     private final static String NEWS_URL = "http://api.tianapi.com/keji/?key=3cd7cc6ab7736c7b29b2280b0f282c39&num=30&rand";
 
-    private List<NewsBean> newsLists;
+    private List<ResultBean> newsLists;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //初始化数据
-        initData();
+        //从URL获取数据
+        getDataFromHttp();
     }
 
-    /**
-     * 初始化数据
-     */
-    private void initData() {
-        //开启子线程
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                newsLists = GetNewsUtil.getJson(NEWS_URL);
 
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        onUIThread();
-                    }
-                });
-            }
-        }).start();
+    /**
+     * Okhttp请求获取数据
+     */
+    private void getDataFromHttp() {
+        OkHttpUtils
+                .get()
+                .url(NEWS_URL)
+                .build()
+                .execute(new NewsCallback());
     }
 
-    /**
-     * 在UI中执行的操作
-     */
-    private void onUIThread() {
-        ActivityNewsBinding anBinding = DataBindingUtil.setContentView(NewsActivity.this, R.layout.activity_news);
-        anBinding.rlvNews.setLayoutManager(new LinearLayoutManager(NewsActivity.this));
-        NewsAdapter newsAdapter = new NewsAdapter(NewsActivity.this, newsLists);
-        anBinding.rlvNews.setAdapter(newsAdapter);
+    class NewsCallback extends Callback<List<ResultBean.NewsBean>> {
+
+        @Override
+        public List<ResultBean.NewsBean> parseNetworkResponse(Response response, int id) throws Exception {
+            ResultBean resultBean = new Gson().fromJson(response.body().string(), ResultBean.class);
+            return resultBean.getNewslist();
+        }
+
+        @Override
+        public void onError(Call call, Exception e, int id) {
+            Toast.makeText(NewsActivity.this, "onError", Toast.LENGTH_SHORT).show();
+            Log.e("===== onError =====", e.toString());
+        }
+
+        @Override
+        public void onResponse(List<ResultBean.NewsBean> response, int id) {
+            ActivityNewsBinding anBinding = DataBindingUtil.setContentView(NewsActivity.this, R.layout.activity_news);
+            anBinding.rlvNews.setLayoutManager(new LinearLayoutManager(NewsActivity.this));
+            NewsAdapter newsAdapter = new NewsAdapter(NewsActivity.this, response);
+            anBinding.rlvNews.setAdapter(newsAdapter);
+        }
     }
 }
+
+
+
