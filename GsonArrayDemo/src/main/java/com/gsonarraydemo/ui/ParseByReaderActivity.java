@@ -96,7 +96,7 @@ public class ParseByReaderActivity extends AppCompatActivity {
     }
 
     /**
-     * 读用户基本消息
+     * 读用户基本消息 user节点
      *
      * @param reader JsonReader
      */
@@ -124,7 +124,7 @@ public class ParseByReaderActivity extends AppCompatActivity {
     }
 
     /**
-     * 读用户其他消息
+     * 读用户其他消息 info节点
      *
      * @param reader JsonReader
      */

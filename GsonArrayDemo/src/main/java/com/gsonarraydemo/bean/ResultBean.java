@@ -7,7 +7,7 @@ import java.util.List;
  * 返回所有结果的Bean
  */
 public class ResultBean {
-
+    //注意变量名与字段名一致
     private int code;
 
     private String msg;

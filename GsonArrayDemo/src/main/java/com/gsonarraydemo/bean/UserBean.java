@@ -2,9 +2,10 @@ package com.gsonarraydemo.bean;
 
 /**
  * Created by xiarui on 2016/8/30.
+ * JSON数组的Bean
  */
 public class UserBean {
-
+    //变量名跟JSON数据的字段名需要一致
     private String name ;
 
     private String age;
