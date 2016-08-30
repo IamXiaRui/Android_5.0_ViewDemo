@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.gsonarraydemo.ui.MainActivity">
+
+    <Button
+        android:id="@+id/bt_parse_array"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:text="解析JSON数组的四种方式" />
+
+    <Button
+        android:id="@+id/bt_parse_reader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bt_parse_array"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:text="JsonReader的使用"
+        android:textAllCaps="false" />
+
+
+</RelativeLayout>

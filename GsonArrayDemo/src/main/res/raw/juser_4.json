@@ -1,0 +1,16 @@
+{
+  "group": {
+    "user": {
+      "name": "张三",
+      "age": "10",
+      "phone": "11111",
+      "email": "11111@11.com"
+    },
+    "info": {
+      "address": "北京",
+      "work": "Android Dev",
+      "pay": "10K",
+      "motto": "先定一个小目标，比如我先赚一个亿"
+    }
+  }
+}

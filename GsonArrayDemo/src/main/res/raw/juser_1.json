@@ -1,0 +1,32 @@
+[
+  {
+    "name": "zhangsan",
+    "age": "10",
+    "phone": "11111",
+    "email": "11111@11.com"
+  },
+  {
+    "name": "lisi",
+    "age": "20",
+    "phone": "22222",
+    "email": "22222@22.com"
+  },
+  {
+    "name": "wangwu",
+    "age": "30",
+    "phone": "33333",
+    "email": "33333@33.com"
+  },
+  {
+    "name": "qianliu",
+    "age": "40",
+    "phone": "44444",
+    "email": "44444@44.com"
+  },
+  {
+    "name": "zhaoqi",
+    "age": "50",
+    "phone": "55555",
+    "email": "55555@55.com"
+  }
+]
