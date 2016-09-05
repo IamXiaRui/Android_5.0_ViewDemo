@@ -180,17 +180,6 @@ public class BlurredView extends RelativeLayout {
     }
 
     /**
-     * 设置图片上移的距离
-     *
-     * @param hight 向上移动的距离
-     */
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public void setBlurredTop(int hight) {
-        mOriginImg.setTop(-hight);
-        mBlurredImg.setTop(-hight);
-    }
-
-    /**
      * 显示模糊图片
      */
     public void showBlurredView() {

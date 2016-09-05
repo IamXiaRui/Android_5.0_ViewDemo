@@ -33,6 +33,9 @@ public class DynamicBlurActivity extends AppCompatActivity {
         initView();
     }
 
+    /**
+     * 初始化View
+     */
     private void initView() {
         customBView = (BlurredView) findViewById(R.id.bv_dynamic_blur);
         //设置模糊度

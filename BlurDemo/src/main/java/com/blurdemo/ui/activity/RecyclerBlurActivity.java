@@ -1,10 +1,11 @@
 package com.blurdemo.ui.activity;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.WindowManager;
+import android.view.View;
 
 import com.blurdemo.R;
 import com.blurdemo.adapter.RecyclerViewAdapter;
@@ -38,11 +39,6 @@ public class RecyclerBlurActivity extends AppCompatActivity {
      * 初始化View
      */
     private void initView() {
-
-        //透明状态栏
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        //透明导航栏
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
 
         recyclerBView = (BlurredView) findViewById(R.id.bv_recycler_blur);
         mainRView = (RecyclerView) findViewById(R.id.rv_main);
@@ -78,5 +74,25 @@ public class RecyclerBlurActivity extends AppCompatActivity {
                 recyclerBView.setBlurredLevel(mAlpha);
             }
         });
+    }
+
+    /**
+     * 实现沉浸式通知栏与导航栏
+     *
+     * @param hasFocus 是否有焦点
+     */
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus && Build.VERSION.SDK_INT >= 19) {
+            View decorView = getWindow().getDecorView();
+            decorView.setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                            | View.SYSTEM_UI_FLAG_FULLSCREEN
+                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        }
     }
 }

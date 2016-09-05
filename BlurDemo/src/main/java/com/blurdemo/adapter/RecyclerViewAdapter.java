@@ -53,13 +53,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
         }
     }
 
     private class HeaderHolder extends RecyclerView.ViewHolder {
-        public HeaderHolder(View itemView) {
+        HeaderHolder(View itemView) {
             super(itemView);
         }
     }

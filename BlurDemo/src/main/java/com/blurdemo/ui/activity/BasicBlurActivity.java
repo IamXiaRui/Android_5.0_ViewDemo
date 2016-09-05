@@ -41,6 +41,7 @@ public class BasicBlurActivity extends AppCompatActivity {
      *
      * @return 模糊后Bitmap
      */
+    @SuppressWarnings({"ResourceType", "deprecation"})
     private Bitmap getBlurBitmap() {
         Bitmap bitmap = BitmapUtil.drawableToBitmap(getResources().getDrawable(R.raw.pic));
         return BlurBitmapUtil.blurBitmap(this, bitmap, 20f);
