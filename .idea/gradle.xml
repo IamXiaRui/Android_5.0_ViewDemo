@@ -10,6 +10,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/AsyncTaskDemo" />
+            <option value="$PROJECT_DIR$/BlurDemo" />
             <option value="$PROJECT_DIR$/ButtonAnimation" />
             <option value="$PROJECT_DIR$/ChangeThemeDemo" />
             <option value="$PROJECT_DIR$/CommonAdapterDemo" />

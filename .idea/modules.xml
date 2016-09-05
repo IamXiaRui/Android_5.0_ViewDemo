@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Android5.0Demo.iml" filepath="$PROJECT_DIR$/Android5.0Demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/AsyncTaskDemo/AsyncTaskDemo.iml" filepath="$PROJECT_DIR$/AsyncTaskDemo/AsyncTaskDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BlurDemo/BlurDemo.iml" filepath="$PROJECT_DIR$/BlurDemo/BlurDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/ButtonAnimation/ButtonAnimation.iml" filepath="$PROJECT_DIR$/ButtonAnimation/ButtonAnimation.iml" />
       <module fileurl="file://$PROJECT_DIR$/ChangeThemeDemo/ChangeThemeDemo.iml" filepath="$PROJECT_DIR$/ChangeThemeDemo/ChangeThemeDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/CommonAdapterDemo/CommonAdapterDemo.iml" filepath="$PROJECT_DIR$/CommonAdapterDemo/CommonAdapterDemo.iml" />
