@@ -1,0 +1,83 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.hellochatsdemo.ui.activity.LineChartActivity">
+
+    <item
+        android:id="@+id/menu_line_reset"
+        android:title="重置"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_line_add"
+        android:title="增加线条"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_line_show_hide_lines"
+        android:title="显示/隐藏线条"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_line_show_hide_points"
+        android:title="显示/隐藏节点"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_line_cubic"
+        android:title="曲线/折线"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_line_fill_area"
+        android:title="填充下方区域"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_line_point_color"
+        android:title="更改节点颜色"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_line_point_circle"
+        android:title="圆形节点"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_line_point_square"
+        android:title="方形节点"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_line_point_diamond"
+        android:title="菱形节点"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_line_show_hide_axes"
+        android:title="显示/隐藏坐标轴"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_line_show_hide_axes_name"
+        android:title="显示/隐藏坐标轴名称"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_line_show_hide_lables"
+        android:title="显示/隐藏节点标签"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_line_animate"
+        android:title="切换动画"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_line_point_select_mode"
+        android:title="节点选中效果"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_line_touch_zoom"
+        android:title="缩放图表"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_line_touch_zoom_xy"
+        android:title="XY方向缩放"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_line_touch_zoom_x"
+        android:title="X方向缩放"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_line_touch_zoom_y"
+        android:title="Y方向缩放"
+        app:showAsAction="never" />
+
+</menu>
