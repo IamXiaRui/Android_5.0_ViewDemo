@@ -20,7 +20,7 @@
             android:label="关于" />
         <activity
             android:name=".ui.activity.LineChartActivity"
-            android:label="LineCharts" />
+            android:label="Line Charts" />
     </application>
 
 </manifest>

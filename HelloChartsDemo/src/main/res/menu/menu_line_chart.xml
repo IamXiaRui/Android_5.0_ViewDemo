@@ -20,6 +20,18 @@
         android:title="显示/隐藏节点"
         app:showAsAction="never" />
     <item
+        android:id="@+id/menu_line_show_hide_lables"
+        android:title="显示/隐藏节点标签"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_line_show_hide_axes"
+        android:title="显示/隐藏坐标轴"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_line_show_hide_axes_name"
+        android:title="显示/隐藏坐标轴名称"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/menu_line_cubic"
         android:title="曲线/折线"
         app:showAsAction="never" />
@@ -44,24 +56,12 @@
         android:title="菱形节点"
         app:showAsAction="never" />
     <item
-        android:id="@+id/menu_line_show_hide_axes"
-        android:title="显示/隐藏坐标轴"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/menu_line_show_hide_axes_name"
-        android:title="显示/隐藏坐标轴名称"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/menu_line_show_hide_lables"
-        android:title="显示/隐藏节点标签"
-        app:showAsAction="never" />
-    <item
         android:id="@+id/menu_line_animate"
         android:title="切换动画"
         app:showAsAction="never" />
     <item
         android:id="@+id/menu_line_point_select_mode"
-        android:title="节点选中效果"
+        android:title="点击节点显示标签"
         app:showAsAction="never" />
     <item
         android:id="@+id/menu_line_touch_zoom"

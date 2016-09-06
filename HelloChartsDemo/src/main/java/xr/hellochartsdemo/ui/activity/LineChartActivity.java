@@ -1,5 +1,6 @@
 package xr.hellochartsdemo.ui.activity;
 
+import android.graphics.Color;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -8,6 +9,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import lecho.lib.hellocharts.animation.ChartAnimationListener;
+import lecho.lib.hellocharts.gesture.ZoomType;
 import lecho.lib.hellocharts.listener.LineChartOnValueSelectListener;
 import lecho.lib.hellocharts.model.Axis;
 import lecho.lib.hellocharts.model.Line;
@@ -26,7 +29,7 @@ import xr.hellochartsdemo.R;
 public class LineChartActivity extends BaseActivity {
 
     /*=========== 控件相关 ==========*/
-    private LineChartView mLineChartView;                   //线性图表控件
+    private LineChartView mLineChartView;               //线性图表控件
 
     /*=========== 数据相关 ==========*/
     private LineChartData mLineData;                    //图标数据
@@ -40,13 +43,13 @@ public class LineChartActivity extends BaseActivity {
     private boolean isHasLines = true;                  //是否显示折线/曲线
     private boolean isHasPoints = true;                 //是否显示线上的节点
     private boolean isFilled = false;                   //是否填充线下方区域
-    private boolean isHasPointsLables = false;           //是否显示节点上的标签信息
+    private boolean isHasPointsLables = false;          //是否显示节点上的标签信息
     private boolean isCubic = false;                    //是否是立体的
     private boolean isPointsHasSelected = false;        //设置节点点击后效果(消失/保持)
     private boolean isPointsHaveDifferentColor;         //节点是否有不同的颜色
 
     /*=========== 其他相关 ==========*/
-    private ValueShape pointsShape = ValueShape.CIRCLE;       //点的形状(圆/方/菱形)
+    private ValueShape pointsShape = ValueShape.CIRCLE; //点的形状(圆/方/菱形)
     float[][] randomNumbersTab = new float[maxNumberOfLines][numberOfPoints]; //将线上的点放在一个数组中
 
     @Override
@@ -83,7 +86,7 @@ public class LineChartActivity extends BaseActivity {
     }
 
     /**
-     * 利用随机数设置每条线上的节点的值
+     * 利用随机数设置每条线对应节点的值
      */
     private void setPointsValues() {
         for (int i = 0; i < maxNumberOfLines; ++i) {
@@ -106,6 +109,7 @@ public class LineChartActivity extends BaseActivity {
                 values.add(new PointValue(j, randomNumbersTab[i][j]));
             }
 
+            /*========== 设置线的一些属性 ==========*/
             Line line = new Line(values);               //根据值来创建一条线
             line.setColor(ChartUtils.COLORS[i]);        //设置线的颜色
             line.setShape(pointsShape);                 //设置线的形状
@@ -115,7 +119,7 @@ public class LineChartActivity extends BaseActivity {
             line.setFilled(isFilled);                   //设置是否填充线下方区域
             line.setHasLabels(isHasPointsLables);       //设置是否显示节点标签
             line.setHasLabelsOnlyForSelected(isPointsHasSelected);      //设置节点点击的效果
-            //如果节点有不同颜色 则设置不同的颜色
+            //如果节点与线有不同颜色 则设置不同颜色
             if (isPointsHaveDifferentColor) {
                 line.setPointColor(ChartUtils.COLORS[(i + 1) % ChartUtils.COLORS.length]);
             }
@@ -125,7 +129,7 @@ public class LineChartActivity extends BaseActivity {
         mLineData = new LineChartData(lines);               //将所有的线加入线数据类中
         mLineData.setBaseValue(Float.NEGATIVE_INFINITY);    //设置基准数(大概是数据范围)
 
-        /* 其他的一些方法 可自行查看效果
+        /* 其他的一些属性方法 可自行查看效果
          * mLineData.setValueLabelBackgroundAuto(true);            //设置数据背景是否跟随节点颜色
          * mLineData.setValueLabelBackgroundColor(Color.BLUE);     //设置数据背景颜色
          * mLineData.setValueLabelBackgroundEnabled(true);         //设置是否有数据背景
@@ -138,6 +142,9 @@ public class LineChartActivity extends BaseActivity {
         if (isHasAxes) {
             Axis axisX = new Axis();                    //X轴
             Axis axisY = new Axis().setHasLines(true);  //Y轴
+            axisX.setTextColor(Color.GRAY);             //X轴灰色
+            axisY.setTextColor(Color.GRAY);             //Y轴灰色
+            //setLineColor()：此方法是设置图表的网格线颜色 并不是轴本身颜色
             //如果显示名称
             if (isHasAxesNames) {
                 axisX.setName("Axis X");                //设置名称
@@ -159,10 +166,10 @@ public class LineChartActivity extends BaseActivity {
     private void resetViewport() {
         //创建一个图标视图 大小为控件的最大大小
         final Viewport v = new Viewport(mLineChartView.getMaximumViewport());
-        v.left = 0;
-        v.bottom = 0;                       //坐标原点在左下
-        v.top = 100;                        //最高点为100
-        v.right = numberOfPoints - 1;       //右边为点 坐标从0开始 点号从1 需要 -1
+        v.left = 0;                             //坐标原点在左下
+        v.bottom = 0;
+        v.top = 100;                            //最高点为100
+        v.right = numberOfPoints - 1;           //右边为点 坐标从0开始 点号从1 需要 -1
         mLineChartView.setMaximumViewport(v);   //给最大的视图设置 相当于原图
         mLineChartView.setCurrentViewport(v);   //给当前的视图设置 相当于当前展示的图
     }
@@ -189,61 +196,61 @@ public class LineChartActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_line_reset:
-                resetLines();
+                resetLines();                       //重置
                 return true;
             case R.id.menu_line_add:
-                addLineToData();
+                addLineToData();                    //增加线条
                 return true;
             case R.id.menu_line_show_hide_lines:
-
+                showOrHideLines();                  //显示或隐藏线条
                 return true;
             case R.id.menu_line_show_hide_points:
-
-                return true;
-            case R.id.menu_line_cubic:
-
-                return true;
-            case R.id.menu_line_fill_area:
-
-                return true;
-            case R.id.menu_line_point_color:
-
-                return true;
-            case R.id.menu_line_point_circle:
-
-                return true;
-            case R.id.menu_line_point_square:
-
-                return true;
-            case R.id.menu_line_point_diamond:
-
-                return true;
-            case R.id.menu_line_show_hide_axes:
-
-                return true;
-            case R.id.menu_line_show_hide_axes_name:
-
+                showOrHidePoints();                 //显示或隐藏节点
                 return true;
             case R.id.menu_line_show_hide_lables:
-
+                showOrHidePointsLables();           //显示或者隐藏节点标签
+                return true;
+            case R.id.menu_line_show_hide_axes:
+                showOrHidePointsAxes();             //显示或者隐藏坐标轴
+                return true;
+            case R.id.menu_line_show_hide_axes_name:
+                showOrHidePointsAxesName();         //显示或者隐藏坐标轴名称
+                return true;
+            case R.id.menu_line_cubic:
+                changeCubicLines();                 //将折现转为曲线
+                return true;
+            case R.id.menu_line_fill_area:
+                fillLinesArea();                    //填充线条下方区域
+                return true;
+            case R.id.menu_line_point_color:
+                differentColorPoints();             //节点与线颜色不同
+                return true;
+            case R.id.menu_line_point_circle:
+                circlePoints();                     //圆形节点
+                return true;
+            case R.id.menu_line_point_square:
+                squarePoints();                     //方形节点
+                return true;
+            case R.id.menu_line_point_diamond:
+                diamondPoints();                    //菱形节点
                 return true;
             case R.id.menu_line_animate:
-
+                changeLinesAnimate();               //改变线条时的动画
                 return true;
             case R.id.menu_line_point_select_mode:
-
+                showOrHideLablesByPointsSelected(); //点击显示节点标签
                 return true;
             case R.id.menu_line_touch_zoom:
-
+                mLineChartView.setZoomEnabled(!mLineChartView.isZoomEnabled());     //是否可以缩放
                 return true;
             case R.id.menu_line_touch_zoom_xy:
-
+                mLineChartView.setZoomType(ZoomType.HORIZONTAL_AND_VERTICAL);       //水平垂直缩放
                 return true;
             case R.id.menu_line_touch_zoom_x:
-
+                mLineChartView.setZoomType(ZoomType.HORIZONTAL);                    //只能水平缩放
                 return true;
             case R.id.menu_line_touch_zoom_y:
-
+                mLineChartView.setZoomType(ZoomType.VERTICAL);                      //只能垂直缩放
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -270,6 +277,9 @@ public class LineChartActivity extends BaseActivity {
         setLinesDatas();        //再设置一次
     }
 
+    /**
+     * 增加线的条数
+     */
     private void addLineToData() {
         if (mLineData.getLines().size() >= maxNumberOfLines) {
             Toast.makeText(LineChartActivity.this, "最多只能有4条线", Toast.LENGTH_SHORT).show();
@@ -280,6 +290,134 @@ public class LineChartActivity extends BaseActivity {
         setLinesDatas();        //再设置一次
     }
 
+    /**
+     * 显示或者隐藏线条
+     */
+    private void showOrHideLines() {
+        isHasLines = !isHasLines;   //取反即可
+        setLinesDatas();            //重新设置
+    }
+
+    /**
+     * 显示或者隐藏节点
+     */
+    private void showOrHidePoints() {
+        isHasPoints = !isHasPoints;   //取反即可
+        setLinesDatas();              //重新设置
+    }
+
+    /**
+     * 显示或者隐藏节点标签
+     */
+    private void showOrHidePointsLables() {
+        isHasPointsLables = !isHasPointsLables;   //取反即可
+        setLinesDatas();                          //重新设置
+    }
+
+    /**
+     * 显示或者隐藏坐标轴
+     */
+    private void showOrHidePointsAxes() {
+        isHasAxes = !isHasAxes;                   //取反即可
+        setLinesDatas();                          //重新设置
+    }
+
+    /**
+     * 显示或者隐藏坐标轴名称
+     */
+    private void showOrHidePointsAxesName() {
+        isHasAxesNames = !isHasAxesNames;         //取反即可
+        setLinesDatas();                          //重新设置
+    }
+
+    /**
+     * 将折线转为曲线
+     */
+    private void changeCubicLines() {
+        isCubic = !isCubic;         //取反即可
+        setLinesDatas();            //重新设置
+        if (isCubic) {
+            final Viewport v = new Viewport(mLineChartView.getMaximumViewport());
+            v.bottom = -5;          //这里是防止改变后的线超过范围做的一个边界保护
+            v.top = 105;            //根据具体需求设置 建议设置一下
+            mLineChartView.setMaximumViewport(v);                   //设置最大视图
+            mLineChartView.setCurrentViewportWithAnimation(v);      //有动画的增加当前视图
+        } else {
+            final Viewport v = new Viewport(mLineChartView.getMaximumViewport());
+            v.bottom = 0;           //如果上面没有设置 那么这里也不用设置
+            v.top = 100;            //同样的 建议设置一下
+            //动画监听 在动画完成后 设置最大的视图 直接设置也可 但效果要好一点
+            mLineChartView.setViewportAnimationListener(new ChangeLinesAnimListener(v));
+            mLineChartView.setCurrentViewportWithAnimation(v);      //有动画的增加当前视图
+        }
+    }
+
+    /**
+     * 填充线条下方区域
+     */
+    private void fillLinesArea() {
+        isFilled = !isFilled;       //取反即可
+        setLinesDatas();            //重新设置
+    }
+
+    /**
+     * 节点与线颜色不同
+     */
+    private void differentColorPoints() {
+        isPointsHaveDifferentColor = !isPointsHaveDifferentColor;       //取反即可
+        setLinesDatas();                                                //重新设置
+    }
+
+    /**
+     * 圆形节点
+     */
+    private void circlePoints() {
+        pointsShape = ValueShape.CIRCLE;       //圆形节点
+        setLinesDatas();                       //重新设置
+    }
+
+    /**
+     * 方形节点
+     */
+    private void squarePoints() {
+        pointsShape = ValueShape.SQUARE;       //方形节点
+        setLinesDatas();                       //重新设置
+    }
+
+    /**
+     * 菱形节点
+     */
+    private void diamondPoints() {
+        pointsShape = ValueShape.DIAMOND;      //菱形节点
+        setLinesDatas();                       //重新设置
+    }
+
+    /**
+     * 线条改变时的颜色
+     */
+    private void changeLinesAnimate() {
+        //增强for循环改变线条数据
+        for (Line line : mLineData.getLines()) {
+            for (PointValue value : line.getValues()) {
+                value.setTarget(value.getX(), (float) Math.random() * 100);         //更改X坐标
+                //value.setTarget(value.getY(), (float) Math.random() * 100);       //或者更改Y坐标
+            }
+        }
+        mLineChartView.startDataAnimation(); //开始动画
+    }
+
+    /**
+     * 点击显示节点标签
+     */
+    private void showOrHideLablesByPointsSelected() {
+        isPointsHasSelected = !isPointsHasSelected;                     //取反即可
+        mLineChartView.setValueSelectionEnabled(isPointsHasSelected);   //设置选中状态
+        if (isPointsHasSelected) {
+            isHasPointsLables = false;                                  //如果点击才显示标签 则标签开始不可见
+        }
+        setLinesDatas();                                                //重新设置
+    }
+
 
     /**
      * 节点触摸监听
@@ -287,12 +425,34 @@ public class LineChartActivity extends BaseActivity {
     private class ValueTouchListener implements LineChartOnValueSelectListener {
         @Override
         public void onValueSelected(int lineIndex, int pointIndex, PointValue value) {
-            Toast.makeText(LineChartActivity.this, "Selected: " + value, Toast.LENGTH_SHORT).show();
+            Toast.makeText(LineChartActivity.this, "选中第 " + ((int) value.getX() + 1) + " 个节点", Toast.LENGTH_SHORT).show();
         }
 
         @Override
         public void onValueDeselected() {
 
+        }
+    }
+
+    /**
+     * 线条改变动画监听
+     */
+    private class ChangeLinesAnimListener implements ChartAnimationListener {
+
+        private Viewport v;
+
+        public ChangeLinesAnimListener(Viewport v) {
+            this.v = v;
+        }
+
+        @Override
+        public void onAnimationStarted() {
+        }
+
+        @Override
+        public void onAnimationFinished() {
+            mLineChartView.setMaximumViewport(v);                   //设置最大视图
+            mLineChartView.setViewportAnimationListener(null);      //取消监听
         }
     }
 }
