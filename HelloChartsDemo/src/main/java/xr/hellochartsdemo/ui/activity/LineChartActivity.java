@@ -45,7 +45,7 @@ public class LineChartActivity extends BaseActivity {
     private boolean isFilled = false;                   //是否填充线下方区域
     private boolean isHasPointsLables = false;          //是否显示节点上的标签信息
     private boolean isCubic = false;                    //是否是立体的
-    private boolean isPointsHasSelected = false;        //设置节点点击后效果(消失/保持)
+    private boolean isPointsHasSelected = false;        //设置节点点击后效果(消失/显示标签)
     private boolean isPointsHaveDifferentColor;         //节点是否有不同的颜色
 
     /*=========== 其他相关 ==========*/
@@ -211,10 +211,10 @@ public class LineChartActivity extends BaseActivity {
                 showOrHidePointsLables();           //显示或者隐藏节点标签
                 return true;
             case R.id.menu_line_show_hide_axes:
-                showOrHidePointsAxes();             //显示或者隐藏坐标轴
+                showOrHideAxes();             //显示或者隐藏坐标轴
                 return true;
             case R.id.menu_line_show_hide_axes_name:
-                showOrHidePointsAxesName();         //显示或者隐藏坐标轴名称
+                showOrHideAxesName();         //显示或者隐藏坐标轴名称
                 return true;
             case R.id.menu_line_cubic:
                 changeCubicLines();                 //将折现转为曲线
@@ -317,7 +317,7 @@ public class LineChartActivity extends BaseActivity {
     /**
      * 显示或者隐藏坐标轴
      */
-    private void showOrHidePointsAxes() {
+    private void showOrHideAxes() {
         isHasAxes = !isHasAxes;                   //取反即可
         setLinesDatas();                          //重新设置
     }
@@ -325,7 +325,7 @@ public class LineChartActivity extends BaseActivity {
     /**
      * 显示或者隐藏坐标轴名称
      */
-    private void showOrHidePointsAxesName() {
+    private void showOrHideAxesName() {
         isHasAxesNames = !isHasAxesNames;         //取反即可
         setLinesDatas();                          //重新设置
     }

@@ -50,7 +50,7 @@ public class MainActivity extends BaseActivity {
                 startActivity(new Intent(this, LineChartActivity.class));
                 break;
             case R.id.bt_main_column:
-
+                startActivity(new Intent(this, ColumnChartActivity.class));
                 break;
             case R.id.bt_main_pie:
 

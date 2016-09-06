@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_column_reset"
+        android:title="重置"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_column_subcolumns"
+        android:title="子列"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/menu_column_negative_subcolumns"
+        android:title="反向子列"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/menu_column_stacked"
+        android:title="堆放效果"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/menu_column_negative_stacked"
+        android:title="反向堆放效果"
+        app:showAsAction="never"/>
+        <item
+            android:id="@+id/menu_column_show_hide_lables"
+            android:title="显示/隐藏节点标签"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/menu_column_show_hide_axes"
+            android:title="显示/隐藏坐标轴"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/menu_column_show_hide_axes_name"
+        android:title="显示/隐藏坐标轴名称"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_column_animate"
+        android:title="切换动画"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_column_point_select_mode"
+        android:title="点击列显示标签"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_column_touch_zoom"
+        android:title="缩放图表"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_column_touch_zoom_xy"
+        android:title="XY方向缩放"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_column_touch_zoom_x"
+        android:title="X方向缩放"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_column_touch_zoom_y"
+        android:title="Y方向缩放"
+        app:showAsAction="never" />
+
+</menu>

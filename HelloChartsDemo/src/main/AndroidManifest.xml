@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="xr.hellochartsdemo">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="xr.hellochartsdemo">
 
     <application
         android:allowBackup="true"
@@ -21,6 +22,9 @@
         <activity
             android:name=".ui.activity.LineChartActivity"
             android:label="Line Charts" />
+        <activity
+            android:name=".ui.activity.ColumnChartActivity"
+            android:label="Column Charts" />
     </application>
 
 </manifest>
