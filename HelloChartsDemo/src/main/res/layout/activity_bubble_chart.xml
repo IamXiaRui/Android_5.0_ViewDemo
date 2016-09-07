@@ -3,13 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.chart.LineChartActivity">
+    android:layout_margin="10dp"
+    tools:context="xr.hellochartsdemo.ui.activity.chart.BubbleChartActivity">
 
-    <lecho.lib.hellocharts.view.LineChartView
-        android:id="@+id/lvc_main"
-        android:layout_gravity="center"
-        android:layout_margin="10dp"
+    <lecho.lib.hellocharts.view.BubbleChartView
+        android:id="@+id/bcv_main"
         android:layout_width="match_parent"
-        android:layout_height="360dp" />
+        android:layout_height="360dp"
+        android:layout_gravity="center" />
 
 </LinearLayout>

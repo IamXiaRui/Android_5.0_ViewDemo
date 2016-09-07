@@ -20,7 +20,7 @@
         android:title="显示/隐藏节点"
         app:showAsAction="never" />
     <item
-        android:id="@+id/menu_line_show_hide_lables"
+        android:id="@+id/menu_line_show_hide_labels"
         android:title="显示/隐藏节点标签"
         app:showAsAction="never" />
     <item

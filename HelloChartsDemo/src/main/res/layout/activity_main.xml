@@ -4,50 +4,71 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.MainActivity">
+    android:orientation="vertical"
+    tools:context=".ui.activity.other.MainActivity">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="none">
+    <Button
+        android:id="@+id/bt_main_line"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="20dp"
+        android:text="Line Chart - 线性图表"
+        android:textAllCaps="false" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+    <Button
+        android:id="@+id/bt_main_column"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:text="Column Chart - 柱状图表"
+        android:textAllCaps="false" />
 
-            <Button
-                android:id="@+id/bt_main_line"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="10dp"
-                android:text="Line Chart - 线性图表"
-                android:textAllCaps="false" />
+    <Button
+        android:id="@+id/bt_main_pie"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:text="Pie Chart - 饼状图表"
+        android:textAllCaps="false" />
 
-            <Button
-                android:id="@+id/bt_main_column"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_margin="10dp"
-                android:text="Column Chart - 柱状图表"
-                android:textAllCaps="false" />
+    <Button
+        android:id="@+id/bt_main_preview_line"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:text="PreviewLine Chart - 预览线性图表"
+        android:textAllCaps="false" />
 
-            <Button
-                android:id="@+id/bt_main_pie"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_margin="10dp"
-                android:text="Pie Chart - 饼状图表"
-                android:textAllCaps="false" />
+    <Button
+        android:id="@+id/bt_main_preview_column"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:text="PreviewColumn Chart - 预览柱状图表"
+        android:textAllCaps="false" />
 
+    <Button
+        android:id="@+id/bt_main_combo_line_column"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:text="ComboLineColumn Chart - 线性柱状结合图"
+        android:textAllCaps="false" />
 
-        </LinearLayout>
-
-    </ScrollView>
-
+    <Button
+        android:id="@+id/bt_main_line_depend_on_column"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:text="Line DependOn Column - 线性依赖柱状图"
+        android:textAllCaps="false" />
 
 </LinearLayout>

@@ -1,4 +1,4 @@
-package xr.hellochartsdemo.ui.activity;
+package xr.hellochartsdemo.ui.activity.base;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,8 +8,8 @@ import android.widget.Toast;
 import xr.hellochartsdemo.interfaces.UIInterface;
 
 /**
- * Created by xiarui on 2016/8/11.
- * Activity 基类
+ * @author xiarui 2016/8/11
+ * @description Activity 基类
  */
 public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener, UIInterface {
 

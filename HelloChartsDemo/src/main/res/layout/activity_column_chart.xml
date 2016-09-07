@@ -4,7 +4,7 @@
     android:id="@+id/activity_column_chart"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="xr.hellochartsdemo.ui.activity.ColumnChartActivity">
+    tools:context=".ui.activity.chart.ColumnChartActivity">
 
     <lecho.lib.hellocharts.view.ColumnChartView
         android:id="@+id/ccv_main"

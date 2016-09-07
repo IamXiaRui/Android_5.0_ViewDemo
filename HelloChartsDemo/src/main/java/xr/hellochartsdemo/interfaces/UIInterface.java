@@ -3,7 +3,8 @@ package xr.hellochartsdemo.interfaces;
 import android.view.View;
 
 /**
- * UI接口
+ * @author xiarui 2016.09.07
+ * @description UI上一些常见的接口
  */
 public interface UIInterface {
 

@@ -3,13 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.chart.LineChartActivity">
+    tools:context=".ui.activity.chart.PieChartActivity">
 
-    <lecho.lib.hellocharts.view.LineChartView
-        android:id="@+id/lvc_main"
-        android:layout_gravity="center"
-        android:layout_margin="10dp"
+    <lecho.lib.hellocharts.view.PieChartView
+        android:id="@+id/pcv_main"
         android:layout_width="match_parent"
-        android:layout_height="360dp" />
+        android:layout_height="360dp"
+        android:layout_gravity="center" />
 
 </LinearLayout>

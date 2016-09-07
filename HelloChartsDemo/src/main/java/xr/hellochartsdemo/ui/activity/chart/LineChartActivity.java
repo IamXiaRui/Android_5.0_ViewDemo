@@ -1,4 +1,4 @@
-package xr.hellochartsdemo.ui.activity;
+package xr.hellochartsdemo.ui.activity.chart;
 
 import android.graphics.Color;
 import android.view.Menu;
@@ -21,10 +21,12 @@ import lecho.lib.hellocharts.model.Viewport;
 import lecho.lib.hellocharts.util.ChartUtils;
 import lecho.lib.hellocharts.view.LineChartView;
 import xr.hellochartsdemo.R;
+import xr.hellochartsdemo.ui.activity.base.BaseActivity;
 
 /**
- * @author xiarui 2016.09.06
- * @description 线性图表的使用 （折线图、曲线图）
+ * @author lecho
+ * @revision xiarui 2016.09.07
+ * @description 线性图 Line Chart 的使用 （折线图、曲线图）
  */
 public class LineChartActivity extends BaseActivity {
 
@@ -43,7 +45,7 @@ public class LineChartActivity extends BaseActivity {
     private boolean isHasLines = true;                  //是否显示折线/曲线
     private boolean isHasPoints = true;                 //是否显示线上的节点
     private boolean isFilled = false;                   //是否填充线下方区域
-    private boolean isHasPointsLables = false;          //是否显示节点上的标签信息
+    private boolean isHasPointsLabels = false;          //是否显示节点上的标签信息
     private boolean isCubic = false;                    //是否是立体的
     private boolean isPointsHasSelected = false;        //设置节点点击后效果(消失/显示标签)
     private boolean isPointsHaveDifferentColor;         //节点是否有不同的颜色
@@ -59,6 +61,8 @@ public class LineChartActivity extends BaseActivity {
 
     @Override
     public void initView() {
+        //添加ActionBar返回按钮
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mLineChartView = (LineChartView) findViewById(R.id.lvc_main);
         /**
          * 禁用视图重新计算 主要用于图表在变化时动态更改，不是重新计算
@@ -117,7 +121,7 @@ public class LineChartActivity extends BaseActivity {
             line.setHasPoints(isHasPoints);             //设置是否显示节点
             line.setCubic(isCubic);                     //设置线是否立体或其他效果
             line.setFilled(isFilled);                   //设置是否填充线下方区域
-            line.setHasLabels(isHasPointsLables);       //设置是否显示节点标签
+            line.setHasLabels(isHasPointsLabels);       //设置是否显示节点标签
             line.setHasLabelsOnlyForSelected(isPointsHasSelected);      //设置节点点击的效果
             //如果节点与线有不同颜色 则设置不同颜色
             if (isPointsHaveDifferentColor) {
@@ -207,8 +211,8 @@ public class LineChartActivity extends BaseActivity {
             case R.id.menu_line_show_hide_points:
                 showOrHidePoints();                 //显示或隐藏节点
                 return true;
-            case R.id.menu_line_show_hide_lables:
-                showOrHidePointsLables();           //显示或者隐藏节点标签
+            case R.id.menu_line_show_hide_labels:
+                showOrHidePointsLabels();           //显示或者隐藏节点标签
                 return true;
             case R.id.menu_line_show_hide_axes:
                 showOrHideAxes();             //显示或者隐藏坐标轴
@@ -267,7 +271,7 @@ public class LineChartActivity extends BaseActivity {
         isHasPoints = true;
         pointsShape = ValueShape.CIRCLE;
         isFilled = false;
-        isHasPointsLables = false;
+        isHasPointsLabels = false;
         isCubic = false;
         isPointsHasSelected = false;
         isPointsHaveDifferentColor = false;
@@ -309,8 +313,8 @@ public class LineChartActivity extends BaseActivity {
     /**
      * 显示或者隐藏节点标签
      */
-    private void showOrHidePointsLables() {
-        isHasPointsLables = !isHasPointsLables;   //取反即可
+    private void showOrHidePointsLabels() {
+        isHasPointsLabels = !isHasPointsLabels;   //取反即可
         setLinesDatas();                          //重新设置
     }
 
@@ -393,7 +397,7 @@ public class LineChartActivity extends BaseActivity {
     }
 
     /**
-     * 线条改变时的颜色
+     * 线条改变时的动画
      */
     private void changeLinesAnimate() {
         //增强for循环改变线条数据
@@ -413,7 +417,7 @@ public class LineChartActivity extends BaseActivity {
         isPointsHasSelected = !isPointsHasSelected;                     //取反即可
         mLineChartView.setValueSelectionEnabled(isPointsHasSelected);   //设置选中状态
         if (isPointsHasSelected) {
-            isHasPointsLables = false;                                  //如果点击才显示标签 则标签开始不可见
+            isHasPointsLabels = false;                                  //如果点击才显示标签 则标签开始不可见
         }
         setLinesDatas();                                                //重新设置
     }

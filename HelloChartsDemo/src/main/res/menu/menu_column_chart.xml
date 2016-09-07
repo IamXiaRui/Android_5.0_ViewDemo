@@ -9,29 +9,29 @@
     <item
         android:id="@+id/menu_column_subcolumns"
         android:title="子列"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
     <item
         android:id="@+id/menu_column_negative_subcolumns"
         android:title="反向子列"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
     <item
         android:id="@+id/menu_column_stacked"
         android:title="堆放效果"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
     <item
         android:id="@+id/menu_column_negative_stacked"
         android:title="反向堆放效果"
-        app:showAsAction="never"/>
-        <item
-            android:id="@+id/menu_column_show_hide_lables"
-            android:title="显示/隐藏节点标签"
-            app:showAsAction="never" />
-        <item
-            android:id="@+id/menu_column_show_hide_axes"
-            android:title="显示/隐藏坐标轴"
-            app:showAsAction="never" />
-        <item
-            android:id="@+id/menu_column_show_hide_axes_name"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_column_show_hide_labels"
+        android:title="显示/隐藏列标签"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_column_show_hide_axes"
+        android:title="显示/隐藏坐标轴"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_column_show_hide_axes_name"
         android:title="显示/隐藏坐标轴名称"
         app:showAsAction="never" />
     <item
@@ -39,7 +39,7 @@
         android:title="切换动画"
         app:showAsAction="never" />
     <item
-        android:id="@+id/menu_column_point_select_mode"
+        android:id="@+id/menu_column_column_select_mode"
         android:title="点击列显示标签"
         app:showAsAction="never" />
     <item

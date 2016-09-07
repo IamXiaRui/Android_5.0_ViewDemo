@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_pie_reset"
+        android:title="重置"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_pie_explode_implode"
+        android:title="块分解/紧靠"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_pie_center_circle"
+        android:title="空心圆环"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_pie_center_text_single"
+        android:title="环心单行文字"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_pie_center_text_double"
+        android:title="环心双行文字"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_pie_show_hide_labels_inside"
+        android:title="内部显示/隐藏标签"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_pie_show_hide_labels_outside"
+        android:title="外部显示/隐藏标签"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_pie_animate"
+        android:title="切换动画"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_pie_pies_select_mode"
+        android:title="点击显示标签"
+        app:showAsAction="never" />
+
+</menu>
