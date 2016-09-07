@@ -46,7 +46,6 @@ public class PieChartActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mPieChartView = (PieChartView) findViewById(R.id.pcv_main);
     }
 

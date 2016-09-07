@@ -4,7 +4,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/icon_launch"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
@@ -18,32 +18,26 @@
         </activity>
         <activity
             android:name=".ui.activity.other.AboutActivity"
-            android:label="关于"
-            android:parentActivityName=".ui.activity.other.MainActivity" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:label="关于" />
         <activity
             android:name=".ui.activity.chart.LineChartActivity"
-            android:label="Line Charts"
-            android:parentActivityName=".ui.activity.other.MainActivity" />
+            android:label="Line Charts" />
         <activity
             android:name=".ui.activity.chart.ColumnChartActivity"
-            android:label="Column Charts"
-            android:parentActivityName=".ui.activity.other.MainActivity" />
+            android:label="Column Charts" />
         <activity
             android:name=".ui.activity.chart.PieChartActivity"
-            android:label="Pie Chart"
-            android:parentActivityName=".ui.activity.other.MainActivity" />
+            android:label="Pie Chart" />
         <activity
             android:name=".ui.activity.chart.BubbleChartActivity"
-            android:label="Bubble Chart"
-            android:parentActivityName=".ui.activity.other.MainActivity" />
+            android:label="Bubble Chart" />
         <activity
             android:name=".ui.activity.chart.PreviewLineChartActivity"
-            android:label="PreviewLine Chart"
-            android:parentActivityName=".ui.activity.other.MainActivity" />
+            android:label="PreviewLine Chart" />
         <activity
             android:name=".ui.activity.chart.PreviewColumnChartActivity"
-            android:label="PreviewColumn Chart"
-            android:parentActivityName=".ui.activity.other.MainActivity" />
+            android:label="PreviewColumn Chart" />
     </application>
 
 </manifest>

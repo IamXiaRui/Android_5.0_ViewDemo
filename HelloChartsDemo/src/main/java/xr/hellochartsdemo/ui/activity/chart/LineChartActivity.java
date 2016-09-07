@@ -61,8 +61,6 @@ public class LineChartActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        //添加ActionBar返回按钮
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mLineChartView = (LineChartView) findViewById(R.id.lvc_main);
         /**
          * 禁用视图重新计算 主要用于图表在变化时动态更改，不是重新计算

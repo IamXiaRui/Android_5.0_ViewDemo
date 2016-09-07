@@ -54,7 +54,6 @@ public class ColumnChartActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mColumnCharView = (ColumnChartView) findViewById(R.id.ccv_main);
     }
 

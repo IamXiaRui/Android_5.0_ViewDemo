@@ -42,7 +42,6 @@ public class PreviewLineChartActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mLineChartView = (LineChartView) findViewById(R.id.lcv_pre_main);
         mPreLineChartView = (PreviewLineChartView) findViewById(R.id.plcv_pre_main);
     }

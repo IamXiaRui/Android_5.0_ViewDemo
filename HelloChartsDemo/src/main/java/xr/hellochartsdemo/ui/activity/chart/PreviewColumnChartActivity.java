@@ -42,7 +42,6 @@ public class PreviewColumnChartActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mColumnChartView = (ColumnChartView) findViewById(R.id.ccv_pre_main);
         mPreColumnChartView = (PreviewColumnChartView) findViewById(R.id.pccv_pre_main);
     }

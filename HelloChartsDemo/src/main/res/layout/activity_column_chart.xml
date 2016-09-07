@@ -9,6 +9,7 @@
     <lecho.lib.hellocharts.view.ColumnChartView
         android:id="@+id/ccv_main"
         android:layout_width="match_parent"
+        android:transitionName="column"
         android:layout_height="360dp"
         android:layout_gravity="center"
         android:layout_margin="10dp" />

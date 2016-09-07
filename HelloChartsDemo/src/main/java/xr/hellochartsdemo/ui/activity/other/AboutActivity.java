@@ -1,20 +1,42 @@
 package xr.hellochartsdemo.ui.activity.other;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.view.WindowManager;
 
 import xr.hellochartsdemo.R;
+import xr.hellochartsdemo.ui.activity.base.BaseActivity;
 
 /**
  * @author xiarui 2016.09.07
  * @description 关于页面
  */
-public class AboutActivity extends AppCompatActivity {
+public class AboutActivity extends BaseActivity {
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    public int getLayoutId() {
+        return R.layout.activity_about;
+    }
+
+    @Override
+    public void initView() {
+        //透明状态栏 导航栏
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+
+    }
+
+    @Override
+    public void initData() {
+    }
+
+    @Override
+    public void initListener() {
+
+    }
+
+    @Override
+    public void processClick(View v) {
+
     }
 }
