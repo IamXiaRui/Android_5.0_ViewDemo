@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_combo_reset"
+        android:title="重置"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_combo_add_line"
+        android:title="增加线条"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_combo_show_hide_line"
+        android:title="显示/隐藏线条"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_combo_show_hide_point"
+        android:title="显示/隐藏节点"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_combo_cubic"
+        android:title="直线/曲线"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_combo_show_hide_labels"
+        android:title="显示/隐藏列标签"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_combo_show_hide_axes"
+        android:title="显示/隐藏坐标轴"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_combo_show_hide_axes_name"
+        android:title="显示/隐藏坐标轴名称"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_combo_animate"
+        android:title="切换动画"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_combo_touch_zoom"
+        android:title="缩放图表"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_combo_touch_zoom_xy"
+        android:title="XY方向缩放"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_combo_touch_zoom_x"
+        android:title="X方向缩放"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_combo_touch_zoom_y"
+        android:title="Y方向缩放"
+        app:showAsAction="never" />
+</menu>

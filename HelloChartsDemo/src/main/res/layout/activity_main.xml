@@ -1,29 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:scrollbars="none">
+    android:layout_margin="10dp"
+    android:orientation="vertical"
+    tools:context=".ui.activity.other.MainActivity">
 
-    <LinearLayout
+    <android.support.v7.widget.CardView
+        android:id="@+id/cv_main_basic"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:transitionName="basic"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="6dp">
 
-        <include layout="@layout/include_line_chart" />
+        <ImageView
+            android:id="@+id/iv_main_basic"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/heng_3" />
 
-        <include layout="@layout/include_column_chart" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="基础控件"
+            android:textColor="#ffffff"
+            android:textSize="28sp" />
 
-        <include layout="@layout/include_pie_chart" />
+    </android.support.v7.widget.CardView>
 
-        <include layout="@layout/include_bubble_chart" />
+    <android.support.v7.widget.CardView
+        android:id="@+id/cv_main_high"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:transitionName="high"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="6dp">
 
-        <include layout="@layout/include_pre_line_chart" />
+        <ImageView
+            android:id="@+id/iv_main_high"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/heng_1" />
 
-        <include layout="@layout/include_pre_column_chart" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="高级组合"
+            android:textColor="#ffffff"
+            android:textSize="28sp" />
 
-        <include layout="@layout/include_pre_column_chart" />
+    </android.support.v7.widget.CardView>
 
-        <include layout="@layout/include_pre_column_chart" />
+    <android.support.v7.widget.CardView
+        android:id="@+id/cv_main_use"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:transitionName="use"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="6dp">
 
-    </LinearLayout>
-</ScrollView>
+        <ImageView
+            android:id="@+id/iv_main_use"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/heng_4" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="应用场景"
+            android:textColor="#ffffff"
+            android:textSize="28sp" />
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

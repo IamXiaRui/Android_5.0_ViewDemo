@@ -17,9 +17,17 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".ui.activity.other.BasicUseActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".ui.activity.other.HighGroupActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".ui.activity.other.UseSceneActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
             android:name=".ui.activity.other.AboutActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:label="关于" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".ui.activity.chart.LineChartActivity"
             android:label="Line Charts" />
@@ -38,6 +46,12 @@
         <activity
             android:name=".ui.activity.chart.PreviewColumnChartActivity"
             android:label="PreviewColumn Chart" />
+        <activity
+            android:name=".ui.activity.chart.ComboLineColumnChartActivity"
+            android:label="ComboLineColumn Chart" />
+        <activity
+            android:name=".ui.activity.chart.LineDependColumnActivity"
+            android:label="LineDependColumn Chart" />
     </application>
 
 </manifest>

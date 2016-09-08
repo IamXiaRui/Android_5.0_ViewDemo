@@ -1,0 +1,55 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.hellochatsdemo.ui.activity.LineChartActivity">
+
+    <item
+        android:id="@+id/menu_bubble_reset"
+        android:title="重置"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_bubble_shape_circles"
+        android:title="圆形气泡"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_bubble_shape_square"
+        android:title="方形气泡"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_bubble_show_hide_labels"
+        android:title="显示/隐藏气泡标签"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_bubble_show_hide_axes"
+        android:title="显示/隐藏坐标轴"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_bubble_show_hide_axes_name"
+        android:title="显示/隐藏坐标轴名称"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_bubble_animate"
+        android:title="切换动画"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_bubble_point_select_mode"
+        android:title="点击气泡显示标签"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_bubble_touch_zoom"
+        android:title="缩放图表"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_bubble_touch_zoom_xy"
+        android:title="XY方向缩放"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_bubble_touch_zoom_x"
+        android:title="X方向缩放"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_bubble_touch_zoom_y"
+        android:title="Y方向缩放"
+        app:showAsAction="never" />
+
+</menu>

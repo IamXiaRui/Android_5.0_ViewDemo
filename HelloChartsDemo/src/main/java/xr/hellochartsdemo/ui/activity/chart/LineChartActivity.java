@@ -120,7 +120,8 @@ public class LineChartActivity extends BaseActivity {
             line.setCubic(isCubic);                     //设置线是否立体或其他效果
             line.setFilled(isFilled);                   //设置是否填充线下方区域
             line.setHasLabels(isHasPointsLabels);       //设置是否显示节点标签
-            line.setHasLabelsOnlyForSelected(isPointsHasSelected);      //设置节点点击的效果
+            //设置节点点击的效果
+            line.setHasLabelsOnlyForSelected(isPointsHasSelected);
             //如果节点与线有不同颜色 则设置不同颜色
             if (isPointsHaveDifferentColor) {
                 line.setPointColor(ChartUtils.COLORS[(i + 1) % ChartUtils.COLORS.length]);
@@ -128,8 +129,8 @@ public class LineChartActivity extends BaseActivity {
             lines.add(line);
         }
 
-        mLineData = new LineChartData(lines);               //将所有的线加入线数据类中
-        mLineData.setBaseValue(Float.NEGATIVE_INFINITY);    //设置基准数(大概是数据范围)
+        mLineData = new LineChartData(lines);                      //将所有的线加入线数据类中
+        mLineData.setBaseValue(Float.NEGATIVE_INFINITY);           //设置基准数(大概是数据范围)
 
         /* 其他的一些属性方法 可自行查看效果
          * mLineData.setValueLabelBackgroundAuto(true);            //设置数据背景是否跟随节点颜色
@@ -340,7 +341,7 @@ public class LineChartActivity extends BaseActivity {
         setLinesDatas();            //重新设置
         if (isCubic) {
             final Viewport v = new Viewport(mLineChartView.getMaximumViewport());
-            v.bottom = -5;          //这里是防止改变后的线超过范围做的一个边界保护
+            v.bottom = -5;          //防止曲线超过范围做边界保护
             v.top = 105;            //根据具体需求设置 建议设置一下
             mLineChartView.setMaximumViewport(v);                   //设置最大视图
             mLineChartView.setCurrentViewportWithAnimation(v);      //有动画的增加当前视图
