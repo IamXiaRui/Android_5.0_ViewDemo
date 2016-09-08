@@ -26,25 +26,13 @@
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/tv_about_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="HelloCharts"
+                android:text="必读项目说明"
                 android:textColor="#ffffff"
-                android:textSize="42sp"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="36dp"
+                android:textSize="28sp"
+                android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true" />
-
-            <TextView
-                android:layout_below="@id/tv_about_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_centerHorizontal="true"
-                android:text="项目说明"
-                android:textColor="#ffffff"
-                android:textSize="24sp" />
 
         </RelativeLayout>
 
@@ -66,7 +54,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="- 所有案例均在源示例代码基础上改写"
+                android:text="- 基础/高级案例均在源示例代码上改写"
                 android:textColor="#ffffff"
                 android:textSize="16sp" />
 
@@ -74,7 +62,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="- 重构大部分源示例代码"
+                android:text="- 重构80%源示例代码，更简洁更清晰"
                 android:textColor="#ffffff"
                 android:textSize="16sp" />
 
@@ -106,6 +94,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:text="- 暂时删减部分不常用的控件/功能"
+                android:textColor="#ffffff"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="- 项目持续维护，如添加场景/功能/动画等"
+                android:textColor="#ffffff"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:text="- 开源库支持：hellocharts-android"
                 android:textColor="#ffffff"
                 android:textSize="16sp" />
@@ -130,22 +134,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="- 本项目已在 Github 开源"
-                android:textColor="#ffffff"
-                android:textSize="16sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="- 如有疑问或不同意见，欢迎交流"
-                android:textColor="#ffffff"
-                android:textSize="16sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:text="- 个人博客：www.iamxiarui.com"
                 android:textColor="#ffffff"
                 android:textSize="16sp" />
@@ -154,7 +142,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="- 简书：iamxiarui"
+                android:text="- 如有疑问或不同意见，欢迎交流"
                 android:textColor="#ffffff"
                 android:textSize="16sp" />
 

@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="基础控件"
+            android:text="基础图表"
             android:textColor="#ffffff"
             android:textSize="28sp" />
 

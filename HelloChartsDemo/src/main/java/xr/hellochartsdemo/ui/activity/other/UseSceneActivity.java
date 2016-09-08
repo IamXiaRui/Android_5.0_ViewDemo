@@ -1,8 +1,10 @@
 package xr.hellochartsdemo.ui.activity.other;
 
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -17,6 +19,10 @@ public class UseSceneActivity extends BaseActivity {
 
     private ImageView titleImage;
 
+    private CardView asqCard;
+    private CardView countCard;
+    private CardView moreCard;
+
     @Override
     public int getLayoutId() {
         return R.layout.activity_use_scene;
@@ -30,6 +36,9 @@ public class UseSceneActivity extends BaseActivity {
 
         titleImage = (ImageView) findViewById(R.id.iv_use_title);
 
+        asqCard = (CardView) findViewById(R.id.cv_asq);
+        countCard = (CardView) findViewById(R.id.cv_flow_count);
+        moreCard = (CardView) findViewById(R.id.cv_wait_add);
     }
 
     @Override
@@ -39,11 +48,13 @@ public class UseSceneActivity extends BaseActivity {
 
     @Override
     public void initListener() {
-
+        asqCard.setOnClickListener(this);
+        countCard.setOnClickListener(this);
+        moreCard.setOnClickListener(this);
     }
 
     @Override
     public void processClick(View v) {
-
+        Toast.makeText(this, "暂时没有添加，不断维护中", Toast.LENGTH_SHORT).show();
     }
 }
