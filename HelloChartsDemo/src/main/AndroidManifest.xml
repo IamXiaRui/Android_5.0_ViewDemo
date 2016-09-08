@@ -52,6 +52,9 @@
         <activity
             android:name=".ui.activity.chart.LineDependColumnActivity"
             android:label="LineDependColumn Chart" />
+        <activity
+            android:name=".ui.activity.scene.QueRepActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>
 
 </manifest>

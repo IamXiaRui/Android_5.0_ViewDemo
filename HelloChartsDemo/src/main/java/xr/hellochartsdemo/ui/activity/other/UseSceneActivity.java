@@ -1,5 +1,6 @@
 package xr.hellochartsdemo.ui.activity.other;
 
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.view.View;
 import android.view.WindowManager;
@@ -10,6 +11,7 @@ import com.bumptech.glide.Glide;
 
 import xr.hellochartsdemo.R;
 import xr.hellochartsdemo.ui.activity.base.BaseActivity;
+import xr.hellochartsdemo.ui.activity.scene.QueRepActivity;
 
 /**
  * @author xiarui 2016.09.08
@@ -55,6 +57,13 @@ public class UseSceneActivity extends BaseActivity {
 
     @Override
     public void processClick(View v) {
-        Toast.makeText(this, "暂时没有添加，不断维护中", Toast.LENGTH_SHORT).show();
+        switch (v.getId()) {
+            case R.id.cv_asq:
+                startActivity(new Intent(this, QueRepActivity.class));
+                break;
+            default:
+                Toast.makeText(this, "暂未添加此功能", Toast.LENGTH_SHORT).show();
+                break;
+        }
     }
 }

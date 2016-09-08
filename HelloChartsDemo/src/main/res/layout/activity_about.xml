@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:background="@null"
         android:scaleType="centerCrop"
-        android:src="@mipmap/pic_main" />
+        android:src="@mipmap/shu_3" />
 
     <LinearLayout
         android:layout_width="match_parent"
