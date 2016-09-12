@@ -61,11 +61,4 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     protected void baseToast(int msgId) {
         Toast.makeText(this, msgId, Toast.LENGTH_SHORT).show();
     }
-
-
-    /*@Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        finish();
-    }*/
 }

@@ -1,7 +1,9 @@
 package xr.hellochartsdemo.ui.activity.other;
 
+import android.annotation.TargetApi;
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.os.Build;
 import android.support.v7.widget.CardView;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -57,7 +59,9 @@ public class MainActivity extends BaseActivity {
         useCard.setOnClickListener(this);
     }
 
+
     @Override
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void processClick(View v) {
         switch (v.getId()) {
             case R.id.cv_main_basic:

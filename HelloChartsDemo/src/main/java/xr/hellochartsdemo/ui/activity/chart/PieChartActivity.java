@@ -104,7 +104,6 @@ public class PieChartActivity extends BaseActivity {
             mPieChartData.setCenterText2FontSize(ChartUtils.px2sp(getResources().getDisplayMetrics().scaledDensity,
                     (int) getResources().getDimension(R.dimen.pie_chart_double_text_size)));
         }
-
         mPieChartView.setPieChartData(mPieChartData);         //设置控件
     }
 

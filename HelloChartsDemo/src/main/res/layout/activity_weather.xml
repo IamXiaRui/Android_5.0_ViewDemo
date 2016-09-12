@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.scene.QueRepActivity">
+
+    <xr.hellochartsdemo.ui.view.BlurredView
+        android:id="@+id/bv_weather"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:disableBlurred="false"
+        app:src="@mipmap/shu_5" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_weather"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="24dp"
+        android:overScrollMode="never" />
+
+</FrameLayout>

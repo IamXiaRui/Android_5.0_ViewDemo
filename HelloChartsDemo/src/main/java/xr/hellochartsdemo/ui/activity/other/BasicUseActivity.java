@@ -1,7 +1,9 @@
 package xr.hellochartsdemo.ui.activity.other;
 
+import android.annotation.TargetApi;
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.os.Build;
 import android.support.v7.widget.CardView;
 import android.view.View;
 import android.view.WindowManager;
@@ -77,6 +79,7 @@ public class BasicUseActivity extends BaseActivity {
     }
 
     @Override
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void processClick(View v) {
         switch (v.getId()) {
             case R.id.cv_line_chart:

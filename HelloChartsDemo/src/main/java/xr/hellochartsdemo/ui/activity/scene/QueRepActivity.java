@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.WindowManager;
 
 import xr.hellochartsdemo.R;
-import xr.hellochartsdemo.adapter.RecyclerViewAdapter;
+import xr.hellochartsdemo.adapter.WeatherRecyclerAdapter;
 import xr.hellochartsdemo.ui.activity.base.BaseActivity;
 import xr.hellochartsdemo.ui.view.BlurredView;
 
@@ -43,7 +43,7 @@ public class QueRepActivity extends BaseActivity {
     @Override
     public void initData() {
         queRepRView.setLayoutManager(new LinearLayoutManager(this));
-        queRepRView.setAdapter(new RecyclerViewAdapter(this));
+        queRepRView.setAdapter(new WeatherRecyclerAdapter(this));
     }
 
     @Override

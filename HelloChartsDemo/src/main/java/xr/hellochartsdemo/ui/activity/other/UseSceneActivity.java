@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide;
 
 import xr.hellochartsdemo.R;
 import xr.hellochartsdemo.ui.activity.base.BaseActivity;
-import xr.hellochartsdemo.ui.activity.scene.QueRepActivity;
+import xr.hellochartsdemo.ui.activity.scene.WeatherActivity;
 
 /**
  * @author xiarui 2016.09.08
@@ -21,6 +21,7 @@ public class UseSceneActivity extends BaseActivity {
 
     private ImageView titleImage;
 
+    private CardView weatherCard;
     private CardView asqCard;
     private CardView countCard;
     private CardView moreCard;
@@ -38,6 +39,7 @@ public class UseSceneActivity extends BaseActivity {
 
         titleImage = (ImageView) findViewById(R.id.iv_use_title);
 
+        weatherCard = (CardView)findViewById(R.id.cv_weather_info);
         asqCard = (CardView) findViewById(R.id.cv_asq);
         countCard = (CardView) findViewById(R.id.cv_flow_count);
         moreCard = (CardView) findViewById(R.id.cv_wait_add);
@@ -50,6 +52,7 @@ public class UseSceneActivity extends BaseActivity {
 
     @Override
     public void initListener() {
+        weatherCard.setOnClickListener(this);
         asqCard.setOnClickListener(this);
         countCard.setOnClickListener(this);
         moreCard.setOnClickListener(this);
@@ -58,8 +61,8 @@ public class UseSceneActivity extends BaseActivity {
     @Override
     public void processClick(View v) {
         switch (v.getId()) {
-            case R.id.cv_asq:
-                startActivity(new Intent(this, QueRepActivity.class));
+            case R.id.cv_weather_info:
+                startActivity(new Intent(this, WeatherActivity.class));
                 break;
             default:
                 Toast.makeText(this, "暂未添加此功能", Toast.LENGTH_SHORT).show();

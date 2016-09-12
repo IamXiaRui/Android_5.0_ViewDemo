@@ -7,4 +7,10 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
     </style>
 
+    <style name="NoAction" parent="Theme.AppCompat.Light.NoActionBar" />
+
+    <style name="SplashTheme" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/style_splash</item>
+    </style>
+
 </resources>

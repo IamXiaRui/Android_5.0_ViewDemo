@@ -12,7 +12,6 @@ import xr.hellochartsdemo.ui.activity.base.BaseActivity;
  */
 public class AboutActivity extends BaseActivity {
 
-
     @Override
     public int getLayoutId() {
         return R.layout.activity_about;

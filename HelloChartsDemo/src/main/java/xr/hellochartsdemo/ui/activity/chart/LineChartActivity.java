@@ -34,7 +34,7 @@ public class LineChartActivity extends BaseActivity {
     private LineChartView mLineChartView;               //线性图表控件
 
     /*=========== 数据相关 ==========*/
-    private LineChartData mLineData;                    //图标数据
+    private LineChartData mLineData;                    //图表数据
     private int numberOfLines = 1;                      //图上折线/曲线的显示条数
     private int maxNumberOfLines = 4;                   //图上折线/曲线的最多条数
     private int numberOfPoints = 12;                    //图上的节点数
@@ -114,7 +114,7 @@ public class LineChartActivity extends BaseActivity {
             /*========== 设置线的一些属性 ==========*/
             Line line = new Line(values);               //根据值来创建一条线
             line.setColor(ChartUtils.COLORS[i]);        //设置线的颜色
-            line.setShape(pointsShape);                 //设置线的形状
+            line.setShape(pointsShape);                 //设置点的形状
             line.setHasLines(isHasLines);               //设置是否显示线
             line.setHasPoints(isHasPoints);             //设置是否显示节点
             line.setCubic(isCubic);                     //设置线是否立体或其他效果
@@ -131,7 +131,6 @@ public class LineChartActivity extends BaseActivity {
 
         mLineData = new LineChartData(lines);                      //将所有的线加入线数据类中
         mLineData.setBaseValue(Float.NEGATIVE_INFINITY);           //设置基准数(大概是数据范围)
-
         /* 其他的一些属性方法 可自行查看效果
          * mLineData.setValueLabelBackgroundAuto(true);            //设置数据背景是否跟随节点颜色
          * mLineData.setValueLabelBackgroundColor(Color.BLUE);     //设置数据背景颜色
@@ -160,7 +159,7 @@ public class LineChartActivity extends BaseActivity {
             mLineData.setAxisYLeft(null);
         }
 
-        mLineChartView.setLineChartData(mLineData);    //设置图标控件
+        mLineChartView.setLineChartData(mLineData);    //设置图表控件
     }
 
     /**
