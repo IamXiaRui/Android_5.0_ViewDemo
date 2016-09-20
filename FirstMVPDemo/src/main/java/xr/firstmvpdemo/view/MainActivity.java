@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements IPersonView, View
     private Toast mToast;
     private String inputName;
     private String inputPwd;
-    private PersonPresenter personPersenter;
+    private PersonPresenter personPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +56,8 @@ public class MainActivity extends AppCompatActivity implements IPersonView, View
      * 初始化Data
      */
     private void initData() {
-        personPersenter = new PersonPresenter(this);
+        //需要持有一个 Presenter 的实例
+        personPresenter = new PersonPresenter(this);
     }
 
     @Override
@@ -64,12 +65,14 @@ public class MainActivity extends AppCompatActivity implements IPersonView, View
         switch (v.getId()) {
             case R.id.bt_main_register:
                 if (checkInputInfo()) {
-                    personPersenter.registerPerson(inputName, inputPwd);
+                    //通过Presenter对View和Model进行沟通
+                    personPresenter.registerPerson(inputName, inputPwd);
                 }
                 break;
             case R.id.bt_main_login:
                 if (checkInputInfo()) {
-                    personPersenter.loginPerson(inputName, inputPwd);
+                    //通过Presenter对View和Model进行沟通
+                    personPresenter.loginPerson(inputName, inputPwd);
                 }
                 break;
         }
@@ -101,7 +104,6 @@ public class MainActivity extends AppCompatActivity implements IPersonView, View
     @Override
     public void onRegisterSucceed() {
         showToast("注册成功");
-        loginButton.setText("注册成功");
     }
 
     @Override
