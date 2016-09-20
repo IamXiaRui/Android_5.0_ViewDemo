@@ -21,28 +21,32 @@ public class PersonPresenter {
 
     /**
      * 注册用户
+     *
      * @param name 用户名
-     * @param pwd 密码
+     * @param pwd  密码
      */
     public void registerPerson(String name, String pwd) {
-       boolean isRegister = mPersonModel.onRegister(name, pwd);
-        if(isRegister){
+        boolean isRegister = mPersonModel.onRegister(name, pwd);
+        //根据注册结果 调用不同的方法
+        if (isRegister) {
             mPersonView.onRegisterSucceed();
-        }else{
+        } else {
             mPersonView.onRegisterFaild();
         }
     }
 
     /**
      * 用户登陆
+     *
      * @param name 用户名
-     * @param pwd 密码
+     * @param pwd  密码
      */
     public void loginPerson(String name, String pwd) {
         boolean isLogin = mPersonModel.onLogin(name, pwd);
+        //根据登录结果 调用不同的方法
         if (isLogin) {
             mPersonView.onLoginSucceed();
-        }else{
+        } else {
             mPersonView.onLoginFaild();
         }
     }

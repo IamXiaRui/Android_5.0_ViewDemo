@@ -4,8 +4,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
+
+import com.rengwuxian.materialedittext.MaterialEditText;
 
 import xr.firstmvpdemo.R;
 import xr.firstmvpdemo.presenter.PersonPresenter;
@@ -18,8 +19,8 @@ import xr.firstmvpdemo.presenter.PersonPresenter;
 public class MainActivity extends AppCompatActivity implements IPersonView, View.OnClickListener {
 
     /*===== 控件相关 =====*/
-    private EditText nameEText;
-    private EditText pwdEText;
+    private MaterialEditText nameEText;
+    private MaterialEditText pwdEText;
     private Button registerButton;
     private Button loginButton;
 
@@ -42,8 +43,8 @@ public class MainActivity extends AppCompatActivity implements IPersonView, View
      * 初始化View
      */
     private void initView() {
-        nameEText = (EditText) findViewById(R.id.met_main_name);
-        pwdEText = (EditText) findViewById(R.id.met_main_pwd);
+        nameEText = (MaterialEditText) findViewById(R.id.met_main_name);
+        pwdEText = (MaterialEditText) findViewById(R.id.met_main_pwd);
         registerButton = (Button) findViewById(R.id.bt_main_register);
         loginButton = (Button) findViewById(R.id.bt_main_login);
 
