@@ -2,6 +2,8 @@ package xr.loadermvpdemo.view;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.app.LoaderManager;
+import android.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -12,7 +14,9 @@ import java.util.ArrayList;
 
 import xr.loadermvpdemo.R;
 import xr.loadermvpdemo.bean.PersonBean;
+import xr.loadermvpdemo.loader.PresenterLoader;
 import xr.loadermvpdemo.presenter.PersonPresenter;
+import xr.loadermvpdemo.presenter.PresenterFactory;
 import xr.loadermvpdemo.ui.FunSwitchView;
 
 /**
@@ -20,9 +24,9 @@ import xr.loadermvpdemo.ui.FunSwitchView;
  * @description 用 Loader 绑定 Presenter 的生命周期
  * @remark Activity 为 View 层的实现类 需要实现接口 并持有 Presenter 的实例
  */
-public class MainActivity extends AppCompatActivity implements IPersonView, View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements IPersonView, LoaderManager.LoaderCallbacks<PersonPresenter>, View.OnClickListener {
 
-    private PersonPresenter mPersonPresenter;
+    /*===== 控件相关 =====*/
     private TextView tvMainName;
     private TextView tvMainAge;
     private TextView tvMainPhone;
@@ -35,6 +39,11 @@ public class MainActivity extends AppCompatActivity implements IPersonView, View
     private Button btMainLoad;
     private Button btMainGoto;
 
+    /*===== 控制相关 =====*/
+    private int i = 0;
+    private Toast mToast;
+    private PersonPresenter mPersonPresenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +54,6 @@ public class MainActivity extends AppCompatActivity implements IPersonView, View
         initListener();
 
         initData();
-
     }
 
     private void initView() {
@@ -63,14 +71,14 @@ public class MainActivity extends AppCompatActivity implements IPersonView, View
         btMainGoto = (Button) findViewById(R.id.bt_main_goto);
     }
 
-
     private void initListener() {
         btMainLoad.setOnClickListener(this);
         btMainGoto.setOnClickListener(this);
     }
 
     private void initData() {
-        mPersonPresenter = new PersonPresenter(this);
+        //得到一个Loader管理者，并创建一个Loader
+        getLoaderManager().initLoader(0, null, this);
     }
 
     public void onClick(View view) {
@@ -92,6 +100,29 @@ public class MainActivity extends AppCompatActivity implements IPersonView, View
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        mPersonPresenter.onViewAttached(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mPersonPresenter.onViewDetached();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mPersonPresenter.onDestroyed();
+    }
+
+    /**
+     * View 接口方法 更新UI
+     *
+     * @param personList 用户集合
+     */
+    @Override
     public void updateUI(ArrayList<PersonBean> personList) {
         PersonBean personBean = personList.get(0);
         tvMainName.setText("姓名：" + personBean.getName());
@@ -102,6 +133,40 @@ public class MainActivity extends AppCompatActivity implements IPersonView, View
         tvMainWork.setText("工作：" + personBean.getWork());
         tvMainPay.setText("月薪：" + personBean.getPay());
         tvMainMotto.setText("格言：" + personBean.getMotto());
-        Toast.makeText(this, "加载成功", Toast.LENGTH_SHORT).show();
+        showToast("第 " + i + " 次加载");
+        i++;
+    }
+
+    /*========== Loader 的回调方法 ==========*/
+    @Override
+    public Loader<PersonPresenter> onCreateLoader(int id, Bundle args) {
+        //创建
+        return new PresenterLoader<>(this, new PresenterFactory(this));
+    }
+
+    @Override
+    public void onLoadFinished(Loader<PersonPresenter> loader, PersonPresenter presenter) {
+        //完成加载
+        this.mPersonPresenter = presenter;
+    }
+
+    @Override
+    public void onLoaderReset(Loader<PersonPresenter> loader) {
+        //销毁
+        this.mPersonPresenter = null;
+    }
+
+    /**
+     * 显示Toast
+     *
+     * @param str Toast内容
+     */
+    private void showToast(String str) {
+        if (mToast == null) {
+            mToast = Toast.makeText(MainActivity.this, str, Toast.LENGTH_SHORT);
+        } else {
+            mToast.setText(str);
+        }
+        mToast.show();
     }
 }
