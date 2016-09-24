@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp"
+    android:orientation="vertical"
+    tools:context="xr.loadermvpdemo.view.MainActivity">
+
+    <TextView
+        android:id="@+id/tv_main_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:text="姓名："
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/tv_main_age"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="年龄："
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/tv_main_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="手机："
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/tv_main_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="邮箱："
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/tv_main_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="地址："
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/tv_main_work"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="工作："
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/tv_main_pay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="月薪："
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/tv_main_motto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="格言："
+        android:textColor="#000000" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="16dp"
+        android:background="#cccccc" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="跳转是否 finish："
+            android:textColor="#000000" />
+
+        <xr.loadermvpdemo.ui.FunSwitchView
+            android:id="@+id/fsv_main_finish"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/bt_main_load"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/shape_button_white"
+        android:text="加载数据"
+        android:textColor="#63B8FF" />
+
+    <Button
+        android:id="@+id/bt_main_goto"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/shape_button_blue"
+        android:text="点击跳转"
+        android:textColor="#FFFFFF" />
+
+</LinearLayout>
