@@ -10,7 +10,6 @@ import xr.loadermvpdemo.bean.PersonBean;
  */
 
 public interface IPersonView {
-
+    //更新UI
     void updateUI(ArrayList<PersonBean> personList);
-
 }

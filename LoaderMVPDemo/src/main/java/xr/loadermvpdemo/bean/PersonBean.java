@@ -2,7 +2,7 @@ package xr.loadermvpdemo.bean;
 
 /**
  * @author xiarui
- * @Description: PersonBean类 与 JSON 对应
+ * @description PersonBean类
  */
 
 public class PersonBean {

@@ -15,6 +15,17 @@ public class PersonModel implements IPersonModel {
     //存一下Person的信息
     private ArrayList<PersonBean> personList = new ArrayList<>();
 
+    /**
+     * 加载Person信息
+     *
+     * @return 返回信息集合
+     */
+    @Override
+    public ArrayList<PersonBean> loadPersonInfo() {
+        personList.add(initPerson());
+        return personList;
+    }
+
     private PersonBean initPerson() {
         PersonBean personBean = new PersonBean();
         personBean.setName("张三");
@@ -26,16 +37,5 @@ public class PersonModel implements IPersonModel {
         personBean.setPay("20K");
         personBean.setMotto("先赚一个亿");
         return personBean;
-    }
-
-    /**
-     * 加载Person信息
-     *
-     * @return 返回信息集合
-     */
-    @Override
-    public ArrayList<PersonBean> loadPersonInfo() {
-        personList.add(initPerson());
-        return personList;
     }
 }

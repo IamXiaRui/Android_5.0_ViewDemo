@@ -6,7 +6,7 @@ import xr.loadermvpdemo.bean.PersonBean;
 
 /**
  * @author xiarui 16/09/24
- * @Description: model 接口类
+ * @description model 接口类
  * @remark 此接口类纯属演示用 没有任何实际意义
  */
 

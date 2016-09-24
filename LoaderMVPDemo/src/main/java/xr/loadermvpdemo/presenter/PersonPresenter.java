@@ -19,9 +19,9 @@ public class PersonPresenter implements BasePresenter {
 
     private IPersonModel mPersonModel;  //Model接口
     private IPersonView mPersonView;    //View接口
+
     private Handler mHandler = new Handler();   //模拟耗时用的 没实质性作用
-    private ArrayList<PersonBean> personList;
-    private boolean isLoad = true;
+    private boolean isLoad = true;              //循环加载标志
 
     public PersonPresenter(IPersonView mPersonView) {
         mPersonModel = new PersonModel();
@@ -30,7 +30,7 @@ public class PersonPresenter implements BasePresenter {
 
     public void updateUIByLocal() {
         //Model层处理
-        personList = mPersonModel.loadPersonInfo();
+        final ArrayList<PersonBean> personList = mPersonModel.loadPersonInfo();
         new Thread(new Runnable() {
             @Override
             public void run() {
