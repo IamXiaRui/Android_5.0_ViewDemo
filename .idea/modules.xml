@@ -12,6 +12,7 @@
       <module fileurl="file://$PROJECT_DIR$/DragLayoutDemo/DragLayoutDemo.iml" filepath="$PROJECT_DIR$/DragLayoutDemo/DragLayoutDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/FirstMVPDemo/FirstMVPDemo.iml" filepath="$PROJECT_DIR$/FirstMVPDemo/FirstMVPDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/FirstRxJavaDemo/FirstRxJavaDemo.iml" filepath="$PROJECT_DIR$/FirstRxJavaDemo/FirstRxJavaDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FloatBubbleView/FloatBubbleView.iml" filepath="$PROJECT_DIR$/FloatBubbleView/FloatBubbleView.iml" />
       <module fileurl="file://$PROJECT_DIR$/GsonArrayDemo/GsonArrayDemo.iml" filepath="$PROJECT_DIR$/GsonArrayDemo/GsonArrayDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/HelloChartsDemo/HelloChartsDemo.iml" filepath="$PROJECT_DIR$/HelloChartsDemo/HelloChartsDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/LoaderMVPDemo/LoaderMVPDemo.iml" filepath="$PROJECT_DIR$/LoaderMVPDemo/LoaderMVPDemo.iml" />
