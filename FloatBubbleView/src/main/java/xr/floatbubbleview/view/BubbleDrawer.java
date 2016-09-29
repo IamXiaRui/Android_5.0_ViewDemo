@@ -57,17 +57,17 @@ public class BubbleDrawer {
     private void initDefaultBubble(int width) {
         if (mBubbles.size() == 0) {
             mBubbles.add(new CircleBubble(0.20f * width, -0.30f * width, 0.06f * width, 0.022f * width, 0.56f * width,
-                    0.0150f, 0x56ffc7c7));
+                    0.0150f, 0x80ffc7c7));
             mBubbles.add(new CircleBubble(0.58f * width, -0.15f * width, -0.15f * width, 0.032f * width, 0.6f * width,
-                    0.00600f, 0x45fffc9e));
+                    0.00600f, 0x85fffc9e));
             mBubbles.add(new CircleBubble(0.9f * width, -0.19f * width, 0.08f * width, -0.015f * width, 0.44f * width,
-                    0.00300f, 0x5096ff8f));
+                    0.00300f, 0x7596ff8f));
             mBubbles.add(new CircleBubble(1.1f * width, 0.25f * width, -0.08f * width, -0.015f * width, 0.42f * width,
-                    0.00200f, 0x48c7dcff));
+                    0.00200f, 0x80c7dcff));
             mBubbles.add(new CircleBubble(0.20f * width, 0.50f * width, -0.06f * width, 0.022f * width, 0.42f * width,
-                    0.0150f, 0x52efc2ff));
-            mBubbles.add(new CircleBubble(0.50f * width, 0.50f * width, 0.10f * width, 0.050f * width, 0.30f * width,
-                    0.0100f, 0x40E99161));
+                    0.0150f, 0x70efc2ff));
+            mBubbles.add(new CircleBubble(0.70f * width, 0.60f * width, 0.10f * width, 0.050f * width, 0.30f * width,
+                    0.0100f, 0x75E99161));
         }
     }
 
