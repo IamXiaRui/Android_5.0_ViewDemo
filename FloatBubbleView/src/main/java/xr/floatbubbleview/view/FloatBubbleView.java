@@ -150,14 +150,19 @@ public class FloatBubbleView extends SurfaceView implements SurfaceHolder.Callba
          * @param mCanvas 画布
          */
         private void processDrawCanvas(Canvas mCanvas) {
-            //加锁画布
-            mCanvas = mSurface.lockCanvas();
-            //防空保护
-            if (mCanvas != null) {
-                //清屏操作
-                mCanvas.drawColor(Color.TRANSPARENT, Mode.CLEAR);
-                drawSurface(mCanvas);    //真正开始画 SurfaceView 的地方
-                mSurface.unlockCanvasAndPost(mCanvas); //释放canvas锁，并显示视图
+            try {
+                mCanvas = mSurface.lockCanvas(); //加锁画布
+                if (mCanvas != null) {          //防空保护
+                    //清屏操作
+                    mCanvas.drawColor(Color.TRANSPARENT, Mode.CLEAR);
+                    drawSurface(mCanvas);    //真正开始画 SurfaceView 的地方
+                }
+            }catch (Exception ignored){
+
+            }finally {
+                if(mCanvas != null){
+                    mSurface.unlockCanvasAndPost(mCanvas); //释放canvas锁，并显示视图
+                }
             }
         }
 
