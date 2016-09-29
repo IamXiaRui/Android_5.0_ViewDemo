@@ -7,25 +7,25 @@ import android.graphics.Paint;
 /**
  * @author Mixiaoxiao
  * @revision xiarui 16/09/27
- * @description 自定义浮动圆形气泡 支持自定义气泡位置、颜色、大小、移动速度
+ * @description 圆形浮动气泡
  */
 
 class CircleBubble {
-    private final float cx, cy;             //圆心坐标
-    private final float dx, dy;             //圆心偏移距离
-    private final float radius;             //半径
-    private final int color;                //画笔颜色
-    private boolean isGrowing = true;       //是否正在运动
-    private float curPercentSpeed = 0f;     //当前速度百分比
-    private final float percentSpeed;       //设置初始速度百分比
+    private final float cx, cy;                 //圆心坐标
+    private final float dx, dy;                 //圆心偏移距离
+    private final float radius;                 //半径
+    private final int color;                    //画笔颜色
+    private final float variationOfFrame;       //设置每帧变化量
+    private boolean isGrowing = true;           //根据此标志位判断左右移动
+    private float curVariationOfFrame = 0f;     //当前帧变化量
 
-    CircleBubble(float cx, float cy, float dx, float dy, float radius, float percentSpeed, int color) {
+    CircleBubble(float cx, float cy, float dx, float dy, float radius, float variationOfFrame, int color) {
         this.cx = cx;
         this.cy = cy;
         this.dx = dx;
         this.dy = dy;
         this.radius = radius;
-        this.percentSpeed = percentSpeed;
+        this.variationOfFrame = variationOfFrame;
         this.color = color;
     }
 
@@ -37,23 +37,26 @@ class CircleBubble {
      * @param alpha  透明值
      */
     void updateAndDraw(Canvas canvas, Paint paint, float alpha) {
-        //每次绘制时都要气泡的速度 这里是匀速 也可以是不匀速
+        /**
+         * 每次绘制时都根据标志位(isGrowing)和每帧变化量(variationOfFrame)进行更新
+         * 说白了其实就是每帧都会变化一段距离  连在一起 这就产生了动画效果
+         */
         if (isGrowing) {
-            curPercentSpeed += percentSpeed;
-            if (curPercentSpeed > 1f) {
-                curPercentSpeed = 1f;
-                isGrowing = false;          //停止运动
+            curVariationOfFrame += variationOfFrame;
+            if (curVariationOfFrame > 1f) {
+                curVariationOfFrame = 1f;
+                isGrowing = false;
             }
         } else {
-            curPercentSpeed -= percentSpeed;
-            if (curPercentSpeed < 0f) {
-                curPercentSpeed = 0f;
-                isGrowing = true;           //继续运动
+            curVariationOfFrame -= variationOfFrame;
+            if (curVariationOfFrame < 0f) {
+                curVariationOfFrame = 0f;
+                isGrowing = true;
             }
         }
-        //根据运动速度计算圆心偏移后的位置
-        float curCX = cx + dx * curPercentSpeed;
-        float curCY = cy + dy * curPercentSpeed;
+        //根据当前帧变化量计算圆心偏移后的位置
+        float curCX = cx + dx * curVariationOfFrame;
+        float curCY = cy + dy * curVariationOfFrame;
         //设置画笔颜色
         int curColor = convertAlphaColor(alpha * (Color.alpha(color) / 255f), color);
         paint.setColor(curColor);

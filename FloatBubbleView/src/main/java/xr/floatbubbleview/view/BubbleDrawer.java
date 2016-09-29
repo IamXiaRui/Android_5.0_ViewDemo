@@ -10,35 +10,34 @@ import java.util.ArrayList;
 /**
  * @author Mixiaoxiao
  * @revision xiarui 16/09/27
- * @description 绘制圆形浮动气泡及设定渐变背景
+ * @description 绘制圆形浮动气泡及设定渐变背景的绘制对象
  */
 public class BubbleDrawer {
 
     /*===== 图形相关 =====*/
     private GradientDrawable mGradientBg;       //渐变背景
-    private Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG); //抗锯齿画笔
-    private final float mDensity;              //屏幕密度
+    private Paint mPaint; //抗锯齿画笔
 
-    /*===== 数据相关 =====*/
-    private Context mContext;                   //上下文对象
     private int mWidth, mHeight;                //上下文对象
-    //存放气泡的集合
-    private final ArrayList<CircleBubble> bubbles = new ArrayList<>();
-    private int[] gradientColors;
+    private ArrayList<CircleBubble> mBubbles; //存放气泡的集合
+    private int[] mGradientColors;              //渐变颜色数组
 
     /**
      * 构造函数
      *
-     * @param context 上下文对象
-     * @remark 注意这里需要根据上下文获取当前屏幕的密度
+     * @param context 上下文对象 可能会用到
      */
     public BubbleDrawer(Context context) {
-        this.mContext = context;
-        //需要获取当前屏幕的密度
-        this.mDensity = context.getResources().getDisplayMetrics().density;
+        mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mBubbles = new ArrayList<>();
     }
 
-    public void setSize(int width, int height) {
+    /**
+     * 设置显示悬浮气泡的范围
+     * @param width 宽度
+     * @param height 高度
+     */
+    void setViewSize(int width, int height) {
         if (this.mWidth != width && this.mHeight != height) {
             this.mWidth = width;
             this.mHeight = height;
@@ -46,18 +45,54 @@ public class BubbleDrawer {
                 mGradientBg.setBounds(0, 0, width, height);
             }
         }
-        if (bubbles.size() == 0) {
-            bubbles.add(new CircleBubble(0.20f * width, -0.30f * width, 0.06f * width, 0.022f * width, 0.56f * width,
-                    0.0175f, 0x56ffc7c7));
-            bubbles.add(new CircleBubble(0.58f * width, -0.15f * width, -0.15f * width, 0.032f * width, 0.6f * width,
-                    0.00625f, 0x45fffc9e));
-            bubbles.add(new CircleBubble(0.9f * width, -0.19f * width, 0.08f * width, -0.015f * width, 0.44f * width,
-                    0.00325f, 0x5096ff8f));
-            bubbles.add(new CircleBubble(1.1f * width, 0.25f * width, -0.08f * width, -0.015f * width, 0.42f * width,
-                    0.00225f, 0x48c7dcff));
-            bubbles.add(new CircleBubble(0.20f * width, 0.50f * width, -0.06f * width, 0.022f * width, 0.42f * width,
-                    0.0185f, 0x52efc2ff));
+        //设置一些默认的气泡
+        initDefaultBubble(width);
+    }
+
+    /**
+     * 初始化默认的气泡
+     *
+     * @param width 宽度
+     */
+    private void initDefaultBubble(int width) {
+        if (mBubbles.size() == 0) {
+            mBubbles.add(new CircleBubble(0.20f * width, -0.30f * width, 0.06f * width, 0.022f * width, 0.56f * width,
+                    0.0150f, 0x56ffc7c7));
+            mBubbles.add(new CircleBubble(0.58f * width, -0.15f * width, -0.15f * width, 0.032f * width, 0.6f * width,
+                    0.00600f, 0x45fffc9e));
+            mBubbles.add(new CircleBubble(0.9f * width, -0.19f * width, 0.08f * width, -0.015f * width, 0.44f * width,
+                    0.00300f, 0x5096ff8f));
+            mBubbles.add(new CircleBubble(1.1f * width, 0.25f * width, -0.08f * width, -0.015f * width, 0.42f * width,
+                    0.00200f, 0x48c7dcff));
+            mBubbles.add(new CircleBubble(0.20f * width, 0.50f * width, -0.06f * width, 0.022f * width, 0.42f * width,
+                    0.0150f, 0x52efc2ff));
+            mBubbles.add(new CircleBubble(0.50f * width, 0.50f * width, 0.10f * width, 0.050f * width, 0.30f * width,
+                    0.0100f, 0x40E99161));
         }
+    }
+
+    /**
+     * 用画笔在画布上画气泡
+     *
+     * @param canvas 画布
+     * @param alpha  透明值
+     */
+    private void drawCircleBubble(Canvas canvas, float alpha) {
+        //循环遍历所有设置的圆形气泡
+        for (CircleBubble bubble : this.mBubbles) {
+            bubble.updateAndDraw(canvas, mPaint, alpha);
+        }
+    }
+
+    /**
+     * 画背景 画所有的气泡
+     *
+     * @param canvas 画布
+     * @param alpha  透明值
+     */
+    void drawBgAndBubble(Canvas canvas, float alpha) {
+        drawGradientBackground(canvas, alpha);
+        drawCircleBubble(canvas, alpha);
     }
 
     /**
@@ -66,7 +101,7 @@ public class BubbleDrawer {
      * @param gradientColors 渐变色数组 必须 >= 2 不然没法渐变
      */
     public void setBackgroundGradient(int[] gradientColors) {
-        this.gradientColors = gradientColors;
+        this.mGradientColors = gradientColors;
     }
 
     /**
@@ -75,7 +110,7 @@ public class BubbleDrawer {
      * @return 渐变色数组
      */
     private int[] getBackgroundGradient() {
-        return gradientColors;
+        return mGradientColors;
     }
 
     /**
@@ -96,30 +131,4 @@ public class BubbleDrawer {
         mGradientBg.draw(canvas);
     }
 
-    /**
-     * 用画笔在画布上画气泡
-     *
-     * @param canvas 画布
-     * @param alpha  透明值
-     * @return 全部画完标志
-     */
-    private boolean drawCircleBubble(Canvas canvas, float alpha) {
-        //循环遍历所有设置的圆形气泡
-        for (CircleBubble bubble : this.bubbles) {
-            bubble.updateAndDraw(canvas, mPaint, alpha);
-        }
-        return true;
-    }
-
-    /**
-     * 画所有的图
-     *
-     * @param canvas 画布
-     * @param alpha  透明值
-     * @return 是否需要画下一帧
-     */
-    boolean draw(Canvas canvas, float alpha) {
-        drawGradientBackground(canvas, alpha);
-        return drawCircleBubble(canvas, alpha);
-    }
 }
