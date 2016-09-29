@@ -2,6 +2,7 @@ package xr.loadermvpdemo.loader;
 
 import android.content.Context;
 import android.content.Loader;
+import android.util.Log;
 
 import xr.loadermvpdemo.presenter.BasePresenter;
 import xr.loadermvpdemo.presenter.PersonPresenter;
@@ -19,7 +20,7 @@ public class PresenterLoader<T extends BasePresenter> extends Loader<T> {
     private PersonPresenter presenter;
     private PresenterFactory factory;
 
-    public PresenterLoader(Context context,PresenterFactory factory) {
+    public PresenterLoader(Context context, PresenterFactory factory) {
         super(context);
         this.factory = factory;
     }
@@ -32,7 +33,7 @@ public class PresenterLoader<T extends BasePresenter> extends Loader<T> {
             deliverResult((T) presenter);
             return;
         }
-
+        Log.e("====", "onStartLoading is call");
         // 如果没有
         forceLoad();
     }
@@ -43,6 +44,7 @@ public class PresenterLoader<T extends BasePresenter> extends Loader<T> {
         presenter = factory.create();
         // 返回Presenter
         deliverResult((T) presenter);
+        Log.e("====", "onForceLoad is call");
     }
 
     @Override

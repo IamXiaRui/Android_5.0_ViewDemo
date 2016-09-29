@@ -12,21 +12,13 @@ import xr.loadermvpdemo.bean.PersonBean;
 
 public class PersonModel implements IPersonModel {
 
-    //存一下Person的信息
-    private ArrayList<PersonBean> personList = new ArrayList<>();
-
     /**
      * 加载Person信息
      *
      * @return 返回信息集合
      */
     @Override
-    public ArrayList<PersonBean> loadPersonInfo() {
-        personList.add(initPerson());
-        return personList;
-    }
-
-    private PersonBean initPerson() {
+    public PersonBean loadPersonInfo() {
         PersonBean personBean = new PersonBean();
         personBean.setName("张三");
         personBean.setAge("24");

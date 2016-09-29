@@ -1,7 +1,5 @@
 package xr.loadermvpdemo.view;
 
-import java.util.ArrayList;
-
 import xr.loadermvpdemo.bean.PersonBean;
 
 /**
@@ -11,5 +9,5 @@ import xr.loadermvpdemo.bean.PersonBean;
 
 public interface IPersonView {
     //更新UI
-    void updateUI(ArrayList<PersonBean> personList);
+    void updateUI(PersonBean personBean);
 }

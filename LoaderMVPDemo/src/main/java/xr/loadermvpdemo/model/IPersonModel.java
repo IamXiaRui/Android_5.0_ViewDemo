@@ -1,7 +1,5 @@
 package xr.loadermvpdemo.model;
 
-import java.util.ArrayList;
-
 import xr.loadermvpdemo.bean.PersonBean;
 
 /**
@@ -13,5 +11,5 @@ import xr.loadermvpdemo.bean.PersonBean;
 public interface IPersonModel {
 
     //加载Person信息
-    ArrayList<PersonBean> loadPersonInfo();
+    PersonBean loadPersonInfo();
 }

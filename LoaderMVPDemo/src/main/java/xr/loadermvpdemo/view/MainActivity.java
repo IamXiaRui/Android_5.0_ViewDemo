@@ -1,16 +1,15 @@
 package xr.loadermvpdemo.view;
 
-import android.content.Intent;
-import android.os.Bundle;
 import android.app.LoaderManager;
+import android.content.Intent;
 import android.content.Loader;
+import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.ArrayList;
 
 import xr.loadermvpdemo.R;
 import xr.loadermvpdemo.bean.PersonBean;
@@ -48,11 +47,9 @@ public class MainActivity extends AppCompatActivity implements IPersonView, Load
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        Log.e("====", "onCreate is call");
         initView();
-
         initListener();
-
         initData();
     }
 
@@ -79,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements IPersonView, Load
     private void initData() {
         //得到一个Loader管理者，并创建一个Loader
         getLoaderManager().initLoader(0, null, this);
+        Log.e("====", "initData is call");
     }
 
     public void onClick(View view) {
@@ -100,31 +98,33 @@ public class MainActivity extends AppCompatActivity implements IPersonView, Load
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
+    protected void onResume() {
+        super.onResume();
         mPersonPresenter.onViewAttached(this);
+        Log.e("====", "onResume is call");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
         mPersonPresenter.onViewDetached();
+        Log.e("====", "onStop is call");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         mPersonPresenter.onDestroyed();
+        Log.e("====", "onDestroy is call");
     }
 
     /**
      * View 接口方法 更新UI
      *
-     * @param personList 用户集合
+     * @param personBean 用户集合
      */
     @Override
-    public void updateUI(ArrayList<PersonBean> personList) {
-        PersonBean personBean = personList.get(0);
+    public void updateUI(PersonBean personBean) {
         tvMainName.setText("姓名：" + personBean.getName());
         tvMainAge.setText("年龄：" + personBean.getAge());
         tvMainPhone.setText("手机：" + personBean.getPhone());
@@ -140,6 +140,7 @@ public class MainActivity extends AppCompatActivity implements IPersonView, Load
     /*========== Loader 的回调方法 ==========*/
     @Override
     public Loader<PersonPresenter> onCreateLoader(int id, Bundle args) {
+        Log.e("====", "onCreateLoader is call");
         //创建
         return new PresenterLoader<>(this, new PresenterFactory(this));
     }
@@ -148,6 +149,7 @@ public class MainActivity extends AppCompatActivity implements IPersonView, Load
     public void onLoadFinished(Loader<PersonPresenter> loader, PersonPresenter presenter) {
         //完成加载
         this.mPersonPresenter = presenter;
+        Log.e("====", "onLoadFinished is call");
     }
 
     @Override
