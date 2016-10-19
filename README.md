@@ -66,34 +66,34 @@ MVP 模式中的 Presenter 经常会引起内存泄漏问题，用 Loader 能从
 
 标题栏会根据 ListView 首项颜色来进行更换
 
-###NewSelector - 定义选择器的新方式
+###[NewSelector](https://github.com/IamXiaRui/Android_5.0_ViewDemo/tree/master/NewSelector) - 定义选择器的新方式
 
 Android5.0可以通过一张图片实现选择器的功能，本例用实现按钮的选择器。
 
-###PaletteDemo - 调色板的功能
+###[PaletteDemo](https://github.com/IamXiaRui/Android_5.0_ViewDemo/tree/master/PaletteDemo) - 调色板的功能
 
 通过调色板，能够很轻易的取出一张图片中的多种颜色。
 
-###ShadowDemo - 阴影效果及其裁剪
+###[ShadowDemo](https://github.com/IamXiaRui/Android_5.0_ViewDemo/tree/master/ShadowDemo) - 阴影效果及其裁剪
 
 Android5.0的很重要的特性，就是添加Z轴方向的阴影。并提供裁剪方式。
 
-###ToolBarDemo - 侧滑菜单的显示
+###[ToolBarDemo](https://github.com/IamXiaRui/Android_5.0_ViewDemo/tree/master/ToolBarDemo) - 侧滑菜单的显示
 
 Android5.0中新增的ToolBar能够取代ActionBar
 
-###VectorAnimation - 矢量图动画
+###[VectorAnimation](https://github.com/IamXiaRui/Android_5.0_ViewDemo/tree/master/VectorAnimation) - 矢量图动画
 
 Android5.0新增的矢量图动画，动画更加平滑。
 
-###RecyclerView - ListView替代者
+###[RecyclerView](https://github.com/IamXiaRui/Android_5.0_ViewDemo/tree/master/RecyclerView) - ListView替代者
 
 -  用RecyclerView实现列表与网格效果
 -  用RecyclerView实现瀑布流效果
 -  实现卡片样式效果
 -  实现下拉刷新效果
 
-###TransitionAnimation - Android5.0转场动画
+###[TransitionAnimation](https://github.com/IamXiaRui/Android_5.0_ViewDemo/tree/master/TransitionAnimation) - Android5.0转场动画
 
 - Explode : 分解裂开动画
 - Fade : 淡入淡出动画
