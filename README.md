@@ -2,13 +2,69 @@
 
 ##分类介绍
 
-###ChangeTheme - 切换主题样式案例
+###[AsyncTaskDemo](https://github.com/IamXiaRui/Android_5.0_ViewDemo/tree/master/AsyncTaskDemo) - 异步任务案例
+
+博客上面异步任务的案例
+
+###[BlurDemo](https://github.com/IamXiaRui/Android_5.0_ViewDemo/tree/master/BlurDemo) - 高斯模糊案例
+
+最容易实现且效果还不错的高斯模糊效果
+
+###[ButtonAnimation](https://github.com/IamXiaRui/Android_5.0_ViewDemo/tree/master/ButtonAnimation) - 按钮点击的水波效果
+
+通过四个按钮的对比，观察三种默认效果的区别，以及自定义效果的实现。
+
+###[ChangeThemeDemo](https://github.com/IamXiaRui/Android_5.0_ViewDemo/tree/master/ChangeThemeDemo) - 切换主题样式案例
 
 通过按钮动态切换主题样式。
 
-###ButtonAnimation - 按钮点击的水波效果
+###[CommonAdapterDemo](https://github.com/IamXiaRui/Android_5.0_ViewDemo/tree/master/CommonAdapterDemo) - 万能通用适配器实现
 
-通过四个按钮的对比，观察三种默认效果的区别，以及自定义效果的实现。
+一般 ListView 都会有一个对应的 Adapter ，那如果项目中有很多 ListView 的话，Adapter 写起来会非常的冗余，所有这里有个通用的万能的 Adapter 的写法
+
+###[DataBindingDemo](https://github.com/IamXiaRui/Android_5.0_ViewDemo/tree/master/DataBindingDemo) - 数据绑定的案例
+
+与博文对应的案例，讲解 DataBinding　的基本使用，及其一些需要注意的地方
+
+###[DragLayoutDemo](https://github.com/IamXiaRui/Android_5.0_ViewDemo/tree/master/DragLayoutDemo) - 拖拽布局案例
+
+- 有移动动画
+- 实现过渡效果
+- 实现拖拽效果
+
+###[FirstMVPDemo](https://github.com/IamXiaRui/Android_5.0_ViewDemo/tree/master/FirstMVPDemo/src/main) - MVP 入门登录案例
+
+- MVP 架构入门案例
+- 基于 MD 风格
+
+> 项目 push 出错，但核心代码仍在 
+
+
+###[FirstRxJavaDemo](https://github.com/IamXiaRui/Android_5.0_ViewDemo/tree/master/FirstRxJavaDemo) - RxJava 入门案例
+
+- RxJava 入门级使用方法
+- 一些重要操作符的用法
+- 附有博文介绍
+
+###[FloatBubbleView](https://github.com/IamXiaRui/Android_5.0_ViewDemo/tree/master/FloatBubbleView) - 会呼吸的悬浮气泡
+
+自定义 SurfaceView ，实现呼吸特效的悬浮气泡
+
+###[GsonArrayDemo](https://github.com/IamXiaRui/Android_5.0_ViewDemo/tree/master/GsonArrayDemo) - GSONj 解析数组的五种方式
+
+用 GSON 如何有针对性的解析各种情况下的 JSONArray
+
+###[HelloChartsDemo](https://github.com/IamXiaRui/Android_5.0_ViewDemo/tree/master/HelloChartsDemo) - 图表控件
+
+重写 HelloCharts 的案例，介绍如何在项目中实现图表控件
+
+###[LoaderMVPDemo](https://github.com/IamXiaRui/Android_5.0_ViewDemo/tree/master/LoaderMVPDemo) - 用 Loader 解决 Presenter 周期问题
+
+MVP 模式中的 Presenter 经常会引起内存泄漏问题，用 Loader 能从另外一个思路上解决此问题 
+
+###[UpdateColorDemo](https://github.com/IamXiaRui/Android_5.0_ViewDemo/tree/master/UpdateColorDemo) - 动态更改标题栏颜色
+
+标题栏会根据 ListView 首项颜色来进行更换
 
 ###NewSelector - 定义选择器的新方式
 
