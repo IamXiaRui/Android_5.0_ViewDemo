@@ -79,5 +79,9 @@
         android:id="@+id/menu_line_touch_zoom_y"
         android:title="Y方向缩放"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_line_dynamic_data_display"
+        android:title="动态显示数据"
+        app:showAsAction="never" />
 
 </menu>
