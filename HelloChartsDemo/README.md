@@ -1,6 +1,6 @@
-#Android：学会超好用的图表控件 HelloCharts
+# Android：学会超好用的图表控件 HelloCharts
 
-##写在前面
+## 写在前面
 
 很早以前就想学习一些图表控件的实现，但一直被耽搁。现在毕设项目里有一个统计模块，所以不得不学了。找控件没花多大力气，不过确实在 **MPAndroidChart** 和 **HelloCharts** 之间犹豫了一会。不过简单对比来看，还是 **HelloCharts** 比较容易实现，也有很多可定义的模块/属性/效果。所以就选择了学习 **HelloCharts** 。
 
@@ -22,7 +22,7 @@
 
 > **Welcome to Pull Requests !**
 
-##必读说明
+## 必读说明
 
 * 本项目仅供参考学习使用；
 * 本项目参考源码开发者示例 **Demo** ，有点中文版的意味；
@@ -40,7 +40,7 @@
 
 [项体验 APP 下载地址（至少 Android 5.0 以上）](http://www.iamxiarui.com/?dl_id=2)
 
-###一些图
+### 一些图
 
 ![](http://www.iamxiarui.com/wp-content/uploads/2016/09/pic_main.jpg)
 

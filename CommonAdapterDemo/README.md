@@ -1,6 +1,6 @@
-#Android：打造“万能”Adapter与ViewHolder
+# Android：打造“万能”Adapter与ViewHolder
 
-##写在前面
+## 写在前面
 
 最近一直忙着各种结课大作业，重新看起Android还有种亲切感。前段时间写项目的时候，学习了一个万能Adapter与ViewHolder的写法。说是“万能”其实就是在各种情况下都能通用。
 
@@ -18,7 +18,7 @@
 * 结语
 * 项目源码
 
-##项目介绍
+## 项目介绍
 
 先来看这个Demo，很简单，我就不多说了。
 
@@ -36,7 +36,7 @@
 * TraditionAdapterWithCommonHolder：基于通用ViewHolder的传统Adapter
 * CommonAdapterWithCommoeHolder：基于通用ViewHolder的通用Adapter
 
-##传统写法分析
+## 传统写法分析
 
 至于页面布局、模拟加载数据在这里我就不提了，十分简单。现在主要看一下传统的Adapter的写法。
 
@@ -194,7 +194,7 @@
 * 通用ViewHolder需要提供方法来设置相应控件的内容
 
 
-##简单认识SparseArray
+## 简单认识SparseArray
 
 在写万能ViewHolder之前，先来了解一个新的API。我们知道，在Java中一般会用HashMap以键值对的形式来存储一些数据。但是Android给我们提供了一种工具类 **SparseArray** ，它是Android框架独有的类，在标准的JDK中不存在这个类。
 
@@ -213,7 +213,7 @@
 
 好了，就介绍这么多，关于具体的用法，文末附有参考资料链接，如有需要可以自行查看。
 
-##万能ViewHolder
+## 万能ViewHolder
 
 现在就来打造万能ViewHolder，打造之前再次明确我们需要做的事情：
 
@@ -462,7 +462,7 @@
 
 至此，我们就搞定了一个通用的“万能”ViewHolder。
 
-##万能Adapter
+## 万能Adapter
 
 有了万能ViewHolder，我们就可以来打造万能Adapter了，在文章开头已经分析过，需要做的事情有一下几点：
 
@@ -559,7 +559,7 @@
 看到这里，是不是有点神奇，对比之前的Adapter，这里只要几行代码就OK了。
 
 
-##结语
+## 结语
 
 由于本文说明的不是一种固定的知识，而是一种设计的思想，所以理解起来比较晦涩难懂。我自己在学这个的时候，也是消化了很久，现在回头看看真的是很巧妙。
 
@@ -567,7 +567,7 @@
 
 最后由于我水平有限与篇幅限制等原因，在写文章的过程中，有很多地方写的不够详细或者有明显的疏漏与错误，欢迎大家交流与指正。
 
-##参考资料
+## 参考资料
 
 [Android应用性能优化之使用SparseArray替代HashMap](https://liuzhichao.com/p/832.html)
 
